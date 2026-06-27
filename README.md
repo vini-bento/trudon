@@ -6,9 +6,12 @@ financeira e planejamento previdenciário, com atendimento 100% online no Brasil
 ## Estrutura
 
 - `index.html` — site completo (HTML + CSS + JS em um único arquivo, sem build).
-- `assets/` — logotipos.
-  - `logo-trudon.png` — logo completo.
-  - `logo-mark.png` — monograma (usado no header, hero, footer e favicon).
+  O **logotipo é um SVG embutido** no próprio HTML (símbolo `#mark`): a letra **T**
+  dourada com barras ascendentes e seta de crescimento. Como é vetor embutido, ele
+  **nunca quebra** e o site funciona abrindo apenas o `index.html`, sem depender de
+  arquivos externos.
+- `assets/` — imagens opcionais (logos originais em PNG), usadas apenas como
+  imagem de compartilhamento social (Open Graph) e ícone iOS.
 
 ## Seções
 
@@ -40,6 +43,8 @@ em GitHub Pages, Netlify, Vercel ou qualquer servidor de arquivos.
 
 ## Personalização rápida
 
+- **Logotipo:** desenhado em SVG no símbolo `#mark` (início do `<body>`); cores no
+  gradiente `goldM`/`goldBar`.
 - **Foto da fundadora:** em `#quem-sou-eu`, troque o bloco `.ph` por
   `<img src="assets/kelly.jpg" alt="Kelly Picossi, fundadora da TRUDON">`.
 - **WhatsApp:** o número `5511993740120` aparece nos links/botões e no script do formulário.

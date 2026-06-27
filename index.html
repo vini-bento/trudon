@@ -18,7 +18,7 @@
 <meta property="og:image" content="assets/logo-trudon.png">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f7e4ab'/%3E%3Cstop offset='.6' stop-color='%23c8a24e'/%3E%3Cstop offset='1' stop-color='%238a6f3a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Crect x='26' y='17' width='50' height='10.5' rx='1.2'/%3E%3Crect x='44.4' y='24' width='11.2' height='55'/%3E%3Cpath d='M37 86 q3.5 -8 7.4 -8 h11.2 q3.9 0 7.4 8 Z'/%3E%3C/g%3E%3Cpath d='M12 80 Q44 79 79 32' fill='none' stroke='url(%23g)' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="assets/logo-mark.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -184,7 +184,7 @@
   .hero-orb__inner{position:absolute;inset:7%;border-radius:50%;overflow:hidden;display:grid;place-items:center;
     background:radial-gradient(circle at 50% 34%,#17284c,#0a1226 72%);
     border:1px solid var(--line);box-shadow:inset 0 0 54px rgba(0,0,0,.6),var(--shadow)}
-  .hero-orb__inner img{width:72%;border-radius:50%;filter:drop-shadow(0 12px 36px rgba(0,0,0,.55))}
+  .hero-orb__inner svg{width:78%;height:78%;filter:drop-shadow(0 12px 30px rgba(0,0,0,.55))}
   .hero-badge{position:absolute;display:flex;align-items:center;gap:12px;
     background:rgba(11,18,40,.92);border:1px solid var(--line);border-radius:14px;padding:13px 17px;box-shadow:var(--shadow)}
   @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
@@ -363,14 +363,6 @@
   .foot-tagline{font-family:var(--display);font-style:italic;font-size:1.18rem;color:var(--gold);margin:16px 0}
   footer .copy{color:var(--text-dimmer);font-size:.82rem;margin-top:16px;line-height:1.7}
 
-  /* ---------- floating whatsapp ---------- */
-  .wa-float{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));
-    z-index:80;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;
-    box-shadow:0 10px 30px rgba(37,211,102,.42);transition:transform .25s}
-  .wa-float:hover{transform:scale(1.08)}
-  .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:pulse 2.6s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-
   /* ---------- reveal (progressive enhancement) ---------- */
   .reveal{opacity:1;transform:none}
   .js-on .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
@@ -430,11 +422,41 @@
 <body>
 <a class="skip-link" href="#solucoes">Pular para o conteúdo</a>
 
+<!-- ===== LOGO (SVG embutido — nunca quebra, não depende de arquivo externo) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="goldM" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e4ab"/><stop offset=".45" stop-color="#d8b25e"/>
+      <stop offset=".7" stop-color="#c8a24e"/><stop offset="1" stop-color="#8a6f3a"/>
+    </linearGradient>
+    <linearGradient id="goldBar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#9a7d3e"/><stop offset="1" stop-color="#ecd08a"/>
+    </linearGradient>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <g fill="url(#goldBar)">
+        <rect x="16" y="62" width="6.5" height="17" rx="1.6"/>
+        <rect x="25.5" y="54" width="6.5" height="25" rx="1.6"/>
+        <rect x="35" y="45" width="6.5" height="34" rx="1.6"/>
+      </g>
+      <path d="M12 80 Q44 79 79 32" fill="none" stroke="url(#goldM)" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M79 32 l-14 1.5 M79 32 l-1.5 14" fill="none" stroke="url(#goldM)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="url(#goldM)">
+        <rect x="26" y="17" width="50" height="10.5" rx="1.2"/>
+        <path d="M26 17 h8 v15 q-4.2 -0.6 -8 -2.4 Z"/>
+        <path d="M76 17 h-8 v15 q4.2 -0.6 8 -2.4 Z"/>
+        <rect x="44.4" y="24" width="11.2" height="55"/>
+        <path d="M44.4 27.5 q-3 0 -3 -3 h3 Z"/><path d="M55.6 27.5 q3 0 3 -3 h-3 Z"/>
+        <path d="M37 86 q3.5 -8 7.4 -8 h11.2 q3.9 0 7.4 8 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
 <!-- ================= HEADER ================= -->
 <header id="siteHeader">
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="TRUDON — início">
-      <img class="mark" src="assets/logo-mark.png" width="40" height="40" alt="" aria-hidden="true">
+      <svg class="mark" width="40" height="40" viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>
       <span class="brand-txt"><b>TRUDON</b><span>Inteligência Contábil</span></span>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
@@ -442,7 +464,7 @@
       <a href="#solucoes" data-tab="previdencia">Previdência</a>
       <a href="#solucoes" data-tab="exterior">Brasileiros no Exterior</a>
       <a href="#solucoes" data-tab="pericias">Perícias &amp; Assistência</a>
-      <a href="#quem-sou-eu">Quem sou eu</a>
+      <a href="#quem-sou-eu">Quem sou eu?</a>
       <a href="#contato">Contato</a>
       <a class="btn-wa" href="https://wa.me/5511993740120" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -454,10 +476,6 @@
     </button>
   </div>
 </header>
-
-<a class="wa-float" href="https://wa.me/5511993740120" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-</a>
 
 <main>
 <!-- ================= HERO ================= -->
@@ -485,7 +503,7 @@
     <div class="hero-visual">
       <div class="hero-orb">
         <span class="hero-orb__ring" aria-hidden="true"></span>
-        <span class="hero-orb__inner"><img src="assets/logo-mark.png" width="300" height="300" alt="Monograma TRUDON"></span>
+        <span class="hero-orb__inner"><svg viewBox="0 0 100 100" role="img" aria-label="Monograma TRUDON"><use href="#mark"/></svg></span>
         <div class="hero-badge b1">
           <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></span>
           <span><b>+20</b><small>Acordos internacionais</small></span>
@@ -604,12 +622,12 @@
           <small>Sua foto profissional aqui</small>
         </div>
       </div>
-      <div class="tag"><b>Kelly Picossi</b><span>Fundadora &middot; Economista</span></div>
+      <div class="tag"><b>Kelly Picossi</b><span>Fundadora &middot; Contadora &middot; Economista</span></div>
     </div>
     <div class="about-txt reveal d1">
-      <span class="eyebrow">Quem sou eu</span>
+      <span class="eyebrow">Quem sou eu?</span>
       <h2 id="about-title">A união exata entre Contabilidade, Economia e Inteligência Estratégica.</h2>
-      <p>Chamo-me <span class="hl">Kelly Picossi</span> e fundei a Trudon com o propósito de oferecer soluções de elite que vão muito além da burocracia tradicional. Com formação em Economia e especialista em Contabilidade, atuo unindo o rigor fiscal à visão estratégica de mercado.</p>
+      <p>Meu nome é <span class="hl">Kelly Picossi</span> e fundei a Trudon com o propósito de oferecer soluções de elite que vão muito além da burocracia tradicional. Com formação em Economia e especialista em Contabilidade, atuo unindo o rigor fiscal à visão estratégica de mercado.</p>
       <p>Minha trajetória é marcada pela atuação como ponte estratégica entre parceiros de negócios, auditoria financeira de custos complexos e consultoria de alto nível. Especializei-me em <span class="hl">Planejamento Previdenciário</span> e em <span class="hl">Soluções Internacionais</span>, garantindo que brasileiros, no país ou no exterior, protejam seu patrimônio e conquistem um futuro seguro.</p>
       <p class="about-sign">Seu patrimônio tratado com técnica, experiência e cuidado.</p>
     </div>
@@ -718,14 +736,14 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <img class="foot-mark" src="assets/logo-mark.png" width="54" height="54" alt="" aria-hidden="true" loading="lazy">
+    <svg class="foot-mark" width="54" height="54" viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>
     <p class="foot-name">TRUDON</p>
     <nav class="foot-links" aria-label="Rodapé">
       <a href="#solucoes" data-tab="empresas">Empresas</a>
       <a href="#solucoes" data-tab="previdencia">Previdência</a>
       <a href="#solucoes" data-tab="exterior">Brasileiros no Exterior</a>
       <a href="#solucoes" data-tab="pericias">Perícias &amp; Assistência</a>
-      <a href="#quem-sou-eu">Quem sou eu</a>
+      <a href="#quem-sou-eu">Quem sou eu?</a>
       <a href="#contato">Contato</a>
     </nav>
     <p class="foot-tagline">Inteligência contábil que protege e acelera o seu patrimônio.</p>
