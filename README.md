@@ -6,12 +6,12 @@ financeira e planejamento previdenciário, com atendimento 100% online no Brasil
 ## Estrutura
 
 - `index.html` — site completo (HTML + CSS + JS em um único arquivo, sem build).
-  O **logotipo é um SVG embutido** no próprio HTML (símbolo `#mark`): a letra **T**
-  dourada com barras ascendentes e seta de crescimento. Como é vetor embutido, ele
-  **nunca quebra** e o site funciona abrindo apenas o `index.html`, sem depender de
-  arquivos externos.
-- `assets/` — imagens opcionais (logos originais em PNG), usadas apenas como
-  imagem de compartilhamento social (Open Graph) e ícone iOS.
+  O **logotipo oficial** (emblema dourado + lockup TRUDON) está **embutido em
+  base64** no próprio HTML — por isso o site funciona abrindo apenas o `index.html`,
+  sem depender de arquivos externos e **sem o logo quebrar**.
+- `assets/` — imagens originais do logo (PNG) e a versão transparente
+  (`trudon_image001-removebg-preview.png`), além de servirem de imagem de
+  compartilhamento social (Open Graph) e ícone iOS.
 
 ## Seções
 
