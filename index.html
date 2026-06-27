@@ -320,6 +320,19 @@
   .faq-item[open] summary .plus::after{transform:translateX(-50%) scaleY(0)}
   .faq-item .ans{padding:0 26px 24px;color:var(--text-dim);font-size:1.05rem;line-height:1.72}
 
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .testi-card{display:flex;flex-direction:column;gap:15px;margin:0;padding:32px 28px;border-radius:16px;
+    background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.55));
+    border:1px solid var(--line-soft);transition:transform .3s,border-color .3s,box-shadow .3s}
+  .testi-card:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:var(--shadow)}
+  .testi-card .stars{display:flex;gap:3px;color:var(--gold-bright)}
+  .testi-card blockquote{color:var(--text-dim);font-size:1.05rem;line-height:1.66;font-style:italic;flex:1;margin:0}
+  .testi-card .who{font-weight:600;color:var(--cream);font-size:.95rem;font-style:normal}
+  .testi-card .who span{display:block;color:var(--text-dimmer);font-size:.8rem;font-weight:400;letter-spacing:.04em;
+    text-transform:uppercase;margin-top:4px}
+  @media(max-width:760px){.testi-grid{grid-template-columns:1fr}}
+
   /* ---------- CONTACT ---------- */
   .contact{border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(11,18,40,.5),rgba(6,10,20,.7))}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:start}
@@ -606,6 +619,23 @@
   </div>
 </section>
 
+<!-- ================= ATENDIMENTO DIGITAL ================= -->
+<section class="sec-pad" id="digital" aria-labelledby="digital-title">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Atendimento 100% digital e seguro</span>
+      <h2 id="digital-title">Toda a comodidade do online, com a segurança de um cuidado de perto.</h2>
+      <p>Você resolve tudo sem sair de casa — no Brasil ou no exterior — com a tranquilidade de saber que o seu patrimônio está em boas mãos.</p>
+    </div>
+    <div class="why-grid">
+      <article class="why-item reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Processo 100% online</h3><p>Da primeira conversa ao acompanhamento, tudo é resolvido digitalmente — sem deslocamento e sem papelada.</p></article>
+      <article class="why-item reveal d1"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><h3>Atendimento próximo</h3><p>Você fala diretamente com a especialista, por WhatsApp e videochamada, de onde estiver — Brasil ou exterior.</p></article>
+      <article class="why-item reveal d2"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 16l-4-4-4 4M12 12v9"/><path d="M20.4 14.5A5 5 0 0017 7h-1.3A7 7 0 104 13.5"/></svg></div><h3>Envio de documentos simples</h3><p>Mande CNIS, extratos, notas e comprovantes pelo celular ou computador, com praticidade e poucos cliques.</p></article>
+      <article class="why-item reveal d3"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/><circle cx="12" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg></div><h3>Sigilo e segurança</h3><p>Suas informações e o seu patrimônio tratados com confidencialidade e total responsabilidade técnica.</p></article>
+    </div>
+  </div>
+</section>
+
 <!-- ================= COMO FUNCIONA ================= -->
 <section class="sec-pad" id="como-funciona" aria-labelledby="how-title">
   <div class="wrap">
@@ -617,6 +647,34 @@
       <article class="step reveal"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span><span class="n">01</span><h3>Clique no botão</h3><p>Fale conosco pelo WhatsApp e nos conte brevemente o seu caso.</p></article>
       <article class="step reveal d1"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span><span class="n">02</span><h3>Análise especializada</h3><p>Avaliamos a sua situação fiscal, financeira ou previdenciária de forma personalizada.</p></article>
       <article class="step reveal d2"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="n">03</span><h3>Execução estratégica</h3><p>Cuidamos de toda a burocracia e planejamento para você focar apenas nos seus resultados.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<!-- Depoimentos-modelo (anônimos). Substitua pelos depoimentos reais dos clientes, com autorização. -->
+<section class="sec-pad" id="depoimentos" aria-labelledby="testi-title">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow center">Quem confia na TRUDON</span>
+      <h2 id="testi-title">Histórias de quem já organizou o futuro.</h2>
+    </div>
+    <div class="testi-grid">
+      <figure class="testi-card reveal">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <blockquote>Fiz meu planejamento previdenciário com a Trudon e descobri que podia me aposentar de forma muito mais vantajosa do que imaginava. Cada etapa foi explicada com clareza e paciência.</blockquote>
+        <figcaption class="who">Cliente de Planejamento Previdenciário<span>Aposentadoria &middot; INSS</span></figcaption>
+      </figure>
+      <figure class="testi-card reveal d1">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <blockquote>Abri minha empresa e mantenho toda a contabilidade com a Trudon. Está tudo em dia, sem dor de cabeça, e sempre com orientação estratégica de verdade.</blockquote>
+        <figcaption class="who">Empresária<span>Simples Nacional</span></figcaption>
+      </figure>
+      <figure class="testi-card reveal d2">
+        <div class="stars" aria-label="5 de 5 estrelas"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <blockquote>Moro fora do país e precisava regularizar minha situação no Brasil. Resolveram tudo à distância, com segurança, agilidade e total transparência.</blockquote>
+        <figcaption class="who">Cliente brasileiro no exterior<span>Soluções internacionais</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -699,6 +757,7 @@
       <a href="#solucoes" data-tab="exterior">Brasileiros no Exterior</a>
       <a href="#solucoes" data-tab="pericias">Perícias &amp; Assistência</a>
       <a href="#quem-sou-eu">Quem sou eu?</a>
+      <a href="#depoimentos">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
     <p class="foot-tagline">Inteligência contábil que protege e acelera o seu patrimônio.</p>

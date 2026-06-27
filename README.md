@@ -19,9 +19,11 @@ financeira e planejamento previdenciário, com atendimento 100% online no Brasil
 2. **Soluções** (abas): Empresas · Previdência · Brasileiros no Exterior · Perícias & Assistência.
 3. **Quem sou eu** — apresentação da fundadora.
 4. **Por que a TRUDON?** — diferenciais.
-5. **Como funciona** — 3 passos.
-6. **Perguntas frequentes** (FAQ).
-7. **Contato** — formulário que envia a mensagem pelo WhatsApp.
+5. **Atendimento 100% digital e seguro** — processo online + sigilo/segurança.
+6. **Como funciona** — 3 passos.
+7. **Depoimentos** — prova social (modelos anônimos para substituir pelos reais).
+8. **Perguntas frequentes** (FAQ).
+9. **Contato** — formulário que envia a mensagem pelo WhatsApp.
 
 ## Tecnologia e robustez
 
