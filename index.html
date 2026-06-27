@@ -2,478 +2,496 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>TRUDON — Inteligência Contábil, Financeira e Previdenciária</title>
 <meta name="description" content="Contabilidade completa, gestão financeira e planejamento previdenciário para você e sua empresa. Atendimento 100% online em todo o Brasil e no exterior.">
+<meta name="theme-color" content="#0a1226">
+<meta name="author" content="TRUDON — Kelly Picossi">
+<link rel="canonical" href="https://trudon.com.br/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="TRUDON — Inteligência Contábil">
+<meta property="og:title" content="TRUDON — Inteligência Contábil, Financeira e Previdenciária">
+<meta property="og:description" content="Contabilidade, gestão financeira e planejamento previdenciário para você e sua empresa. Atendimento 100% online no Brasil e no exterior.">
+<meta property="og:image" content="assets/logo-trudon.png">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "TRUDON — Inteligência Contábil",
+  "description": "Contabilidade, gestão financeira e planejamento previdenciário. Atendimento 100% online no Brasil e no exterior.",
+  "areaServed": "BR",
+  "founder": { "@type": "Person", "name": "Kelly Picossi" },
+  "telephone": "+55-11-99374-0120",
+  "email": "contato@trudon.com.br",
+  "url": "https://trudon.com.br/",
+  "knowsLanguage": ["pt-BR"],
+  "serviceType": ["Contabilidade", "Planejamento Previdenciário", "BPO Financeiro", "Perícia Contábil"]
+}
+</script>
+
 <style>
   :root{
-    /* midnight blue + gold */
-    --ink:#05080f;
-    --midnight:#0a1226;
-    --midnight-2:#0c1730;
-    --panel:#0e1a33;
-    --panel-2:#13233f;
-    --gold:#c6a052;
-    --gold-bright:#e8cd8c;
-    --gold-soft:#9c7f44;
-    --cream:#f0e7d3;
-    --text:#e9edf5;
-    --text-dim:#9aa8c2;
-    --text-dimmer:#6f7e98;
-    --line:rgba(198,160,82,.22);
-    --line-soft:rgba(255,255,255,.06);
-    --display:'Cormorant Garamond',Georgia,serif;
-    --body:'Manrope',system-ui,sans-serif;
-    --shadow:0 30px 80px -30px rgba(0,0,0,.7);
+    /* ---- midnight blue + gold ---- */
+    --ink:#060a14;
+    --navy:#0a1226;
+    --navy-2:#0b1530;
+    --panel:#101c38;
+    --panel-2:#16264a;
+    --gold:#c8a24e;
+    --gold-bright:#ecd394;
+    --gold-soft:#9a7d3e;
+    --cream:#f2e9d6;
+    --text:#eaeef6;
+    --text-dim:#a6b2c8;
+    --text-dimmer:#75839c;
+    --line:rgba(200,162,78,.22);
+    --line-soft:rgba(255,255,255,.07);
+    --display:'Fraunces','Georgia','Times New Roman',serif;
+    --body:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+    --shadow:0 30px 80px -34px rgba(0,0,0,.75);
+    --radius:18px;
+    --maxw:1240px;
+    --pad:28px;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:92px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
   body{
-    background:var(--midnight);color:var(--text);font-family:var(--body);
-    font-weight:400;line-height:1.6;overflow-x:hidden;font-size:18px;
-    -webkit-font-smoothing:antialiased;
+    background-color:var(--navy);color:var(--text);font-family:var(--body);
+    font-weight:400;line-height:1.6;font-size:18px;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
     background-image:
-      radial-gradient(1200px 700px at 85% -5%, rgba(198,160,82,.10), transparent 60%),
-      radial-gradient(900px 600px at -10% 20%, rgba(40,70,140,.18), transparent 55%),
-      linear-gradient(180deg, var(--ink), var(--midnight) 30%, var(--midnight-2) 100%);
-    background-attachment:fixed;
+      radial-gradient(1100px 680px at 86% -6%, rgba(200,162,78,.10), transparent 60%),
+      radial-gradient(860px 580px at -12% 18%, rgba(36,66,132,.20), transparent 55%);
+    background-repeat:no-repeat;background-attachment:fixed;
   }
-  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  img{max-width:100%;height:auto;display:block}
+  h1,h2,h3,h4,p,blockquote,summary{overflow-wrap:break-word}
   a{color:inherit;text-decoration:none}
-  ::selection{background:rgba(198,160,82,.3);color:#fff}
+  button{font-family:inherit}
+  ::selection{background:rgba(200,162,78,.32);color:#fff}
 
-  /* ---- shared accents ---- */
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+  /* focus accessibility */
+  :focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:6px}
+  .skip-link{position:absolute;left:-9999px;top:0;z-index:200;background:var(--gold);color:#05080f;
+    padding:12px 20px;border-radius:0 0 10px 0;font-weight:700}
+  .skip-link:focus{left:0}
+
+  /* ---- shared bits ---- */
   .eyebrow{
-    font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.26em;
+    font-family:var(--body);font-weight:700;font-size:.76rem;letter-spacing:.24em;
     text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;
   }
-  .eyebrow::before{content:"";width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
-  .gold-text{color:var(--gold-bright)}
+  .eyebrow::before{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);flex:0 0 auto}
+  .eyebrow.center::after{content:"";width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:0 0 auto}
+  .gold{color:var(--gold-bright)}
 
   /* ---------- HEADER ---------- */
   header{
-    position:fixed;top:0;left:0;right:0;z-index:80;
-    background:rgba(8,14,28,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid transparent;transition:.35s;
+    position:fixed;inset:0 0 auto 0;z-index:90;
+    background:rgba(8,14,28,.55);
+    border-bottom:1px solid transparent;transition:background .35s,border-color .35s;
   }
-  header.scrolled{background:rgba(7,12,24,.86);border-bottom-color:var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:78px;gap:20px}
-  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-  .brand .mark{height:42px;width:auto;display:block;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
-  .brand-txt{font-family:var(--body);font-size:.56rem;letter-spacing:.2em;
-    text-transform:uppercase;color:var(--text-dimmer);line-height:1.5}
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    header{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+  }
+  header.scrolled{background:rgba(7,12,24,.9);border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:74px}
+  .brand{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+  .brand .mark{height:40px;width:40px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
   .brand-txt b{
-    font-family:var(--display);color:var(--text);font-weight:700;display:block;
-    letter-spacing:.16em;font-size:1.18rem;line-height:1;
-    background:linear-gradient(120deg,var(--gold-bright),#fff 55%,var(--gold));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-family:var(--display);font-weight:600;font-size:1.18rem;line-height:1;display:block;
+    letter-spacing:.14em;color:var(--cream);
   }
-  .nav-links{display:flex;gap:16px;align-items:center}
+  .brand-txt span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dimmer);
+    display:block;margin-top:3px}
+  .nav-links{display:flex;gap:18px;align-items:center}
   .nav-links a{
-    font-size:.88rem;font-weight:500;letter-spacing:0;color:var(--text-dim);
-    transition:.2s;position:relative;padding:6px 0;white-space:nowrap;
+    font-size:.88rem;font-weight:500;color:var(--text-dim);transition:color .2s;
+    position:relative;padding:6px 0;white-space:nowrap;
   }
-  .nav-links a:not(.btn-wa)::after{
-    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
-    background:var(--gold-bright);transition:.28s;
-  }
-  .nav-links a:not(.btn-wa):hover{color:var(--gold-bright)}
+  .nav-links a:not(.btn-wa)::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;
+    background:var(--gold-bright);transition:width .28s}
+  .nav-links a:not(.btn-wa):hover,.nav-links a:not(.btn-wa):focus-visible{color:var(--gold-bright)}
   .nav-links a:not(.btn-wa):hover::after{width:100%}
   .btn-wa,.nav-links a.btn-wa{
-    display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:700;
-    letter-spacing:.01em;color:#05080f;
+    display:inline-flex;align-items:center;gap:9px;font-size:.9rem;font-weight:700;color:#070b14;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-    padding:11px 19px;border-radius:40px;transition:.25s;white-space:nowrap;
-    box-shadow:0 6px 20px -6px rgba(198,160,82,.6);
+    padding:11px 19px;border-radius:40px;white-space:nowrap;
+    box-shadow:0 6px 20px -6px rgba(200,162,78,.6);transition:transform .25s,box-shadow .25s;
   }
-  .btn-wa svg{fill:#05080f}
-  .nav-links a.btn-wa:hover{color:#05080f}
-  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(198,160,82,.7)}
-  .menu-toggle{display:none;background:none;border:0;color:var(--gold-bright);cursor:pointer;padding:6px}
+  .btn-wa svg{fill:#070b14;flex:0 0 auto}
+  .btn-wa:hover,.nav-links a.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(200,162,78,.7);color:#070b14}
+  .menu-toggle{display:none;background:none;border:0;color:var(--gold-bright);cursor:pointer;padding:8px;
+    margin:-8px -8px -8px 0;line-height:0}
 
   /* ---------- BUTTONS ---------- */
   .btn-solid{
-    display:inline-flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;
-    padding:16px 30px;border-radius:40px;color:#05080f;cursor:pointer;border:0;
-    background:linear-gradient(135deg,var(--gold-bright),var(--gold));transition:.25s;
-    box-shadow:0 10px 30px -10px rgba(198,160,82,.6);
-  }
-  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(198,160,82,.75)}
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1rem;font-weight:700;
+    padding:16px 30px;border-radius:40px;color:#070b14;cursor:pointer;border:0;font-family:inherit;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    box-shadow:0 12px 32px -12px rgba(200,162,78,.65);transition:transform .25s,box-shadow .25s}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(200,162,78,.8)}
+  .btn-solid svg{fill:#070b14}
   .btn-ghost{
-    display:inline-flex;align-items:center;gap:10px;font-size:1rem;font-weight:600;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1rem;font-weight:600;
     padding:16px 30px;border:1px solid var(--gold);border-radius:40px;color:var(--gold-bright);
-    transition:.25s;
-  }
-  .btn-ghost:hover{background:rgba(198,160,82,.1);transform:translateY(-2px);border-color:var(--gold-bright)}
+    background:transparent;cursor:pointer;font-family:inherit;transition:background .25s,transform .25s,border-color .25s}
+  .btn-ghost:hover{background:rgba(200,162,78,.1);transform:translateY(-2px);border-color:var(--gold-bright)}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;padding:188px 0 110px;overflow:hidden}
-  .hero::before{
-    content:"";position:absolute;top:-20%;right:-8%;width:60%;height:130%;z-index:0;
-    background:radial-gradient(ellipse at center,rgba(198,160,82,.13),transparent 65%);
-    pointer-events:none;
-  }
-  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;
-    gap:60px;align-items:center}
+  .hero{position:relative;padding:170px 0 96px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-22%;right:-8%;width:58%;height:130%;z-index:0;
+    background:radial-gradient(ellipse at center,rgba(200,162,78,.14),transparent 64%);pointer-events:none}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
   .hero h1{
-    font-family:var(--display);font-weight:600;line-height:1.05;
-    font-size:clamp(2.6rem,5.4vw,4.6rem);letter-spacing:-.01em;margin:24px 0 0;
+    font-family:var(--display);font-weight:500;line-height:1.04;letter-spacing:-.015em;
+    font-size:clamp(2.5rem,5.2vw,4.4rem);margin-top:24px;
+    font-optical-sizing:auto;
   }
-  .hero h1 em{font-style:italic;color:var(--gold-bright)}
-  .hero p.lead{
-    font-size:clamp(1.08rem,1.6vw,1.28rem);color:var(--text-dim);max-width:600px;
-    margin:26px 0 0;font-weight:400;line-height:1.6;
-  }
-  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:38px}
-  .hero-trust{margin-top:44px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
-  .hero-trust .item{display:flex;align-items:center;gap:10px;color:var(--text-dim);font-size:.9rem}
-  .hero-trust .item svg{color:var(--gold-bright);flex-shrink:0}
-  .hero-trust .sep{width:1px;height:20px;background:var(--line)}
+  .hero h1 em{font-style:italic;font-weight:600;color:var(--gold-bright)}
+  .hero p.lead{font-size:clamp(1.06rem,1.5vw,1.26rem);color:var(--text-dim);max-width:600px;margin-top:24px;line-height:1.62}
+  .hero-cta{display:flex;gap:15px;flex-wrap:wrap;margin-top:36px}
+  .hero-trust{margin-top:42px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .hero-trust .item{display:flex;align-items:center;gap:9px;color:var(--text-dim);font-size:.88rem}
+  .hero-trust .item svg{color:var(--gold-bright);flex:0 0 auto}
+  .hero-trust .sep{width:1px;height:18px;background:var(--line)}
 
-  /* hero visual — logo mark in glowing ring */
-  .hero-visual{position:relative;display:grid;place-items:center}
-  .hero-ring{
-    position:relative;width:min(420px,90%);aspect-ratio:1;border-radius:50%;
-    display:grid;place-items:center;
-    background:radial-gradient(circle at 50% 40%,rgba(20,35,63,.9),rgba(8,14,28,.4));
-    border:1px solid var(--line);
-    box-shadow:inset 0 0 60px rgba(0,0,0,.6), 0 40px 90px -30px rgba(0,0,0,.8);
-  }
-  .hero-ring::before{
-    content:"";position:absolute;inset:-2px;border-radius:50%;padding:2px;
-    background:conic-gradient(from 220deg,transparent,var(--gold-bright),transparent 50%,var(--gold-soft),transparent);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;mask-composite:exclude;
-    animation:spin 18s linear infinite;
-  }
+  /* hero orb */
+  .hero-visual{display:flex;justify-content:center;align-items:center;width:100%}
+  .hero-orb{position:relative;width:100%;max-width:430px;aspect-ratio:1/1}
+  @supports not (aspect-ratio:1/1){.hero-orb{height:0;padding-bottom:100%}}
+  .hero-orb__ring{position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 130deg,transparent 0%,var(--gold-bright) 12%,transparent 34%,var(--gold-soft) 56%,transparent 74%,var(--gold-bright) 92%,transparent 100%);
+    -webkit-mask:radial-gradient(circle,transparent 66.5%,#000 67.5%);
+    mask:radial-gradient(circle,transparent 66.5%,#000 67.5%);
+    animation:spin 24s linear infinite;opacity:.9}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .hero-ring img{width:74%;height:auto;display:block;border-radius:50%;
-    filter:drop-shadow(0 14px 40px rgba(0,0,0,.6))}
-  .hero-badge{
-    position:absolute;background:rgba(10,18,38,.9);border:1px solid var(--line);
-    border-radius:14px;padding:14px 18px;backdrop-filter:blur(8px);box-shadow:var(--shadow);
-    display:flex;align-items:center;gap:12px;
+  .hero-orb__inner{position:absolute;inset:7%;border-radius:50%;overflow:hidden;display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 34%,#17284c,#0a1226 72%);
+    border:1px solid var(--line);box-shadow:inset 0 0 54px rgba(0,0,0,.6),var(--shadow)}
+  .hero-orb__inner img{width:72%;border-radius:50%;filter:drop-shadow(0 12px 36px rgba(0,0,0,.55))}
+  .hero-badge{position:absolute;display:flex;align-items:center;gap:12px;
+    background:rgba(11,18,40,.92);border:1px solid var(--line);border-radius:14px;padding:13px 17px;box-shadow:var(--shadow)}
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .hero-badge{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
   }
-  .hero-badge .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-    background:rgba(198,160,82,.14);color:var(--gold-bright);flex-shrink:0}
-  .hero-badge b{font-family:var(--display);font-size:1.5rem;line-height:1;color:var(--gold-bright);display:block}
-  .hero-badge small{color:var(--text-dim);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
-  .hero-badge.b1{top:6%;left:-4%}
-  .hero-badge.b2{bottom:8%;right:-6%}
+  .hero-badge .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+    background:rgba(200,162,78,.15);color:var(--gold-bright);flex:0 0 auto}
+  .hero-badge b{font-family:var(--display);font-size:1.45rem;line-height:1;color:var(--gold-bright);display:block}
+  .hero-badge small{color:var(--text-dim);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase}
+  .hero-badge.b1{top:4%;left:-3%}
+  .hero-badge.b2{bottom:6%;right:-5%}
+
+  .divider{height:1px;max-width:var(--maxw);margin-inline:auto;
+    background:linear-gradient(90deg,transparent,var(--line),transparent)}
 
   /* ---------- SECTION SHELL ---------- */
   section{position:relative}
-  .sec-pad{padding:104px 0}
-  .sec-head{max-width:720px;margin-bottom:54px}
-  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-pad{padding:100px 0}
+  .sec-head{max-width:720px;margin-bottom:52px}
+  .sec-head.center{margin-inline:auto;text-align:center}
   .sec-head.center .eyebrow{justify-content:center}
-  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,4vw,3.3rem);
-    line-height:1.08;margin:18px 0 0;letter-spacing:-.01em}
-  .sec-head p{color:var(--text-dim);margin-top:18px;font-size:1.16rem;line-height:1.6}
-  .divider{height:1px;max-width:1200px;margin:0 auto;
-    background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,3.8vw,3.2rem);
+    line-height:1.1;margin-top:18px;letter-spacing:-.015em;font-optical-sizing:auto}
+  .sec-head p{color:var(--text-dim);margin-top:18px;font-size:1.14rem;line-height:1.6}
 
   /* ---------- SOLUTIONS (TABS) ---------- */
-  .tabs-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:14px}
-  .tab-btn{
-    display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;
-    font-size:.98rem;color:var(--text-dim);background:rgba(255,255,255,.03);
-    border:1px solid var(--line-soft);border-radius:40px;padding:13px 24px;cursor:pointer;
-    transition:.25s;
-  }
-  .tab-btn svg{width:18px;height:18px;color:var(--gold-soft);transition:.25s}
+  .tabs-nav{display:none;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:8px}
+  .js-on .tabs-nav{display:flex}
+  .tab-btn{display:inline-flex;align-items:center;gap:9px;font-family:inherit;font-weight:600;font-size:.96rem;
+    color:var(--text-dim);background:rgba(255,255,255,.03);border:1px solid var(--line-soft);
+    border-radius:40px;padding:12px 22px;cursor:pointer;transition:color .25s,background .25s,border-color .25s}
+  .tab-btn svg{width:18px;height:18px;color:var(--gold-soft);transition:color .25s;flex:0 0 auto}
   .tab-btn:hover{color:var(--text);border-color:var(--line)}
-  .tab-btn.active{
-    color:#05080f;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-    border-color:transparent;box-shadow:0 10px 26px -10px rgba(198,160,82,.55);
-  }
-  .tab-btn.active svg{color:#05080f}
-  .tab-panel{display:none}
-  .tab-panel.active{display:block;animation:fade .5s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .tab-sub{text-align:center;max-width:760px;margin:30px auto 46px;color:var(--text-dim);
-    font-size:1.14rem;line-height:1.6}
+  .tab-btn[aria-selected="true"]{color:#070b14;background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    border-color:transparent;box-shadow:0 10px 26px -10px rgba(200,162,78,.55)}
+  .tab-btn[aria-selected="true"] svg{color:#070b14}
+
+  .tab-panel{padding-top:14px}
+  .tab-panel+.tab-panel{margin-top:46px}
+  .js-on .tab-panel{display:none;margin-top:0}
+  .js-on .tab-panel.active{display:block;animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .panel-title{font-family:var(--display);font-weight:600;font-size:1.7rem;color:var(--cream);
+    text-align:center;margin-bottom:8px}
+  .js-on .panel-title{display:none}
+  .tab-sub{text-align:center;max-width:760px;margin:18px auto 44px;color:var(--text-dim);font-size:1.1rem;line-height:1.6}
   .tab-sub b{color:var(--cream);font-weight:600}
 
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .card{
-    background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.6));
-    border:1px solid var(--line-soft);border-radius:16px;
-    padding:32px 28px;transition:.3s;position:relative;overflow:hidden;
-  }
-  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
-    background:linear-gradient(90deg,var(--gold-soft),var(--gold-bright),transparent);
-    opacity:0;transition:.4s;transform:translateY(-2px)}
-  .card::after{content:"";position:absolute;inset:0;border-radius:16px;
-    background:radial-gradient(circle at 85% 0%,rgba(198,160,82,.14),transparent 55%);
-    opacity:0;transition:.4s;pointer-events:none}
-  .card:hover{border-color:var(--line);transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card{position:relative;overflow:hidden;border-radius:16px;padding:30px 27px;
+    background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.55));
+    border:1px solid var(--line-soft);transition:transform .3s,border-color .3s,box-shadow .3s}
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;transform:translateY(-2px);
+    background:linear-gradient(90deg,var(--gold-soft),var(--gold-bright),transparent);opacity:0;transition:opacity .35s,transform .35s}
+  .card::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 85% 0%,rgba(200,162,78,.14),transparent 55%);opacity:0;transition:opacity .4s}
+  .card:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:var(--shadow)}
   .card:hover::before{opacity:1;transform:none}
   .card:hover::after{opacity:1}
-  .card>*{position:relative;z-index:1}
-  .card .ico{width:52px;height:52px;display:grid;place-items:center;border-radius:13px;
-    background:linear-gradient(145deg,rgba(198,160,82,.18),rgba(198,160,82,.05));
-    border:1px solid var(--line);margin-bottom:20px;color:var(--gold-bright)}
+  .card>*{position:relative}
+  .card .ico{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;margin-bottom:19px;
+    background:linear-gradient(145deg,rgba(200,162,78,.2),rgba(200,162,78,.05));
+    border:1px solid var(--line);color:var(--gold-bright)}
   .card .ico svg{width:26px;height:26px}
-  .card h4{font-size:1.18rem;font-weight:700;color:var(--text);margin-bottom:11px;
-    letter-spacing:.005em;line-height:1.3}
+  .card h3,.card h4{font-family:var(--body);font-size:1.16rem;font-weight:700;color:var(--text);
+    margin-bottom:11px;line-height:1.3;letter-spacing:0}
   .card p{font-size:1rem;color:var(--text-dim);line-height:1.6}
 
-  /* ---------- QUOTE BANNER ---------- */
+  /* ---------- QUOTE ---------- */
   .quote{padding:96px 0;text-align:center;position:relative}
-  .quote::before{content:"\201C";position:absolute;top:18px;left:50%;transform:translateX(-50%);
-    font-family:var(--display);font-size:9rem;line-height:1;color:var(--gold);opacity:.16}
+  .quote::before{content:"\201C";position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    font-family:var(--display);font-size:8.5rem;line-height:1;color:var(--gold);opacity:.16}
   .quote blockquote{font-family:var(--display);font-style:italic;font-weight:500;
-    font-size:clamp(1.8rem,4vw,3rem);line-height:1.22;max-width:920px;margin:0 auto;color:var(--cream)}
+    font-size:clamp(1.7rem,3.8vw,2.9rem);line-height:1.24;max-width:920px;margin-inline:auto;color:var(--cream)}
   .quote blockquote b{color:var(--gold-bright);font-weight:600;font-style:normal}
-  .quote .sig{margin-top:30px;color:var(--gold);letter-spacing:.24em;text-transform:uppercase;font-size:.76rem}
+  .quote .sig{margin-top:28px;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.74rem}
 
-  /* ---------- ABOUT / QUEM SOU EU ---------- */
-  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
-  .portrait{position:relative}
-  .portrait-frame{
-    position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;
-    background:
-      radial-gradient(circle at 50% 30%,rgba(20,35,63,1),var(--ink)),
-      var(--panel);
-    border:1px solid var(--line);box-shadow:var(--shadow);
-    display:grid;place-items:center;
-  }
-  .portrait-frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .portrait-frame .placeholder{display:grid;place-items:center;text-align:center;padding:30px;gap:18px}
-  .portrait-frame .placeholder .mono{
-    font-family:var(--display);font-weight:700;font-size:5rem;line-height:1;
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:60px;align-items:center}
+  .portrait{position:relative;max-width:380px;width:100%;margin-inline:auto}
+  .portrait-frame{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;
+    background:radial-gradient(circle at 50% 28%,#17284c,#070d1c);
+    border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center}
+  @supports not (aspect-ratio:4/5){.portrait-frame{height:460px}}
+  .portrait-frame img{width:100%;height:100%;object-fit:cover}
+  .portrait-frame .ph{display:grid;place-items:center;text-align:center;gap:16px;padding:30px}
+  .portrait-frame .ph .mono{font-family:var(--display);font-weight:600;font-size:4.6rem;line-height:1;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold-soft));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .portrait-frame .placeholder small{color:var(--text-dimmer);font-size:.74rem;
-    letter-spacing:.2em;text-transform:uppercase;max-width:200px}
-  .portrait::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
-  .portrait .tag{
-    position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);
-    background:rgba(10,18,38,.95);border:1px solid var(--line);border-radius:40px;
-    padding:12px 26px;white-space:nowrap;box-shadow:var(--shadow);backdrop-filter:blur(8px);
-  }
-  .portrait .tag b{font-family:var(--display);color:var(--gold-bright);font-size:1.15rem}
-  .portrait .tag span{color:var(--text-dim);font-size:.82rem;display:block;letter-spacing:.08em;
-    text-transform:uppercase;margin-top:1px}
-  .about-txt h2{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.9rem);
-    line-height:1.1;margin:18px 0 0;letter-spacing:-.01em}
-  .about-txt p{color:var(--text-dim);margin-top:22px;font-size:1.12rem;line-height:1.72}
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .portrait-frame .ph small{color:var(--text-dimmer);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;max-width:200px}
+  .portrait .tag{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);white-space:nowrap;
+    background:rgba(11,18,40,.96);border:1px solid var(--line);border-radius:40px;padding:11px 24px;box-shadow:var(--shadow)}
+  .portrait .tag b{font-family:var(--display);color:var(--gold-bright);font-size:1.1rem;font-weight:600}
+  .portrait .tag span{color:var(--text-dim);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:1px}
+  .about-txt h2{font-family:var(--display);font-weight:500;font-size:clamp(1.85rem,3.4vw,2.85rem);
+    line-height:1.12;margin-top:18px;letter-spacing:-.015em}
+  .about-txt p{color:var(--text-dim);margin-top:20px;font-size:1.1rem;line-height:1.72}
   .about-txt p .hl{color:var(--cream)}
-  .about-sign{margin-top:26px;font-family:var(--display);font-style:italic;font-size:1.4rem;
-    color:var(--gold-bright)}
+  .about-sign{margin-top:24px;font-family:var(--display);font-style:italic;font-size:1.35rem;color:var(--gold-bright)}
 
-  /* ---------- WHY (differentials) ---------- */
-  .why{background:linear-gradient(180deg,transparent,rgba(198,160,82,.035),transparent)}
-  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+  /* ---------- WHY ---------- */
+  .why{background:linear-gradient(180deg,transparent,rgba(200,162,78,.035),transparent)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
   .why-item{padding:30px 26px;border-radius:16px;border:1px solid var(--line-soft);
-    background:rgba(255,255,255,.015);transition:.3s}
-  .why-item:hover{border-color:var(--line);background:rgba(198,160,82,.04);transform:translateY(-3px)}
-  .why-item .ico{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;
-    background:linear-gradient(145deg,rgba(198,160,82,.18),rgba(198,160,82,.05));
-    border:1px solid var(--line);color:var(--gold-bright);margin-bottom:18px}
-  .why-item h4{font-family:var(--body);font-weight:700;font-size:1.14rem;margin-bottom:9px}
+    background:rgba(255,255,255,.015);transition:transform .3s,border-color .3s,background .3s}
+  .why-item:hover{transform:translateY(-3px);border-color:var(--line);background:rgba(200,162,78,.045)}
+  .why-item .ico{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(145deg,rgba(200,162,78,.2),rgba(200,162,78,.05));border:1px solid var(--line);color:var(--gold-bright)}
+  .why-item h3{font-family:var(--body);font-weight:700;font-size:1.12rem;margin-bottom:9px}
   .why-item p{font-size:.98rem;color:var(--text-dim);line-height:1.6}
 
-  /* ---------- HOW IT WORKS ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;margin-top:10px}
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .step{position:relative;padding:38px 30px;border-radius:18px;
     background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.5));
-    border:1px solid var(--line-soft);transition:.3s}
-  .step:hover{border-color:var(--line);transform:translateY(-4px);box-shadow:var(--shadow)}
-  .step .n{font-family:var(--display);font-weight:700;font-size:3.4rem;line-height:1;
+    border:1px solid var(--line-soft);transition:transform .3s,border-color .3s,box-shadow .3s}
+  .step:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:var(--shadow)}
+  .step .n{font-family:var(--display);font-weight:600;font-size:3.2rem;line-height:1;display:block;margin-bottom:12px;
     background:linear-gradient(135deg,var(--gold-bright),var(--gold-soft));
-    -webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:14px}
-  .step h4{font-size:1.28rem;font-weight:700;margin-bottom:10px}
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .step h3{font-size:1.26rem;font-weight:700;margin-bottom:10px}
   .step p{color:var(--text-dim);font-size:1.02rem;line-height:1.6}
   .step .ico{position:absolute;top:34px;right:30px;color:var(--gold-soft);opacity:.5}
 
-  /* ---------- FAQ ---------- */
-  .faq-wrap{max-width:840px;margin:0 auto}
+  /* ---------- FAQ (native details) ---------- */
+  .faq-wrap{max-width:840px;margin-inline:auto}
   .faq-item{border:1px solid var(--line-soft);border-radius:14px;margin-bottom:14px;
-    background:rgba(255,255,255,.015);overflow:hidden;transition:.3s}
-  .faq-item.open{border-color:var(--line);background:rgba(198,160,82,.04)}
-  .faq-q{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:var(--text);
-    font-family:var(--body);font-size:1.14rem;font-weight:600;padding:24px 26px;
-    display:flex;align-items:center;justify-content:space-between;gap:20px;line-height:1.4}
-  .faq-q .plus{flex-shrink:0;width:26px;height:26px;position:relative;transition:.3s}
-  .faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--gold-bright);
-    border-radius:2px;transition:.3s}
-  .faq-q .plus::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
-  .faq-q .plus::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%)}
-  .faq-item.open .plus::after{transform:translateX(-50%) scaleY(0)}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-  .faq-a p{padding:0 26px 26px;color:var(--text-dim);font-size:1.05rem;line-height:1.7}
+    background:rgba(255,255,255,.015);overflow:hidden;transition:border-color .3s,background .3s}
+  .faq-item[open]{border-color:var(--line);background:rgba(200,162,78,.045)}
+  .faq-item summary{list-style:none;cursor:pointer;padding:23px 26px;display:flex;align-items:center;
+    justify-content:space-between;gap:20px;font-weight:600;font-size:1.12rem;line-height:1.4;color:var(--text)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary .plus{flex:0 0 auto;width:24px;height:24px;position:relative;transition:transform .3s}
+  .faq-item summary .plus::before,.faq-item summary .plus::after{content:"";position:absolute;background:var(--gold-bright);border-radius:2px}
+  .faq-item summary .plus::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+  .faq-item summary .plus::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);transition:transform .3s}
+  .faq-item[open] summary .plus::after{transform:translateX(-50%) scaleY(0)}
+  .faq-item .ans{padding:0 26px 24px;color:var(--text-dim);font-size:1.05rem;line-height:1.72}
 
   /* ---------- CONTACT ---------- */
-  .contact{position:relative;border-top:1px solid var(--line);
-    background:linear-gradient(180deg,rgba(10,18,38,.5),rgba(5,8,15,.7))}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-  .contact h2{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.08;
-    margin-top:18px;letter-spacing:-.01em}
-  .contact .lead{color:var(--text-dim);margin:20px 0 36px;font-size:1.16rem;line-height:1.6}
-  .ct-list{list-style:none;display:flex;flex-direction:column;gap:16px}
-  .ct-list li{display:flex;align-items:center;gap:16px}
-  .ct-list a{display:flex;align-items:center;gap:16px;transition:.2s}
-  .ct-list a:hover .ico{background:rgba(198,160,82,.22);transform:translateY(-2px)}
+  .contact{border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(11,18,40,.5),rgba(6,10,20,.7))}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:start}
+  .contact h2{font-family:var(--display);font-weight:500;font-size:clamp(1.95rem,3.8vw,3rem);line-height:1.1;
+    margin-top:18px;letter-spacing:-.015em}
+  .contact .lead{color:var(--text-dim);margin:20px 0 34px;font-size:1.14rem;line-height:1.6}
+  .ct-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .ct-list a{display:flex;align-items:center;gap:16px;transition:transform .2s}
+  .ct-list a:hover .ic{background:rgba(200,162,78,.24);transform:translateY(-2px)}
   .ct-list a:hover strong{color:var(--gold-bright)}
-  .ct-list .ico{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;
-    background:linear-gradient(145deg,rgba(198,160,82,.18),rgba(198,160,82,.05));
-    border:1px solid var(--line);color:var(--gold-bright);flex-shrink:0;transition:.25s}
-  .ct-list small{display:block;color:var(--text-dimmer);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
-  .ct-list strong{font-weight:600;font-size:1.14rem;color:var(--text);transition:.2s}
-  .form{background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.6));
-    border:1px solid var(--line);border-radius:20px;padding:38px;box-shadow:var(--shadow)}
-  .form-title{font-family:var(--display);font-size:1.5rem;color:var(--cream);margin-bottom:24px}
-  .form label{display:block;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--text-dim);margin-bottom:9px}
-  .field{margin-bottom:20px}
-  .form input,.form textarea{
-    width:100%;background:rgba(5,8,15,.6);border:1px solid var(--line-soft);border-radius:11px;
-    padding:15px 17px;color:var(--text);font-family:var(--body);font-size:1.04rem;transition:.2s;
-  }
+  .ct-list .ic{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;flex:0 0 auto;
+    background:linear-gradient(145deg,rgba(200,162,78,.2),rgba(200,162,78,.05));border:1px solid var(--line);
+    color:var(--gold-bright);transition:background .25s,transform .25s}
+  .ct-list small{display:block;color:var(--text-dimmer);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+  .ct-list strong{font-weight:600;font-size:1.12rem;color:var(--text);transition:color .2s;overflow-wrap:anywhere;word-break:break-word}
+  .form{background:linear-gradient(180deg,var(--panel),rgba(10,18,38,.6));border:1px solid var(--line);
+    border-radius:20px;padding:36px;box-shadow:var(--shadow)}
+  .form-title{font-family:var(--display);font-weight:600;font-size:1.45rem;color:var(--cream);margin-bottom:22px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:9px}
+  .field label .req{color:var(--gold)}
+  .form input,.form textarea{width:100%;background:rgba(6,10,20,.6);border:1px solid var(--line-soft);
+    border-radius:11px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:1.02rem;transition:border-color .2s,box-shadow .2s}
   .form input::placeholder,.form textarea::placeholder{color:var(--text-dimmer)}
-  .form input:focus,.form textarea:focus{outline:none;border-color:var(--gold);
-    box-shadow:0 0 0 3px rgba(198,160,82,.12)}
+  .form input:focus,.form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,162,78,.14)}
   .form textarea{resize:vertical;min-height:110px}
-  .form .btn-solid{width:100%;justify-content:center;margin-top:6px}
-  .form .note{margin-top:14px;text-align:center;color:var(--text-dimmer);font-size:.82rem}
+  .form .btn-solid{width:100%;margin-top:4px}
+  .form .note{margin-top:13px;text-align:center;color:var(--text-dimmer);font-size:.82rem}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:64px 0 40px;border-top:1px solid var(--line);text-align:center;position:relative}
-  .foot-mark{height:58px;width:auto;display:inline-block;margin-bottom:14px;
-    filter:drop-shadow(0 6px 20px rgba(0,0,0,.5))}
-  .foot-name{font-family:var(--display);font-weight:700;font-size:1.7rem;letter-spacing:.14em;
-    background:linear-gradient(120deg,var(--gold-bright),#fff 55%,var(--gold));
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .foot-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:24px 0}
-  .foot-links a{color:var(--text-dim);font-size:.95rem;transition:.2s}
+  footer{padding:62px 0 40px;border-top:1px solid var(--line);text-align:center}
+  .foot-mark{height:54px;width:54px;margin-inline:auto;margin-bottom:14px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.5))}
+  .foot-name{font-family:var(--display);font-weight:600;font-size:1.6rem;letter-spacing:.14em;color:var(--cream)}
+  .foot-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:22px 0}
+  .foot-links a{color:var(--text-dim);font-size:.94rem;transition:color .2s}
   .foot-links a:hover{color:var(--gold-bright)}
-  .foot-tagline{font-family:var(--display);font-style:italic;font-size:1.2rem;color:var(--gold);margin:18px 0}
-  footer .copy{color:var(--text-dimmer);font-size:.82rem;margin-top:18px;line-height:1.7}
+  .foot-tagline{font-family:var(--display);font-style:italic;font-size:1.18rem;color:var(--gold);margin:16px 0}
+  footer .copy{color:var(--text-dimmer);font-size:.82rem;margin-top:16px;line-height:1.7}
 
-  /* floating whatsapp */
-  .wa-float{position:fixed;bottom:26px;right:26px;z-index:70;width:60px;height:60px;border-radius:50%;
-    background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.4);
-    transition:.25s}
+  /* ---------- floating whatsapp ---------- */
+  .wa-float{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));
+    z-index:80;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.42);transition:transform .25s}
   .wa-float:hover{transform:scale(1.08)}
-  .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;
-    box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:pulse 2.4s infinite}
+  .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(37,211,102,.5);animation:pulse 2.6s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-  /* reveal animation */
-  .reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.3,1)}
-  .reveal.in{opacity:1;transform:none}
-  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+  /* ---------- reveal (progressive enhancement) ---------- */
+  .reveal{opacity:1;transform:none}
+  .js-on .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+  .js-on .reveal.in{opacity:1;transform:none}
+  .js-on .reveal.d1{transition-delay:.08s}
+  .js-on .reveal.d2{transition-delay:.16s}
+  .js-on .reveal.d3{transition-delay:.24s}
 
   /* ---------- RESPONSIVE ---------- */
-  @media(max-width:980px){
-    .hero-grid{grid-template-columns:1fr;gap:50px}
-    .hero-visual{order:-1;max-width:380px;margin:0 auto}
-    .about-grid{grid-template-columns:1fr;gap:60px}
-    .portrait{max-width:380px;margin:0 auto}
-    .why-grid{grid-template-columns:1fr 1fr}
-  }
-  @media(max-width:1240px){
+  @media(max-width:1220px){
     .nav-links{display:none}
     .menu-toggle{display:block}
-    .nav-links.open{display:flex;position:absolute;top:78px;left:0;right:0;flex-direction:column;
-      align-items:flex-start;background:rgba(8,14,28,.97);backdrop-filter:blur(16px);
-      padding:24px 28px;gap:22px;border-bottom:1px solid var(--line)}
-    .nav-links.open a{font-size:1.05rem}
+    .nav-links.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;align-items:flex-start;
+      gap:20px;padding:24px var(--pad) 28px;background:rgba(8,14,28,.98);border-bottom:1px solid var(--line);
+      box-shadow:0 24px 50px rgba(0,0,0,.5)}
+    .nav-links.open a{font-size:1.04rem}
+    .nav-links.open a.btn-wa{margin-top:4px}
   }
-  @media(max-width:880px){
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    @media(max-width:1220px){.nav-links.open{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}}
+  }
+  @media(max-width:980px){
+    .hero{padding:150px 0 80px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-visual{order:-1;max-width:360px;margin-inline:auto}
+    .hero h1{margin-top:20px}
+    .about-grid{grid-template-columns:1fr;gap:56px}
+    .why-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .sec-pad{padding:76px 0}
     .svc-grid{grid-template-columns:1fr 1fr}
-    .steps{grid-template-columns:1fr}
-    .contact-grid{grid-template-columns:1fr;gap:44px}
+    .steps{grid-template-columns:1fr;gap:18px}
+    .contact-grid{grid-template-columns:1fr;gap:42px}
+    .quote{padding:74px 0}
   }
   @media(max-width:600px){
+    :root{--pad:20px}
     body{font-size:17px}
-    .wrap{padding:0 20px}
+    .hero{padding:128px 0 60px}
+    .hero-visual{max-width:280px}
+    .hero-cta{flex-direction:column;align-items:stretch}
+    .hero-cta .btn-solid,.hero-cta .btn-ghost{width:100%}
+    .hero-badge{display:none}
     .svc-grid{grid-template-columns:1fr}
     .why-grid{grid-template-columns:1fr}
-    .sec-pad{padding:74px 0}
-    .hero{padding:148px 0 70px}
-    .hero-badge{display:none}
-    .form{padding:28px 22px}
-    .tab-btn{padding:11px 18px;font-size:.9rem}
+    .form{padding:26px 20px}
+    .tab-btn{padding:11px 17px;font-size:.9rem}
+    .foot-links{gap:16px 20px}
   }
   @media(prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
-    .hero-ring::before{animation:none}
-    .wa-float::after{animation:none}
-    html{scroll-behavior:auto}
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+    .js-on .reveal{opacity:1;transform:none}
   }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#solucoes">Pular para o conteúdo</a>
 
 <!-- ================= HEADER ================= -->
 <header id="siteHeader">
   <div class="wrap nav">
     <a href="#top" class="brand" aria-label="TRUDON — início">
-      <img class="mark" src="assets/logo-mark.png" alt="TRUDON">
-      <span class="brand-txt"><b>TRUDON</b>Inteligência Contábil</span>
+      <img class="mark" src="assets/logo-mark.png" width="40" height="40" alt="" aria-hidden="true">
+      <span class="brand-txt"><b>TRUDON</b><span>Inteligência Contábil</span></span>
     </a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
       <a href="#solucoes" data-tab="empresas">Empresas</a>
       <a href="#solucoes" data-tab="previdencia">Previdência</a>
       <a href="#solucoes" data-tab="exterior">Brasileiros no Exterior</a>
       <a href="#solucoes" data-tab="pericias">Perícias &amp; Assistência</a>
-      <a href="#porque">Por que a TRUDON?</a>
       <a href="#quem-sou-eu">Quem sou eu</a>
+      <a href="#contato">Contato</a>
       <a class="btn-wa" href="https://wa.me/5511993740120" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         Fale com a gente
       </a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </header>
 
-<a class="wa-float" href="https://wa.me/5511993740120" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+<a class="wa-float" href="https://wa.me/5511993740120" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
 
+<main>
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
   <div class="wrap hero-grid">
-    <div class="hero-inner">
+    <div>
       <span class="eyebrow">Contabilidade &middot; Previdência &middot; Planejamento Financeiro</span>
       <h1>Inteligência contábil, financeira e previdenciária para <em>proteger e acelerar</em> o seu patrimônio.</h1>
       <p class="lead">Contabilidade completa, gestão financeira e planejamento de aposentadoria de ponta a ponta. Atendimento especializado para você e sua empresa, de forma 100% online em todo o Brasil e no exterior.</p>
       <div class="hero-cta">
         <a class="btn-solid" href="https://wa.me/5511993740120?text=Ol%C3%A1%2C%20Kelly!%20Quero%20uma%20An%C3%A1lise%20Estrat%C3%A9gica." target="_blank" rel="noopener">
           Quero uma Análise Estratégica
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a class="btn-ghost" href="#solucoes">Ver soluções</a>
       </div>
       <div class="hero-trust">
-        <div class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>100% online e seguro</div>
+        <span class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>100% online e seguro</span>
         <span class="sep"></span>
-        <div class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>Brasil e exterior</div>
+        <span class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>Brasil e exterior</span>
         <span class="sep"></span>
-        <div class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 22l4-2 4 2-1-8.5"/></svg>Economia + Contabilidade</div>
+        <span class="item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 22l4-2 4 2-1-8.5"/></svg>Economia + Contabilidade</span>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-ring">
-        <img src="assets/logo-mark.png" alt="TRUDON — monograma">
+      <div class="hero-orb">
+        <span class="hero-orb__ring" aria-hidden="true"></span>
+        <span class="hero-orb__inner"><img src="assets/logo-mark.png" width="300" height="300" alt="Monograma TRUDON"></span>
         <div class="hero-badge b1">
-          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></span>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></span>
           <span><b>+20</b><small>Acordos internacionais</small></span>
         </div>
         <div class="hero-badge b2">
-          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5l4 7 4-9 4 11 4-6v11z"/></svg></span>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19V5l4 7 4-9 4 11 4-6v11z"/></svg></span>
           <span><b>4</b><small>Frentes de atuação</small></span>
         </div>
       </div>
@@ -484,100 +502,104 @@
 <div class="divider"></div>
 
 <!-- ================= SOLUTIONS (TABS) ================= -->
-<section class="sec-pad" id="solucoes">
+<section class="sec-pad" id="solucoes" aria-labelledby="solucoes-title">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Soluções TRUDON</span>
-      <h2>Tudo o que você e a sua empresa precisam, em um só lugar.</h2>
+      <span class="eyebrow center">Soluções TRUDON</span>
+      <h2 id="solucoes-title">Tudo o que você e a sua empresa precisam, em um só lugar.</h2>
       <p>Da burocracia do dia a dia às decisões que protegem o seu futuro — soluções organizadas em quatro grandes frentes de atuação.</p>
     </div>
 
-    <div class="tabs-nav reveal" role="tablist">
-      <button class="tab-btn active" data-tab="empresas" role="tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>Empresas
+    <div class="tabs-nav" role="tablist" aria-label="Frentes de atuação">
+      <button class="tab-btn" id="tabbtn-empresas" role="tab" aria-selected="true" aria-controls="tab-empresas" data-tab="empresas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>Empresas
       </button>
-      <button class="tab-btn" data-tab="previdencia" role="tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Previdência
+      <button class="tab-btn" id="tabbtn-previdencia" role="tab" aria-selected="false" aria-controls="tab-previdencia" data-tab="previdencia" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Previdência
       </button>
-      <button class="tab-btn" data-tab="exterior" role="tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>Brasileiros no Exterior
+      <button class="tab-btn" id="tabbtn-exterior" role="tab" aria-selected="false" aria-controls="tab-exterior" data-tab="exterior" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>Brasileiros no Exterior
       </button>
-      <button class="tab-btn" data-tab="pericias" role="tab">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M12 6l6 3-6 3-6-3 6-3zM6 9v5l6 3 6-3V9M12 17v4"/></svg>Perícias &amp; Assistência
+      <button class="tab-btn" id="tabbtn-pericias" role="tab" aria-selected="false" aria-controls="tab-pericias" data-tab="pericias" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v3M12 6l6 3-6 3-6-3 6-3zM6 9v5l6 3 6-3V9M12 17v4"/></svg>Perícias &amp; Assistência
       </button>
     </div>
 
     <!-- EMPRESAS -->
-    <div class="tab-panel active" id="tab-empresas">
+    <div class="tab-panel active" id="tab-empresas" role="tabpanel" aria-labelledby="tabbtn-empresas">
+      <h3 class="panel-title">Empresas</h3>
       <p class="tab-sub">Soluções corporativas completas para <b>desmistificar a burocracia</b> e aumentar a lucratividade do seu negócio.</p>
       <div class="svc-grid">
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9h0M9 13h0M9 17h0"/></svg></div><h4>Abertura, Alteração e Legalização de Empresas</h4><p>Abra o seu negócio de forma rápida, segura e sem burocracia. Cuidamos de todo o processo de enquadramento jurídico e contratual para o seu crescimento legal.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg></div><h4>Contabilidade Consultiva e Fiscal</h4><p>Escrituração completa, apuração minuciosa de tributos e entrega de obrigações acessórias. Uma contabilidade inteligente que mantém a sua empresa blindada contra o fisco.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="7" r="3"/><path d="M3 21v-1a6 6 0 016-6 6 6 0 016 6v1"/><path d="M16 3.5a3 3 0 010 6M21 21v-1a5 5 0 00-4-4.9"/></svg></div><h4>Departamento Pessoal Estratégico</h4><p>Gestão completa de folha de pagamento, pró-labore, admissões, rescisões e total conformidade com as complexas obrigações trabalhistas.</p></div>
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M5 5h9a3 3 0 010 6H7a3 3 0 000 6h10"/></svg></div><h4>Planejamento Tributário Legal</h4><p>Análise detalhada para reduzir legalmente a sua carga de impostos. Escolha do melhor regime (Simples Nacional, Lucro Presumido ou Real) para maximizar o seu lucro.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 14l3-3 2 2 4-4"/></svg></div><h4>BPO Financeiro &middot; Gestão Terceirizada</h4><p>Assumimos a rotina do seu contas a pagar, receber e fluxo de caixa. Informações financeiras em tempo real para você focar exclusivamente em escalar o seu negócio.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V8l6-5 6 5M9 21v-6h4v6"/><path d="M17 21V11l4 3v7"/></svg></div><h4>INSS de Obra &middot; CNO, SERO e Regularização</h4><p>Gerenciamento e inscrição de CNO, regularização de obras via SERO, cálculo de Decadência Previdenciária de construções antigas e emissão rápida de CND para averbação em cartório.</p></div>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9h0M9 13h0M9 17h0"/></svg></div><h3>Abertura, Alteração e Legalização de Empresas</h3><p>Abra o seu negócio de forma rápida, segura e sem burocracia. Cuidamos de todo o processo de enquadramento jurídico e contratual para o seu crescimento legal.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="13" y2="15"/></svg></div><h3>Contabilidade Consultiva e Fiscal</h3><p>Escrituração completa, apuração minuciosa de tributos e entrega de obrigações acessórias. Uma contabilidade inteligente que mantém a sua empresa blindada contra o fisco.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-1a6 6 0 016-6 6 6 0 016 6v1"/><path d="M16 3.5a3 3 0 010 6M21 21v-1a5 5 0 00-4-4.9"/></svg></div><h3>Departamento Pessoal Estratégico</h3><p>Gestão completa de folha de pagamento, pró-labore, admissões, rescisões e total conformidade com as complexas obrigações trabalhistas.</p></article>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 1v22M5 5h9a3 3 0 010 6H7a3 3 0 000 6h10"/></svg></div><h3>Planejamento Tributário Legal</h3><p>Análise detalhada para reduzir legalmente a sua carga de impostos. Escolha do melhor regime (Simples Nacional, Lucro Presumido ou Real) para maximizar o seu lucro.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 14l3-3 2 2 4-4"/></svg></div><h3>BPO Financeiro &middot; Gestão Terceirizada</h3><p>Assumimos a rotina do seu contas a pagar, receber e fluxo de caixa. Informações financeiras em tempo real para você focar exclusivamente em escalar o seu negócio.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21V8l6-5 6 5M9 21v-6h4v6"/><path d="M17 21V11l4 3v7"/></svg></div><h3>INSS de Obra &middot; CNO, SERO e Regularização</h3><p>Gerenciamento e inscrição de CNO, regularização de obras via SERO, cálculo de Decadência Previdenciária de construções antigas e emissão rápida de CND para averbação em cartório.</p></article>
       </div>
     </div>
 
     <!-- PREVIDENCIA -->
-    <div class="tab-panel" id="tab-previdencia">
+    <div class="tab-panel" id="tab-previdencia" role="tabpanel" aria-labelledby="tabbtn-previdencia">
+      <h3 class="panel-title">Previdência</h3>
       <p class="tab-sub">Garanta a <b>melhor aposentadoria possível</b>, protegendo o seu histórico e o seu bolso.</p>
       <div class="svc-grid">
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Planejamento Previdenciário de Elite</h4><p>Estudo detalhado do seu histórico para definir exatamente quando e como se aposentar, aplicando a melhor estratégia jurídica para pagar menos contribuição e receber o teto máximo da lei.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><path d="M8.5 11l1.7 1.7L14 9"/></svg></div><h4>Análise Minuciosa e Correção de CNIS</h4><p>Auditoria completa do seu extrato de contribuições, identificando e corrigindo períodos pendentes, vínculos que não foram computados e erros cometidos por antigos empregadores.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M6 21V10M10 21V10M14 21V10M18 21V10M4 10l8-6 8 6"/></svg></div><h4>Planejamento para Servidores (RPPS)</h4><p>Soluções completas e contagem de tempo para servidores municipais, estaduais e federais. Planejamento de regras de transição e análise de regimes próprios de previdência.</p></div>
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h4M7 13h2M14 9l3 3-3 3"/></svg></div><h4>Cálculos Previdenciários e Revisões</h4><p>Cálculos matemáticos de alta precisão baseados nas regras de transição da Reforma da Previdência. Análise de viabilidade para revisão de benefícios já concedidos.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h4>Planejamento de Contribuições (INSS)</h4><p>Orientação precisa para autônomos, empresários (pró-labore) ou facultativos sobre como retomar ou ajustar as contribuições de forma inteligente para otimizar o benefício futuro.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg></div><h4>BPC / LOAS e Benefícios do INSS</h4><p>Análise de direito e suporte completo na solicitação de benefício assistencial para idosos e pessoas com deficiência em situação de vulnerabilidade, além de auxílios e pensões.</p></div>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Planejamento Previdenciário de Elite</h3><p>Estudo detalhado do seu histórico para definir exatamente quando e como se aposentar, aplicando a melhor estratégia jurídica para pagar menos contribuição e receber o teto máximo da lei.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><path d="M8.5 11l1.7 1.7L14 9"/></svg></div><h3>Análise Minuciosa e Correção de CNIS</h3><p>Auditoria completa do seu extrato de contribuições, identificando e corrigindo períodos pendentes, vínculos que não foram computados e erros cometidos por antigos empregadores.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M6 21V10M10 21V10M14 21V10M18 21V10M4 10l8-6 8 6"/></svg></div><h3>Planejamento para Servidores (RPPS)</h3><p>Soluções completas e contagem de tempo para servidores municipais, estaduais e federais. Planejamento de regras de transição e análise de regimes próprios de previdência.</p></article>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h4M7 13h2M14 9l3 3-3 3"/></svg></div><h3>Cálculos Previdenciários e Revisões</h3><p>Cálculos matemáticos de alta precisão baseados nas regras de transição da Reforma da Previdência. Análise de viabilidade para revisão de benefícios já concedidos.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Planejamento de Contribuições (INSS)</h3><p>Orientação precisa para autônomos, empresários (pró-labore) ou facultativos sobre como retomar ou ajustar as contribuições de forma inteligente para otimizar o benefício futuro.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg></div><h3>BPC / LOAS e Benefícios do INSS</h3><p>Análise de direito e suporte completo na solicitação de benefício assistencial para idosos e pessoas com deficiência em situação de vulnerabilidade, além de auxílios e pensões.</p></article>
       </div>
     </div>
 
     <!-- EXTERIOR -->
-    <div class="tab-panel" id="tab-exterior">
+    <div class="tab-panel" id="tab-exterior" role="tabpanel" aria-labelledby="tabbtn-exterior">
+      <h3 class="panel-title">Brasileiros no Exterior</h3>
       <p class="tab-sub">Regularize seu patrimônio, <b>evite a bitributação</b> e garanta seus direitos previdenciários de qualquer lugar do mundo.</p>
       <div class="svc-grid">
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div><h4>Planejamento Previdenciário Internacional</h4><p>Estudo estratégico completo para brasileiros que moram no exterior e desejam continuar contribuindo para o INSS de forma correta, garantindo uma aposentadoria sólida e vantajosa no Brasil.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h4>Aplicação de Acordos Internacionais</h4><p>Utilização de acordos previdenciários para somar e averbar o seu tempo de trabalho no exterior para a aposentadoria no Brasil — atendimento à comunidade global (Acordo Brasil-Japão e mais de 20 países).</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 17l5-5-5-5M21 12H9M13 4H6a2 2 0 00-2 2v12a2 2 0 002 2h7"/></svg></div><h4>Declaração de Saída Definitiva (DSDP)</h4><p>Assessoria completa para formalizar a sua saída do Brasil perante a Receita Federal, evitando a bitributação sobre rendimentos internacionais e protegendo o patrimônio construído fora.</p></div>
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h4>Imposto de Renda para Não Residentes</h4><p>Declaração e regularização de investimentos, remessas de dinheiro, aluguéis ou bens que você ainda possui no Brasil, mantendo sua situação fiscal 100% legal e livre de malha fina.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4M5 17a4 4 0 018 0"/></svg></div><h4>Regularização Cadastral à Distância</h4><p>Regularização rápida de CPF suspenso ou bloqueado e pendências eleitorais sem sair de casa, evitando travas em contas bancárias e transferências internacionais.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div><h4>Consultoria Documental e Retorno</h4><p>Suporte com procurações, análise de documentos emitidos fora do país e planejamento tributário e financeiro estratégico para quem organiza o retorno definitivo ao Brasil.</p></div>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div><h3>Planejamento Previdenciário Internacional</h3><p>Estudo estratégico completo para brasileiros que moram no exterior e desejam continuar contribuindo para o INSS de forma correta, garantindo uma aposentadoria sólida e vantajosa no Brasil.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div><h3>Aplicação de Acordos Internacionais</h3><p>Utilização de acordos previdenciários para somar e averbar o seu tempo de trabalho no exterior para a aposentadoria no Brasil — atendimento à comunidade global (Acordo Brasil-Japão e mais de 20 países).</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M16 17l5-5-5-5M21 12H9M13 4H6a2 2 0 00-2 2v12a2 2 0 002 2h7"/></svg></div><h3>Declaração de Saída Definitiva (DSDP)</h3><p>Assessoria completa para formalizar a sua saída do Brasil perante a Receita Federal, evitando a bitributação sobre rendimentos internacionais e protegendo o patrimônio construído fora.</p></article>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Imposto de Renda para Não Residentes</h3><p>Declaração e regularização de investimentos, remessas de dinheiro, aluguéis ou bens que você ainda possui no Brasil, mantendo sua situação fiscal 100% legal e livre de malha fina.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h4M5 17a4 4 0 018 0"/></svg></div><h3>Regularização Cadastral à Distância</h3><p>Regularização rápida de CPF suspenso ou bloqueado e pendências eleitorais sem sair de casa, evitando travas em contas bancárias e transferências internacionais.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div><h3>Consultoria Documental e Retorno</h3><p>Suporte com procurações, análise de documentos emitidos fora do país e planejamento tributário e financeiro estratégico para quem organiza o retorno definitivo ao Brasil.</p></article>
       </div>
     </div>
 
     <!-- PERICIAS -->
-    <div class="tab-panel" id="tab-pericias">
+    <div class="tab-panel" id="tab-pericias" role="tabpanel" aria-labelledby="tabbtn-pericias">
+      <h3 class="panel-title">Perícias &amp; Assistência</h3>
       <p class="tab-sub">Ciência, técnica e precisão em <b>laudos periciais e pareceres técnicos</b> para subsidiar decisões judiciais e proteger seus direitos.</p>
       <div class="svc-grid">
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17c4-1 6-6 10-6M3 17l2 2M13 11c2 0 3-2 5-2M18 9l3-3"/><circle cx="20" cy="7" r="1.4"/></svg></div><h4>Perícia Grafotécnica (Grafoscopia)</h4><p>Análise científica de assinaturas e escritas manuais para determinação de autenticidade ou falsidade gráfica. Identificação de rasuras, acréscimos e fraudes em contratos, cheques e documentos.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5"/><circle cx="15" cy="15" r="3"/><path d="M17 17l2 2"/></svg></div><h4>Documentoscopia Judicial</h4><p>Exame técnico de suportes documentais para verificação de adulterações e falsificações, avaliação de carimbos, impressões e elementos de segurança em contratos e títulos de crédito.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 2 5-7"/></svg></div><h4>Perícias Econômico-Financeiras</h4><p>Laudos e pareceres complexos envolvendo análise de contratos bancários, apuração de haveres em dissolução de sociedades, avaliação de empresas e reestruturação financeira de passivos.</p></div>
-        <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h3M14 14l2 2 3-3"/></svg></div><h4>Cálculos e Liquidação de Sentenças</h4><p>Tradução precisa de decisões judiciais em números reais: liquidação de sentença, atualização monetária, aplicação de juros e revisão de cláusulas abusivas em financiamentos.</p></div>
-        <div class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7h9a3 3 0 010 6H7a3 3 0 000 6h10"/><path d="M3 21h18" opacity=".0"/></svg></div><h4>Assistência Técnica para Advogados</h4><p>Atuação estratégica ao lado da defesa ou da acusação: formulação de quesitos precisos, acompanhamento do perito do juízo e elaboração de pareceres técnicos para fortalecer o processo.</p></div>
-        <div class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M8 12h8M12 9v6"/></svg></div><h4>Cálculos Previdenciários Judiciais</h4><p>Memórias de cálculo de alta precisão para ações revisionais de benefícios previdenciários e apuração de valores atrasados devidos pelo INSS em fase de execução de sentença.</p></div>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 17c4-1 6-6 10-6M3 17l2 2M13 11c2 0 3-2 5-2M18 9l3-3"/><circle cx="20" cy="7" r="1.4"/></svg></div><h3>Perícia Grafotécnica (Grafoscopia)</h3><p>Análise científica de assinaturas e escritas manuais para determinação de autenticidade ou falsidade gráfica. Identificação de rasuras, acréscimos e fraudes em contratos, cheques e documentos.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5"/><circle cx="15" cy="15" r="3"/><path d="M17 17l2 2"/></svg></div><h3>Documentoscopia Judicial</h3><p>Exame técnico de suportes documentais para verificação de adulterações e falsificações, avaliação de carimbos, impressões e elementos de segurança em contratos e títulos de crédito.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 2 5-7"/></svg></div><h3>Perícias Econômico-Financeiras</h3><p>Laudos e pareceres complexos envolvendo análise de contratos bancários, apuração de haveres em dissolução de sociedades, avaliação de empresas e reestruturação financeira de passivos.</p></article>
+        <article class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h3M14 14l2 2 3-3"/></svg></div><h3>Cálculos e Liquidação de Sentenças</h3><p>Tradução precisa de decisões judiciais em números reais: liquidação de sentença, atualização monetária, aplicação de juros e revisão de cláusulas abusivas em financiamentos.</p></article>
+        <article class="card reveal d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M5 7h9a3 3 0 010 6H7a3 3 0 000 6h10"/></svg></div><h3>Assistência Técnica para Advogados</h3><p>Atuação estratégica ao lado da defesa ou da acusação: formulação de quesitos precisos, acompanhamento do perito do juízo e elaboração de pareceres técnicos para fortalecer o processo.</p></article>
+        <article class="card reveal d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M8 12h8M12 9v6"/></svg></div><h3>Cálculos Previdenciários Judiciais</h3><p>Memórias de cálculo de alta precisão para ações revisionais de benefícios previdenciários e apuração de valores atrasados devidos pelo INSS em fase de execução de sentença.</p></article>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= QUOTE ================= -->
-<section class="quote">
+<section class="quote" aria-label="Citação">
   <div class="wrap reveal">
     <blockquote>Na TRUDON, seu patrimônio não é apenas um conjunto de números; é um ativo tratado com o máximo de <b>técnica, experiência e cuidado</b>.</blockquote>
-    <div class="sig">TRUDON &middot; Inteligência Contábil</div>
+    <p class="sig">TRUDON &middot; Inteligência Contábil</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ================= QUEM SOU EU ================= -->
-<section class="sec-pad" id="quem-sou-eu">
+<section class="sec-pad" id="quem-sou-eu" aria-labelledby="about-title">
   <div class="wrap about-grid">
     <div class="portrait reveal">
       <div class="portrait-frame">
-        <!-- Substitua o bloco .placeholder por: <img src="assets/kelly.jpg" alt="Kelly Picossi"> -->
-        <div class="placeholder">
+        <!-- Para usar a foto real: troque o bloco .ph abaixo por  <img src="assets/kelly.jpg" alt="Kelly Picossi, fundadora da TRUDON">  -->
+        <div class="ph">
           <span class="mono">KP</span>
           <small>Sua foto profissional aqui</small>
         </div>
@@ -586,7 +608,7 @@
     </div>
     <div class="about-txt reveal d1">
       <span class="eyebrow">Quem sou eu</span>
-      <h2>A união exata entre Contabilidade, Economia e Inteligência Estratégica.</h2>
+      <h2 id="about-title">A união exata entre Contabilidade, Economia e Inteligência Estratégica.</h2>
       <p>Chamo-me <span class="hl">Kelly Picossi</span> e fundei a Trudon com o propósito de oferecer soluções de elite que vão muito além da burocracia tradicional. Com formação em Economia e especialista em Contabilidade, atuo unindo o rigor fiscal à visão estratégica de mercado.</p>
       <p>Minha trajetória é marcada pela atuação como ponte estratégica entre parceiros de negócios, auditoria financeira de custos complexos e consultoria de alto nível. Especializei-me em <span class="hl">Planejamento Previdenciário</span> e em <span class="hl">Soluções Internacionais</span>, garantindo que brasileiros, no país ou no exterior, protejam seu patrimônio e conquistem um futuro seguro.</p>
       <p class="about-sign">Seu patrimônio tratado com técnica, experiência e cuidado.</p>
@@ -594,150 +616,111 @@
   </div>
 </section>
 
-<!-- ================= WHY TRUDON ================= -->
-<section class="sec-pad why" id="porque">
+<!-- ================= WHY ================= -->
+<section class="sec-pad why" id="porque" aria-labelledby="why-title">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Por que a TRUDON?</span>
-      <h2>Técnica, experiência e cuidado em cada detalhe.</h2>
+      <span class="eyebrow center">Por que a TRUDON?</span>
+      <h2 id="why-title">Técnica, experiência e cuidado em cada detalhe.</h2>
     </div>
     <div class="why-grid">
-      <div class="why-item reveal">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
-        <h4>Atendimento personalizado</h4>
-        <p>Cada história é única. Cada planejamento é feito sob medida para a sua realidade.</p>
-      </div>
-      <div class="why-item reveal d1">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
-        <h4>Ética e transparência</h4>
-        <p>Sigilo e compromisso com a sua confiança em cada informação e cada processo.</p>
-      </div>
-      <div class="why-item reveal d2">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 22l4-2 4 2-1-8.5"/></svg></div>
-        <h4>Experiência e atualização</h4>
-        <p>Conhecimento constante da legislação que muda — para você nunca ficar para trás.</p>
-      </div>
-      <div class="why-item reveal d3">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 2 5-7"/></svg></div>
-        <h4>Compromisso com resultados</h4>
-        <p>O melhor caminho para o seu futuro — números que se transformam em decisões.</p>
-      </div>
+      <article class="why-item reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div><h3>Atendimento personalizado</h3><p>Cada história é única. Cada planejamento é feito sob medida para a sua realidade.</p></article>
+      <article class="why-item reveal d1"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><h3>Ética e transparência</h3><p>Sigilo e compromisso com a sua confiança em cada informação e cada processo.</p></article>
+      <article class="why-item reveal d2"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 22l4-2 4 2-1-8.5"/></svg></div><h3>Experiência e atualização</h3><p>Conhecimento constante da legislação que muda — para você nunca ficar para trás.</p></article>
+      <article class="why-item reveal d3"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 2 5-7"/></svg></div><h3>Compromisso com resultados</h3><p>O melhor caminho para o seu futuro — números que se transformam em decisões.</p></article>
     </div>
   </div>
 </section>
 
 <!-- ================= COMO FUNCIONA ================= -->
-<section class="sec-pad" id="como-funciona">
+<section class="sec-pad" id="como-funciona" aria-labelledby="how-title">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Como funciona</span>
-      <h2>É simples organizar a sua vida financeira e previdenciária.</h2>
+      <span class="eyebrow center">Como funciona</span>
+      <h2 id="how-title">É simples organizar a sua vida financeira e previdenciária.</h2>
     </div>
     <div class="steps">
-      <div class="step reveal">
-        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span>
-        <span class="n">01</span>
-        <h4>Clique no botão</h4>
-        <p>Fale conosco pelo WhatsApp e nos conte brevemente o seu caso.</p>
-      </div>
-      <div class="step reveal d1">
-        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span>
-        <span class="n">02</span>
-        <h4>Análise especializada</h4>
-        <p>Avaliamos a sua situação fiscal, financeira ou previdenciária de forma personalizada.</p>
-      </div>
-      <div class="step reveal d2">
-        <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
-        <span class="n">03</span>
-        <h4>Execução estratégica</h4>
-        <p>Cuidamos de toda a burocracia e planejamento para você focar apenas nos seus resultados.</p>
-      </div>
+      <article class="step reveal"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span><span class="n">01</span><h3>Clique no botão</h3><p>Fale conosco pelo WhatsApp e nos conte brevemente o seu caso.</p></article>
+      <article class="step reveal d1"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span><span class="n">02</span><h3>Análise especializada</h3><p>Avaliamos a sua situação fiscal, financeira ou previdenciária de forma personalizada.</p></article>
+      <article class="step reveal d2"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span class="n">03</span><h3>Execução estratégica</h3><p>Cuidamos de toda a burocracia e planejamento para você focar apenas nos seus resultados.</p></article>
     </div>
   </div>
 </section>
 
 <!-- ================= FAQ ================= -->
-<section class="sec-pad" id="faq">
+<section class="sec-pad" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="eyebrow">Perguntas frequentes</span>
-      <h2>Tudo o que você precisa saber.</h2>
+      <span class="eyebrow center">Perguntas frequentes</span>
+      <h2 id="faq-title">Tudo o que você precisa saber.</h2>
     </div>
     <div class="faq-wrap">
-      <div class="faq-item reveal">
-        <button class="faq-q">Como funciona o atendimento para quem está no exterior?<span class="plus"></span></button>
-        <div class="faq-a"><p>O atendimento é 100% digital e seguro via videoconferência e sistemas em nuvem, com plena validade jurídica e respeito aos acordos previdenciários internacionais.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">O que é o Planejamento Previdenciário e por que preciso dele?<span class="plus"></span></button>
-        <div class="faq-a"><p>É um estudo detalhado do seu histórico de contribuições que evita que você se aposente mais tarde ou ganhe menos do que tem direito legal de receber.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q">Vocês atendem empresas de qualquer porte?<span class="plus"></span></button>
-        <div class="faq-a"><p>Sim. Atuamos desde a estruturação, planejamento tributário e BPO financeiro de micro e pequenas empresas até auditorias e perícias complexas de grandes estruturas de negócios.</p></div>
-      </div>
+      <details class="faq-item reveal"><summary>Como funciona o atendimento para quem está no exterior?<span class="plus" aria-hidden="true"></span></summary><div class="ans">O atendimento é 100% digital e seguro via videoconferência e sistemas em nuvem, com plena validade jurídica e respeito aos acordos previdenciários internacionais.</div></details>
+      <details class="faq-item reveal"><summary>O que é o Planejamento Previdenciário e por que preciso dele?<span class="plus" aria-hidden="true"></span></summary><div class="ans">É um estudo detalhado do seu histórico de contribuições que evita que você se aposente mais tarde ou ganhe menos do que tem direito legal de receber.</div></details>
+      <details class="faq-item reveal"><summary>Vocês atendem empresas de qualquer porte?<span class="plus" aria-hidden="true"></span></summary><div class="ans">Sim. Atuamos desde a estruturação, planejamento tributário e BPO financeiro de micro e pequenas empresas até auditorias e perícias complexas de grandes estruturas de negócios.</div></details>
     </div>
   </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
-<section class="sec-pad contact" id="contato">
+<section class="sec-pad contact" id="contato" aria-labelledby="contact-title">
   <div class="wrap contact-grid">
     <div class="reveal">
       <span class="eyebrow">Fale com a gente</span>
-      <h2>Vamos organizar hoje o que transforma o seu amanhã.</h2>
+      <h2 id="contact-title">Vamos organizar hoje o que transforma o seu amanhã.</h2>
       <p class="lead">Atendimento online com toda a comodidade. Conte o seu caso e receba uma orientação clara, sem compromisso.</p>
       <ul class="ct-list">
         <li>
           <a href="https://wa.me/5511993740120" target="_blank" rel="noopener">
-            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>
-            <div><small>WhatsApp</small><strong>(11) 99374-0120</strong></div>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>
+            <span><small>WhatsApp</small><strong>(11) 99374-0120</strong></span>
           </a>
         </li>
         <li>
           <a href="mailto:contato@trudon.com.br">
-            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-            <div><small>E-mail</small><strong>contato@trudon.com.br</strong></div>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span><small>E-mail</small><strong>contato@trudon.com.br</strong></span>
           </a>
         </li>
         <li>
           <a href="https://instagram.com/kellypicossi.contabilidade" target="_blank" rel="noopener">
-            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
-            <div><small>Instagram</small><strong>@kellypicossi.contabilidade</strong></div>
+            <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+            <span><small>Instagram</small><strong>@kellypicossi.contabilidade</strong></span>
           </a>
         </li>
       </ul>
     </div>
 
-    <div class="form reveal d1">
-      <div class="form-title">Solicite a sua Análise Estratégica</div>
+    <form class="form reveal d1" id="leadForm" novalidate>
+      <p class="form-title">Solicite a sua Análise Estratégica</p>
       <div class="field">
-        <label for="nome">Nome completo</label>
-        <input id="nome" type="text" placeholder="Como você se chama?">
+        <label for="nome">Nome completo <span class="req">*</span></label>
+        <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como você se chama?" required>
       </div>
       <div class="field">
-        <label for="contato-input">WhatsApp ou e-mail</label>
-        <input id="contato-input" type="text" placeholder="Por onde respondemos você">
+        <label for="f_contato">WhatsApp ou e-mail <span class="req">*</span></label>
+        <input id="f_contato" name="contato" type="text" autocomplete="tel" placeholder="Por onde respondemos você" required>
       </div>
       <div class="field">
         <label for="msg">Como podemos ajudar?</label>
-        <textarea id="msg" placeholder="Conte brevemente o seu caso..."></textarea>
+        <textarea id="msg" name="msg" placeholder="Conte brevemente o seu caso..."></textarea>
       </div>
-      <button class="btn-solid" id="sendBtn" type="button">
+      <button class="btn-solid" type="submit">
         Enviar pelo WhatsApp
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.256l-.999 3.648 3.965-1.703z"/></svg>
       </button>
       <p class="note">Resposta rápida e atendimento humano. Sem compromisso.</p>
-    </div>
+    </form>
   </div>
 </section>
+</main>
 
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <img class="foot-mark" src="assets/logo-mark.png" alt="TRUDON">
-    <div class="foot-name">TRUDON</div>
-    <nav class="foot-links">
+    <img class="foot-mark" src="assets/logo-mark.png" width="54" height="54" alt="" aria-hidden="true" loading="lazy">
+    <p class="foot-name">TRUDON</p>
+    <nav class="foot-links" aria-label="Rodapé">
       <a href="#solucoes" data-tab="empresas">Empresas</a>
       <a href="#solucoes" data-tab="previdencia">Previdência</a>
       <a href="#solucoes" data-tab="exterior">Brasileiros no Exterior</a>
@@ -745,7 +728,7 @@
       <a href="#quem-sou-eu">Quem sou eu</a>
       <a href="#contato">Contato</a>
     </nav>
-    <div class="foot-tagline">Inteligência contábil que protege e acelera o seu patrimônio.</div>
+    <p class="foot-tagline">Inteligência contábil que protege e acelera o seu patrimônio.</p>
     <p class="copy">
       TRUDON &middot; Inteligência Contábil, Financeira e Previdenciária<br>
       Atendimento 100% online em todo o Brasil e no exterior &middot; &copy; <span id="year"></span> Todos os direitos reservados.
@@ -754,69 +737,103 @@
 </footer>
 
 <script>
+(function(){
+  "use strict";
+  var WA="5511993740120";
+  var doc=document, root=doc.documentElement;
+  root.classList.add('js-on');
+
   // header shadow on scroll
-  const header=document.getElementById('siteHeader');
-  const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>20);
-  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var header=doc.getElementById('siteHeader');
+  function onScroll(){ if(header) header.classList.toggle('scrolled', window.pageYOffset>20); }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
   // mobile menu
-  const toggle=document.getElementById('menuToggle');
-  const links=document.getElementById('navLinks');
-  toggle.addEventListener('click',()=>{
-    const open=links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded',open);
-  });
-  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    links.classList.remove('open');toggle.setAttribute('aria-expanded',false);
-  }));
+  var toggle=doc.getElementById('menuToggle'), links=doc.getElementById('navLinks');
+  if(toggle&&links){
+    toggle.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.addEventListener('click',function(e){
+      if(e.target.closest('a')){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    });
+  }
 
   // tabs
-  const tabBtns=document.querySelectorAll('.tab-btn');
-  const panels=document.querySelectorAll('.tab-panel');
-  function activateTab(name){
-    tabBtns.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
-    panels.forEach(p=>p.classList.toggle('active',p.id==='tab-'+name));
-    // ensure reveal items inside the now-visible panel are shown
-    document.querySelectorAll('#tab-'+name+' .reveal').forEach(el=>el.classList.add('in'));
+  var tabBtns=Array.prototype.slice.call(doc.querySelectorAll('.tab-btn'));
+  var panels=Array.prototype.slice.call(doc.querySelectorAll('.tab-panel'));
+  function activate(name,focus){
+    tabBtns.forEach(function(b){
+      var on=b.getAttribute('data-tab')===name;
+      b.setAttribute('aria-selected',on?'true':'false');
+      b.tabIndex=on?0:-1;
+      if(on&&focus) b.focus();
+    });
+    panels.forEach(function(p){
+      var on=p.id==='tab-'+name;
+      p.classList.toggle('active',on);
+      if(on){ p.hidden=false; } else { p.hidden=true; }
+    });
+    // make sure reveals inside the now-visible panel are shown
+    var vis=doc.getElementById('tab-'+name);
+    if(vis) Array.prototype.forEach.call(vis.querySelectorAll('.reveal'),function(el){el.classList.add('in');});
   }
-  tabBtns.forEach(b=>b.addEventListener('click',()=>activateTab(b.dataset.tab)));
-  // nav/footer links carrying data-tab also switch the tab
-  document.querySelectorAll('a[data-tab]').forEach(a=>{
-    a.addEventListener('click',()=>activateTab(a.dataset.tab));
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      const item=q.parentElement;
-      const ans=q.nextElementSibling;
-      const isOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>{
-        i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;
-      });
-      if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}
+  tabBtns.forEach(function(b,i){
+    b.addEventListener('click',function(){ activate(b.getAttribute('data-tab')); });
+    b.addEventListener('keydown',function(e){
+      var k=e.key, n;
+      if(k==='ArrowRight'||k==='ArrowDown') n=(i+1)%tabBtns.length;
+      else if(k==='ArrowLeft'||k==='ArrowUp') n=(i-1+tabBtns.length)%tabBtns.length;
+      else if(k==='Home') n=0; else if(k==='End') n=tabBtns.length-1; else return;
+      e.preventDefault(); activate(tabBtns[n].getAttribute('data-tab'),true);
     });
   });
-
-  // reveal on scroll
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-  // form -> whatsapp
-  document.getElementById('sendBtn').addEventListener('click',()=>{
-    const n=document.getElementById('nome').value.trim();
-    const c=document.getElementById('contato-input').value.trim();
-    const m=document.getElementById('msg').value.trim();
-    let txt='Olá, Kelly! Vim pelo site e quero uma Análise Estratégica.';
-    if(n) txt+=`\n\nNome: ${n}`;
-    if(c) txt+=`\nContato: ${c}`;
-    if(m) txt+=`\n\n${m}`;
-    window.open(`https://wa.me/5511993740120?text=${encodeURIComponent(txt)}`,'_blank');
+  // nav / footer links that also pick a tab
+  Array.prototype.forEach.call(doc.querySelectorAll('a[data-tab]'),function(a){
+    a.addEventListener('click',function(){ activate(a.getAttribute('data-tab')); });
   });
 
+  // reveal on scroll (with safe fallback)
+  var reveals=Array.prototype.slice.call(doc.querySelectorAll('.reveal'));
+  function showAll(){ reveals.forEach(function(el){el.classList.add('in');}); }
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    reveals.forEach(function(el){ obs.observe(el); });
+    // fallback: anything still hidden & on-screen after 1.6s gets revealed
+    setTimeout(function(){
+      reveals.forEach(function(el){
+        if(!el.classList.contains('in')){
+          var r=el.getBoundingClientRect();
+          if(r.top < (window.innerHeight||root.clientHeight)) el.classList.add('in');
+        }
+      });
+    },1600);
+  } else { showAll(); }
+
+  // contact form -> whatsapp
+  var form=doc.getElementById('leadForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var n=(doc.getElementById('nome').value||'').trim();
+      var c=(doc.getElementById('f_contato').value||'').trim();
+      var m=(doc.getElementById('msg').value||'').trim();
+      if(!n||!c){
+        var miss=!n?doc.getElementById('nome'):doc.getElementById('f_contato');
+        miss.focus(); miss.style.borderColor='var(--gold)'; return;
+      }
+      var txt='Olá, Kelly! Vim pelo site e quero uma Análise Estratégica.';
+      txt+='\n\nNome: '+n+'\nContato: '+c; if(m) txt+='\n\n'+m;
+      window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(txt),'_blank','noopener');
+    });
+  }
+
   // year
-  document.getElementById('year').textContent=new Date().getFullYear();
+  var y=doc.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+})();
 </script>
 </body>
+</html>
