@@ -63,6 +63,47 @@ export function formatCPF(cpf: string): string {
   return d.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
 }
 
+// ----------------------------------------------------------------------------
+// Máscaras progressivas (aplicadas enquanto o usuário digita): recebem os
+// dígitos já limpos e formatam conforme a quantidade digitada, sem exigir o
+// número completo. Usadas pelo componente DocumentoInput.
+// ----------------------------------------------------------------------------
+/** Só os dígitos de uma string. */
+export function apenasDigitos(s: string): string {
+  return (s ?? '').replace(/\D/g, '');
+}
+
+/** Máscara progressiva de CPF: 000.000.000-00 */
+export function mascaraCPF(valor: string): string {
+  const d = apenasDigitos(valor).slice(0, 11);
+  let out = d.slice(0, 3);
+  if (d.length > 3) out += '.' + d.slice(3, 6);
+  if (d.length > 6) out += '.' + d.slice(6, 9);
+  if (d.length > 9) out += '-' + d.slice(9, 11);
+  return out;
+}
+
+/** Máscara progressiva de CNPJ: 00.000.000/0000-00 */
+export function mascaraCNPJ(valor: string): string {
+  const d = apenasDigitos(valor).slice(0, 14);
+  let out = d.slice(0, 2);
+  if (d.length > 2) out += '.' + d.slice(2, 5);
+  if (d.length > 5) out += '.' + d.slice(5, 8);
+  if (d.length > 8) out += '/' + d.slice(8, 12);
+  if (d.length > 12) out += '-' + d.slice(12, 14);
+  return out;
+}
+
+/** Máscara progressiva de RG: 00.000.000-0 (padrão mais comum, ex.: SSP). */
+export function mascaraRG(valor: string): string {
+  const d = apenasDigitos(valor).slice(0, 9);
+  let out = d.slice(0, 2);
+  if (d.length > 2) out += '.' + d.slice(2, 5);
+  if (d.length > 5) out += '.' + d.slice(5, 8);
+  if (d.length > 8) out += '-' + d.slice(8, 9);
+  return out;
+}
+
 function toDate(value: string | Date): Date | null {
   if (value instanceof Date) return isValid(value) ? value : null;
   const d = parseISO(value);

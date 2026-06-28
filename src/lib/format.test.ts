@@ -6,7 +6,28 @@ import {
   formatCompetencia,
   formatPercent,
   iniciais,
+  mascaraCPF,
+  mascaraCNPJ,
+  mascaraRG,
 } from './format';
+
+describe('máscaras progressivas de documento', () => {
+  it('CPF formata enquanto digita', () => {
+    expect(mascaraCPF('123')).toBe('123');
+    expect(mascaraCPF('1234567')).toBe('123.456.7');
+    expect(mascaraCPF('12345678901')).toBe('123.456.789-01');
+    // ignora não-dígitos e excesso
+    expect(mascaraCPF('123.456.789-0123')).toBe('123.456.789-01');
+  });
+  it('CNPJ formata enquanto digita', () => {
+    expect(mascaraCNPJ('12345')).toBe('12.345');
+    expect(mascaraCNPJ('12345678000190')).toBe('12.345.678/0001-90');
+  });
+  it('RG formata enquanto digita', () => {
+    expect(mascaraRG('12345678')).toBe('12.345.678');
+    expect(mascaraRG('123456789')).toBe('12.345.678-9');
+  });
+});
 
 describe('formatBRL', () => {
   it('formata moeda brasileira', () => {

@@ -15,6 +15,7 @@ import {
   Badge,
   Button,
   Card,
+  DocumentoInput,
   EmptyState,
   Input,
   Modal,
@@ -320,11 +321,11 @@ function CadastroFuncionario({
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input label="Nome completo" value={form.nome} onChange={(e) => set('nome', e.target.value)} />
-          <Input
+          <DocumentoInput
             label="CPF"
-            value={form.cpf}
-            onChange={(e) => set('cpf', e.target.value.replace(/\D/g, '').slice(0, 11))}
-            placeholder="só números"
+            tipo="cpf"
+            valor={form.cpf}
+            onValor={(d) => set('cpf', d)}
           />
           <Input label="Cargo / função" value={form.cargo} onChange={(e) => set('cargo', e.target.value)} />
           <Input

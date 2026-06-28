@@ -13,6 +13,7 @@ import {
   Badge,
   Button,
   Card,
+  DocumentoInput,
   EmptyState,
   Input,
   Modal,
@@ -467,17 +468,12 @@ export function Empresas() {
               onChange={(e) => setForm({ ...form, nomeFantasia: e.target.value })}
             />
           )}
-          <Input
+          <DocumentoInput
             label={isPF ? 'CPF' : 'CNPJ'}
-            value={isPF ? form.cpf : form.cnpj}
-            maxLength={isPF ? 14 : 18}
-            placeholder={isPF ? '000.000.000-00' : '00.000.000/0000-00'}
-            onChange={(e) =>
-              setForm(
-                isPF
-                  ? { ...form, cpf: e.target.value }
-                  : { ...form, cnpj: e.target.value },
-              )
+            tipo={isPF ? 'cpf' : 'cnpj'}
+            valor={isPF ? form.cpf : form.cnpj}
+            onValor={(d) =>
+              setForm(isPF ? { ...form, cpf: d } : { ...form, cnpj: d })
             }
           />
 
@@ -549,11 +545,12 @@ export function Empresas() {
           {isPF && (
             <>
               <div className="grid grid-cols-3 gap-3">
-                <Input
+                <DocumentoInput
                   className="col-span-2"
                   label="RG"
-                  value={form.rg}
-                  onChange={(e) => setForm({ ...form, rg: e.target.value })}
+                  tipo="rg"
+                  valor={form.rg}
+                  onValor={(d) => setForm({ ...form, rg: d })}
                 />
                 <Input
                   label="Órgão"
@@ -740,13 +737,12 @@ export function Empresas() {
                     value={s.nome}
                     onChange={(e) => updateSocio(i, { nome: e.target.value })}
                   />
-                  <Input
+                  <DocumentoInput
                     className="w-36"
                     label={i === 0 ? 'CPF' : undefined}
-                    value={s.cpf}
-                    maxLength={14}
-                    placeholder="000.000.000-00"
-                    onChange={(e) => updateSocio(i, { cpf: e.target.value })}
+                    tipo="cpf"
+                    valor={s.cpf}
+                    onValor={(d) => updateSocio(i, { cpf: d })}
                   />
                   <Select
                     className="w-44"

@@ -173,6 +173,65 @@ export function MoedaInput({
   );
 }
 
+// ---------------------------------------------------------------- DocumentoInput
+// Campo de documento (CPF, CNPJ ou RG) com máscara automática: o usuário digita
+// só os números e os pontos/traço/barra aparecem no padrão brasileiro.
+// Trabalha com `valor` = apenas dígitos (o que fica salvo no modelo).
+import { apenasDigitos, mascaraCPF, mascaraCNPJ, mascaraRG } from '@/lib/format';
+
+type TipoDoc = 'cpf' | 'cnpj' | 'rg';
+const MASCARA_DOC: Record<TipoDoc, (v: string) => string> = {
+  cpf: mascaraCPF,
+  cnpj: mascaraCNPJ,
+  rg: mascaraRG,
+};
+const MAX_DIGITOS: Record<TipoDoc, number> = { cpf: 11, cnpj: 14, rg: 9 };
+const PLACEHOLDER_DOC: Record<TipoDoc, string> = {
+  cpf: '000.000.000-00',
+  cnpj: '00.000.000/0000-00',
+  rg: '00.000.000-0',
+};
+
+interface DocumentoInputProps {
+  label?: string;
+  id?: string;
+  tipo: TipoDoc;
+  valor: string;
+  onValor: (digitos: string) => void;
+  placeholder?: string;
+  className?: string;
+}
+export function DocumentoInput({
+  label,
+  id,
+  tipo,
+  valor,
+  onValor,
+  placeholder,
+  className,
+}: DocumentoInputProps) {
+  function aoDigitar(e: ChangeEvent<HTMLInputElement>) {
+    onValor(apenasDigitos(e.target.value).slice(0, MAX_DIGITOS[tipo]));
+  }
+  return (
+    <div className={className}>
+      {label && (
+        <label htmlFor={id} className="label">
+          {label}
+        </label>
+      )}
+      <input
+        id={id}
+        className="input tabular-nums"
+        inputMode="numeric"
+        value={MASCARA_DOC[tipo](valor)}
+        onChange={aoDigitar}
+        placeholder={placeholder ?? PLACEHOLDER_DOC[tipo]}
+      />
+    </div>
+  );
+}
+
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   children: ReactNode;
