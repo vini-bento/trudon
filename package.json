@@ -13,6 +13,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "date-fns": "^3.6.0",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
