@@ -45,7 +45,7 @@ describe('formatPercent', () => {
 
 describe('iniciais', () => {
   it('extrai iniciais de nome composto', () => {
-    expect(iniciais('Vinícius Terranova')).toBe('VT');
+    expect(iniciais('Vinícius Bento')).toBe('VB');
     expect(iniciais('Ana')).toBe('AN');
   });
 });

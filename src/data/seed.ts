@@ -42,7 +42,7 @@ const COMPETENCIA_ATUAL = comp(HOJE);
 // Equipe do escritório
 // ---------------------------------------------------------------------------
 export const usuarios: Usuario[] = [
-  { id: 'u1', nome: 'Vinícius Terranova', email: 'vinicius@trudon.com.br', cargo: 'Sócio-Diretor', departamento: 'Contábil', iniciais: 'VT' },
+  { id: 'u1', nome: 'Vinícius Bento', email: 'vinicius@trudon.com.br', cargo: 'Sócio-Diretor', departamento: 'Contábil', iniciais: 'VB' },
   { id: 'u2', nome: 'Helena Rocha', email: 'helena@trudon.com.br', cargo: 'Contadora Sênior', departamento: 'Contábil', iniciais: 'HR' },
   { id: 'u3', nome: 'Marcos Andrade', email: 'marcos@trudon.com.br', cargo: 'Analista Fiscal', departamento: 'Fiscal', iniciais: 'MA' },
   { id: 'u4', nome: 'Beatriz Lima', email: 'beatriz@trudon.com.br', cargo: 'Analista de Pessoal', departamento: 'Pessoal', iniciais: 'BL' },
