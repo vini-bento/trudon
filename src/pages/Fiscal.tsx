@@ -12,6 +12,7 @@ import {
   Card,
   EmptyState,
   Input,
+  MoedaInput,
   PageHeader,
   Select,
   cx,
@@ -57,23 +58,24 @@ export function Fiscal() {
   const [empresaId, setEmpresaId] = useState(empresas[0]?.id ?? '');
   const [competencia, setCompetencia] = useState(competenciaAtual);
 
-  // Campos de entrada (texto, convertidos na hora do cálculo).
+  // Campos de entrada. Valores em R$ são numéricos (máscara no MoedaInput);
+  // a alíquota do ISS é percentual (texto).
   const [anexo, setAnexo] = useState<AnexoSimples>('III');
   const [fatorR, setFatorR] = useState(false);
-  const [rbt12, setRbt12] = useState('');
-  const [folha12, setFolha12] = useState('');
-  const [receitaMes, setReceitaMes] = useState('');
+  const [rbt12, setRbt12] = useState(0);
+  const [folha12, setFolha12] = useState(0);
+  const [receitaMes, setReceitaMes] = useState(0);
   const [atividadeMEI, setAtividadeMEI] = useState<
     'comercio_industria' | 'servicos' | 'comercio_servicos'
   >('servicos');
   const [atividadePresumido, setAtividadePresumido] = useState(
     presuncoesPresumido[0].chave,
   );
-  const [receitaTrimestre, setReceitaTrimestre] = useState('');
+  const [receitaTrimestre, setReceitaTrimestre] = useState(0);
   const [issAliquota, setIssAliquota] = useState('');
-  const [issBase, setIssBase] = useState('');
-  const [lucroReal, setLucroReal] = useState('');
-  const [baseCreditos, setBaseCreditos] = useState('');
+  const [issBase, setIssBase] = useState(0);
+  const [lucroReal, setLucroReal] = useState(0);
+  const [baseCreditos, setBaseCreditos] = useState(0);
 
   const empresa = empresas.find((e) => e.id === empresaId);
   const regime = empresa?.regime;
@@ -86,9 +88,9 @@ export function Fiscal() {
           competencia,
           anexo,
           sujeitoFatorR: fatorR,
-          rbt12: parseMoeda(rbt12),
-          folha12: fatorR ? parseMoeda(folha12) : undefined,
-          receitaMes: parseMoeda(receitaMes),
+          rbt12,
+          folha12: fatorR ? folha12 : undefined,
+          receitaMes,
         });
       case 'MEI':
         return apurarMEI({ competencia, atividade: atividadeMEI });
@@ -96,17 +98,17 @@ export function Fiscal() {
         return apurarPresumido({
           competencia,
           atividade: atividadePresumido,
-          receitaTrimestre: parseMoeda(receitaTrimestre),
-          receitaMes: parseMoeda(receitaMes),
+          receitaTrimestre,
+          receitaMes,
           issAliquota: issAliquota ? parseMoeda(issAliquota) : undefined,
-          issBase: issAliquota ? parseMoeda(issBase || receitaMes) : undefined,
+          issBase: issAliquota ? issBase || receitaMes : undefined,
         });
       case 'Lucro Real':
         return apurarReal({
           competencia,
-          lucroReal: parseMoeda(lucroReal),
-          receitaMes: parseMoeda(receitaMes),
-          baseCreditos: parseMoeda(baseCreditos),
+          lucroReal,
+          receitaMes,
+          baseCreditos,
         });
       default:
         return null;
@@ -215,28 +217,22 @@ export function Fiscal() {
                 />
                 Atividade sujeita ao Fator R (migra entre Anexo III e V)
               </label>
-              <Input
+              <MoedaInput
                 label="RBT12 — receita dos últimos 12 meses (R$)"
-                inputMode="decimal"
-                value={rbt12}
-                onChange={(e) => setRbt12(e.target.value)}
-                placeholder="0,00"
+                valor={rbt12}
+                onValor={setRbt12}
               />
               {fatorR && (
-                <Input
+                <MoedaInput
                   label="Folha dos últimos 12 meses (R$)"
-                  inputMode="decimal"
-                  value={folha12}
-                  onChange={(e) => setFolha12(e.target.value)}
-                  placeholder="0,00"
+                  valor={folha12}
+                  onValor={setFolha12}
                 />
               )}
-              <Input
+              <MoedaInput
                 label="Receita do mês (R$)"
-                inputMode="decimal"
-                value={receitaMes}
-                onChange={(e) => setReceitaMes(e.target.value)}
-                placeholder="0,00"
+                valor={receitaMes}
+                onValor={setReceitaMes}
               />
             </div>
           )}
@@ -279,19 +275,15 @@ export function Fiscal() {
                   </option>
                 ))}
               </Select>
-              <Input
+              <MoedaInput
                 label="Receita do trimestre — base IRPJ/CSLL (R$)"
-                inputMode="decimal"
-                value={receitaTrimestre}
-                onChange={(e) => setReceitaTrimestre(e.target.value)}
-                placeholder="0,00"
+                valor={receitaTrimestre}
+                onValor={setReceitaTrimestre}
               />
-              <Input
+              <MoedaInput
                 label="Faturamento do mês — base PIS/COFINS (R$)"
-                inputMode="decimal"
-                value={receitaMes}
-                onChange={(e) => setReceitaMes(e.target.value)}
-                placeholder="0,00"
+                valor={receitaMes}
+                onValor={setReceitaMes}
               />
               <div className="grid grid-cols-2 gap-3">
                 <Input
@@ -301,11 +293,10 @@ export function Fiscal() {
                   onChange={(e) => setIssAliquota(e.target.value)}
                   placeholder="ex.: 5"
                 />
-                <Input
+                <MoedaInput
                   label="Base do ISS (R$)"
-                  inputMode="decimal"
-                  value={issBase}
-                  onChange={(e) => setIssBase(e.target.value)}
+                  valor={issBase}
+                  onValor={setIssBase}
                   placeholder="serviços"
                 />
               </div>
@@ -317,25 +308,20 @@ export function Fiscal() {
 
           {regime === 'Lucro Real' && (
             <div className="space-y-4">
-              <Input
+              <MoedaInput
                 label="Lucro real do período — base IRPJ/CSLL (R$)"
-                inputMode="decimal"
-                value={lucroReal}
-                onChange={(e) => setLucroReal(e.target.value)}
-                placeholder="0,00"
+                valor={lucroReal}
+                onValor={setLucroReal}
               />
-              <Input
+              <MoedaInput
                 label="Faturamento do mês — base PIS/COFINS (R$)"
-                inputMode="decimal"
-                value={receitaMes}
-                onChange={(e) => setReceitaMes(e.target.value)}
-                placeholder="0,00"
+                valor={receitaMes}
+                onValor={setReceitaMes}
               />
-              <Input
+              <MoedaInput
                 label="Base de créditos PIS/COFINS (R$)"
-                inputMode="decimal"
-                value={baseCreditos}
-                onChange={(e) => setBaseCreditos(e.target.value)}
+                valor={baseCreditos}
+                onValor={setBaseCreditos}
                 placeholder="insumos, energia…"
               />
               <p className="text-xs text-graphite-400">

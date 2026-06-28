@@ -2,6 +2,7 @@
 // Primitivos coesos, no estilo dourado + grafite da marca.
 import {
   type ButtonHTMLAttributes,
+  type ChangeEvent,
   type InputHTMLAttributes,
   type ReactNode,
   type SelectHTMLAttributes,
@@ -112,6 +113,62 @@ export function Input({ label, id, className, ...props }: InputProps) {
         </label>
       )}
       <input id={id} className="input" {...props} />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------- MoedaInput
+// Campo monetário com máscara automática (pt-BR): os dígitos digitados são
+// tratados como centavos e formatados em tempo real (1.234,56), com prefixo R$.
+// Trabalha com `valor` numérico (em reais), não com texto.
+function formatMoedaDisplay(v: number): string {
+  if (!v) return '';
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(v);
+}
+
+interface MoedaInputProps {
+  label?: string;
+  id?: string;
+  valor: number;
+  onValor: (n: number) => void;
+  placeholder?: string;
+  className?: string;
+}
+export function MoedaInput({
+  label,
+  id,
+  valor,
+  onValor,
+  placeholder = '0,00',
+  className,
+}: MoedaInputProps) {
+  function aoDigitar(e: ChangeEvent<HTMLInputElement>) {
+    const digitos = e.target.value.replace(/\D/g, '');
+    onValor(digitos ? Number(digitos) / 100 : 0);
+  }
+  return (
+    <div className={className}>
+      {label && (
+        <label htmlFor={id} className="label">
+          {label}
+        </label>
+      )}
+      <div className="relative">
+        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-graphite-400">
+          R$
+        </span>
+        <input
+          id={id}
+          className="input pl-9 text-right tabular-nums"
+          inputMode="numeric"
+          value={formatMoedaDisplay(valor)}
+          onChange={aoDigitar}
+          placeholder={placeholder}
+        />
+      </div>
     </div>
   );
 }

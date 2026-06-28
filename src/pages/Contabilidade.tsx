@@ -7,6 +7,7 @@ import {
   EmptyState,
   Input,
   Modal,
+  MoedaInput,
   PageHeader,
   Select,
   cx,
@@ -373,13 +374,12 @@ function NovoLancamento({
   const [historico, setHistorico] = useState('');
   const [debito, setDebito] = useState(contasAnaliticas[0].id);
   const [credito, setCredito] = useState(contasAnaliticas[1].id);
-  const [valor, setValor] = useState('');
+  const [valor, setValor] = useState(0);
   const [erro, setErro] = useState('');
 
   function salvar() {
-    const v = Number(valor.replace(',', '.'));
     if (!historico.trim()) return setErro('Informe o histórico.');
-    if (!(v > 0)) return setErro('O valor deve ser maior que zero.');
+    if (!(valor > 0)) return setErro('O valor deve ser maior que zero.');
     if (debito === credito)
       return setErro('As contas de débito e crédito devem ser diferentes.');
     onSalvar({
@@ -387,10 +387,10 @@ function NovoLancamento({
       historico: historico.trim(),
       contaDebitoId: debito,
       contaCreditoId: credito,
-      valor: v,
+      valor,
     });
     setHistorico('');
-    setValor('');
+    setValor(0);
     setErro('');
     onFechar();
   }
@@ -405,13 +405,7 @@ function NovoLancamento({
             value={data}
             onChange={(e) => setData(e.target.value)}
           />
-          <Input
-            label="Valor (R$)"
-            inputMode="decimal"
-            value={valor}
-            onChange={(e) => setValor(e.target.value)}
-            placeholder="0,00"
-          />
+          <MoedaInput label="Valor (R$)" valor={valor} onValor={setValor} />
         </div>
         <Input
           label="Histórico"
