@@ -4,6 +4,7 @@ import { useAuth } from '@/features/ia/useAuth';
 import { useStore } from '@/store/useStore';
 import { listarEmpresas } from '@/lib/empresasApi';
 import { listarContratos, listarCobrancas } from '@/lib/honorariosApi';
+import { listarObrigacoes } from '@/lib/obrigacoesApi';
 
 // Porta de entrada do app: exige login para todos. Enquanto não houver sessão,
 // mostra a tela de login da Trudon. Com sessão, hidrata as empresas do banco
@@ -13,6 +14,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
   const definirEmpresas = useStore((s) => s.definirEmpresas);
   const definirContratos = useStore((s) => s.definirContratos);
   const definirCobrancas = useStore((s) => s.definirCobrancas);
+  const definirObrigacoes = useStore((s) => s.definirObrigacoes);
 
   useEffect(() => {
     if (!session) return;
@@ -32,10 +34,17 @@ export function AuthGate({ children }: { children: ReactNode }) {
     hidratar(listarEmpresas, definirEmpresas);
     hidratar(listarContratos, definirContratos);
     hidratar(listarCobrancas, definirCobrancas);
+    hidratar(listarObrigacoes, definirObrigacoes);
     return () => {
       ativo = false;
     };
-  }, [session, definirEmpresas, definirContratos, definirCobrancas]);
+  }, [
+    session,
+    definirEmpresas,
+    definirContratos,
+    definirCobrancas,
+    definirObrigacoes,
+  ]);
 
   if (carregando) {
     return (

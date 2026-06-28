@@ -4,9 +4,10 @@ import { Badge, Card, EmptyState, PageHeader, Select, cx } from '@/components/ui
 import { StatCard } from '@/components/StatCard';
 import { useStore } from '@/store/useStore';
 import { usuarios } from '@/data/seed';
-import type { Departamento, StatusObrigacao } from '@/data/types';
+import type { Departamento, Obrigacao, StatusObrigacao } from '@/data/types';
 import { formatDate } from '@/lib/format';
 import { tomObrigacao } from '@/lib/labels';
+import { atualizarStatusObrigacaoApi } from '@/lib/obrigacoesApi';
 import { differenceInCalendarDays, parseISO } from 'date-fns';
 
 const DEPARTAMENTOS: Departamento[] = [
@@ -22,6 +23,22 @@ export function Obrigacoes() {
   const [filtroDep, setFiltroDep] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('');
   const [filtroEmpresa, setFiltroEmpresa] = useState('');
+
+  // Muda o status da obrigação: persiste no banco e atualiza o estado local.
+  async function mudarStatus(o: Obrigacao, status: StatusObrigacao) {
+    const atualizada: Obrigacao = {
+      ...o,
+      status,
+      concluidaEm:
+        status === 'Concluída' ? new Date().toISOString().slice(0, 10) : undefined,
+    };
+    try {
+      await atualizarStatusObrigacaoApi(atualizada);
+    } catch (e) {
+      console.warn('Status alterado apenas localmente (banco indisponível).', e);
+    }
+    definirStatusObrigacao(o.id, status);
+  }
 
   const filtradas = useMemo(
     () =>
@@ -197,7 +214,7 @@ export function Obrigacoes() {
                             {o.status !== 'Em andamento' && (
                               <button
                                 onClick={() =>
-                                  definirStatusObrigacao(o.id, 'Em andamento')
+                                  mudarStatus(o, 'Em andamento')
                                 }
                                 className="rounded-lg p-1.5 text-graphite-400 hover:bg-sky-50 hover:text-sky-600"
                                 aria-label="Marcar em andamento"
@@ -208,7 +225,7 @@ export function Obrigacoes() {
                             )}
                             <button
                               onClick={() =>
-                                definirStatusObrigacao(o.id, 'Concluída')
+                                mudarStatus(o, 'Concluída')
                               }
                               className="rounded-lg p-1.5 text-graphite-400 hover:bg-emerald-50 hover:text-emerald-600"
                               aria-label="Concluir"
@@ -220,7 +237,7 @@ export function Obrigacoes() {
                         ) : (
                           <button
                             onClick={() =>
-                              definirStatusObrigacao(o.id, 'Pendente')
+                              mudarStatus(o, 'Pendente')
                             }
                             className="rounded-lg p-1.5 text-graphite-400 hover:bg-graphite-100 hover:text-graphite-700"
                             aria-label="Reabrir"

@@ -50,6 +50,7 @@ interface State {
   alternarPagamento: (id: string) => void;
 
   // Obrigações
+  definirObrigacoes: (lista: Obrigacao[]) => void;
   definirStatusObrigacao: (id: string, status: StatusObrigacao) => void;
 
   // Documentos
@@ -116,6 +117,8 @@ export const useStore = create<State>()(
             };
           }),
         })),
+
+      definirObrigacoes: (lista) => set({ obrigacoes: lista }),
 
       definirStatusObrigacao: (id, status) =>
         set((s) => ({
