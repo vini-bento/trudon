@@ -23,6 +23,12 @@ export interface Empresa {
   regime: RegimeTributario;
   situacao: SituacaoEmpresa;
   segmento: string;
+  // Endereço completo (padrão brasileiro)
+  cep: string;
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
   cidade: string;
   uf: string;
   aberturaEm: string; // ISO date

@@ -41,6 +41,7 @@ interface State {
   removerEmpresa: (id: string) => void;
 
   // Lançamentos
+  definirLancamentos: (lista: Lancamento[]) => void;
   adicionarLancamento: (l: Lancamento) => void;
   removerLancamento: (id: string) => void;
 
@@ -95,6 +96,8 @@ export const useStore = create<State>()(
           obrigacoes: s.obrigacoes.filter((o) => o.empresaId !== id),
           documentos: s.documentos.filter((d) => d.empresaId !== id),
         })),
+
+      definirLancamentos: (lista) => set({ lancamentos: lista }),
 
       adicionarLancamento: (l) =>
         set((s) => ({ lancamentos: [l, ...s.lancamentos] })),

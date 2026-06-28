@@ -12,6 +12,11 @@ type Row = {
   regime: string;
   situacao: string;
   segmento: string | null;
+  cep: string | null;
+  logradouro: string | null;
+  numero: string | null;
+  complemento: string | null;
+  bairro: string | null;
   cidade: string | null;
   uf: string | null;
   abertura_em: string | null;
@@ -30,6 +35,11 @@ function paraEmpresa(r: Row): Empresa {
     regime: r.regime as Empresa['regime'],
     situacao: r.situacao as Empresa['situacao'],
     segmento: r.segmento ?? '',
+    cep: r.cep ?? '',
+    logradouro: r.logradouro ?? '',
+    numero: r.numero ?? '',
+    complemento: r.complemento ?? '',
+    bairro: r.bairro ?? '',
     cidade: r.cidade ?? '',
     uf: r.uf ?? '',
     aberturaEm: r.abertura_em ?? '',
@@ -49,6 +59,11 @@ function paraRow(e: Empresa): Row {
     regime: e.regime,
     situacao: e.situacao,
     segmento: e.segmento,
+    cep: e.cep,
+    logradouro: e.logradouro,
+    numero: e.numero,
+    complemento: e.complemento,
+    bairro: e.bairro,
     cidade: e.cidade,
     uf: e.uf,
     abertura_em: e.aberturaEm || null,

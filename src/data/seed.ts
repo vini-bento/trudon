@@ -61,6 +61,7 @@ const empresasBase: Array<
   {
     id: 'e1', razaoSocial: 'Aurora Tecnologia e Sistemas Ltda', nomeFantasia: 'Aurora Tech',
     cnpj: '12345678000190', regime: 'Lucro Presumido', situacao: 'Ativa', segmento: 'Tecnologia',
+    cep: '01310-100', logradouro: 'Avenida Paulista', numero: '1578', complemento: 'Conj. 142', bairro: 'Bela Vista',
     cidade: 'São Paulo', uf: 'SP', aberturaEm: '2018-03-12', email: 'financeiro@auroratech.com.br',
     telefone: '11987654321', responsavelId: 'u2',
     socios: [
@@ -71,6 +72,7 @@ const empresasBase: Array<
   {
     id: 'e2', razaoSocial: 'Belluno Comércio de Alimentos Ltda', nomeFantasia: 'Belluno Mercado',
     cnpj: '23456789000181', regime: 'Simples Nacional', situacao: 'Ativa', segmento: 'Comércio',
+    cep: '13010-111', logradouro: 'Rua Conceição', numero: '233', complemento: 'Loja 2', bairro: 'Centro',
     cidade: 'Campinas', uf: 'SP', aberturaEm: '2015-07-01', email: 'contato@belluno.com.br',
     telefone: '19988776655', responsavelId: 'u2',
     socios: [{ nome: 'Giuseppe Belluno', cpf: '33344455518', participacao: 100 }],
@@ -78,6 +80,7 @@ const empresasBase: Array<
   {
     id: 'e3', razaoSocial: 'Construtora Horizonte S/A', nomeFantasia: 'Horizonte Engenharia',
     cnpj: '34567890000172', regime: 'Lucro Real', situacao: 'Ativa', segmento: 'Construção Civil',
+    cep: '20040-002', logradouro: 'Avenida Rio Branco', numero: '156', complemento: 'Sala 2010', bairro: 'Centro',
     cidade: 'Rio de Janeiro', uf: 'RJ', aberturaEm: '2009-11-20', email: 'fiscal@horizonteeng.com.br',
     telefone: '21997654321', responsavelId: 'u3',
     socios: [
@@ -88,6 +91,7 @@ const empresasBase: Array<
   {
     id: 'e4', razaoSocial: 'Clínica Vida Plena Ltda', nomeFantasia: 'Vida Plena',
     cnpj: '45678901000163', regime: 'Lucro Presumido', situacao: 'Ativa', segmento: 'Saúde',
+    cep: '30130-009', logradouro: 'Avenida Afonso Pena', numero: '1500', complemento: 'Sala 304', bairro: 'Centro',
     cidade: 'Belo Horizonte', uf: 'MG', aberturaEm: '2017-02-14', email: 'adm@vidaplena.com.br',
     telefone: '31988112233', responsavelId: 'u2',
     socios: [{ nome: 'Dra. Sônia Vasconcelos', cpf: '66677788841', participacao: 100 }],
@@ -95,6 +99,7 @@ const empresasBase: Array<
   {
     id: 'e5', razaoSocial: 'Joaquim Pereira Transportes ME', nomeFantasia: 'JP Transportes',
     cnpj: '56789012000154', regime: 'Simples Nacional', situacao: 'Ativa', segmento: 'Transporte',
+    cep: '81450-000', logradouro: 'Rua Eduardo Sprada', numero: '3210', complemento: 'Galpão 4', bairro: 'Campo Comprido',
     cidade: 'Curitiba', uf: 'PR', aberturaEm: '2020-09-05', email: 'jp@jptransportes.com.br',
     telefone: '41999887766', responsavelId: 'u3',
     socios: [{ nome: 'Joaquim Pereira', cpf: '77788899952', participacao: 100 }],
@@ -102,6 +107,7 @@ const empresasBase: Array<
   {
     id: 'e6', razaoSocial: 'Marés Turismo e Hotelaria Ltda', nomeFantasia: 'Marés Hotel',
     cnpj: '67890123000145', regime: 'Lucro Presumido', situacao: 'Suspensa', segmento: 'Turismo',
+    cep: '88015-200', logradouro: 'Avenida Beira-Mar Norte', numero: '2800', complemento: '', bairro: 'Centro',
     cidade: 'Florianópolis', uf: 'SC', aberturaEm: '2012-05-30', email: 'reservas@mareshotel.com.br',
     telefone: '48988443322', responsavelId: 'u2',
     socios: [
@@ -112,6 +118,7 @@ const empresasBase: Array<
   {
     id: 'e7', razaoSocial: 'Verde Vale Agronegócios S/A', nomeFantasia: 'Verde Vale',
     cnpj: '78901234000136', regime: 'Lucro Real', situacao: 'Ativa', segmento: 'Agronegócio',
+    cep: '14025-000', logradouro: 'Rodovia Anhanguera, km 312', numero: 's/n', complemento: 'Bloco A', bairro: 'Jardim Califórnia',
     cidade: 'Ribeirão Preto', uf: 'SP', aberturaEm: '2006-01-18', email: 'controladoria@verdevale.agr.br',
     telefone: '16997112244', responsavelId: 'u3',
     socios: [{ nome: 'Fernando Tavares', cpf: '10111213145', participacao: 100 }],
@@ -119,6 +126,7 @@ const empresasBase: Array<
   {
     id: 'e8', razaoSocial: 'Studio Criativo Pixel Ltda', nomeFantasia: 'Pixel Studio',
     cnpj: '89012345000127', regime: 'Simples Nacional', situacao: 'Ativa', segmento: 'Publicidade',
+    cep: '90420-060', logradouro: 'Rua Padre Chagas', numero: '415', complemento: 'Sala 12', bairro: 'Moinhos de Vento',
     cidade: 'Porto Alegre', uf: 'RS', aberturaEm: '2021-08-22', email: 'ola@pixelstudio.com.br',
     telefone: '51988556677', responsavelId: 'u2',
     socios: [
@@ -129,6 +137,7 @@ const empresasBase: Array<
   {
     id: 'e9', razaoSocial: 'Antônio Comércio de Materiais MEI', nomeFantasia: 'Materiais do Antônio',
     cnpj: '90123456000118', regime: 'MEI', situacao: 'Ativa', segmento: 'Comércio',
+    cep: '40070-110', logradouro: 'Avenida Sete de Setembro', numero: '99', complemento: 'Loja 1', bairro: 'Centro',
     cidade: 'Salvador', uf: 'BA', aberturaEm: '2022-04-10', email: 'antonio.materiais@gmail.com',
     telefone: '71988009911', responsavelId: 'u3',
     socios: [{ nome: 'Antônio Carlos Silva', cpf: '14151617178', participacao: 100 }],

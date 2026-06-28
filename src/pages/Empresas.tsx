@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Building2, Plus, Search, Pencil, Trash2, Eye } from 'lucide-react';
+import { Building2, Plus, Search, Pencil, Trash2, Eye, X } from 'lucide-react';
 import {
   Badge,
   Button,
@@ -16,8 +16,15 @@ import type {
   Empresa,
   RegimeTributario,
   SituacaoEmpresa,
+  Socio,
 } from '@/data/types';
-import { formatCNPJ, formatCPF, formatDate } from '@/lib/format';
+import {
+  formatCNPJ,
+  formatCPF,
+  formatCEP,
+  formatDate,
+  formatEndereco,
+} from '@/lib/format';
 import { tomRegime, tomSituacao } from '@/lib/labels';
 import {
   inserirEmpresa,
@@ -41,6 +48,11 @@ function formVazio(): Omit<Empresa, 'id' | 'socios'> {
     regime: 'Simples Nacional',
     situacao: 'Ativa',
     segmento: '',
+    cep: '',
+    logradouro: '',
+    numero: '',
+    complemento: '',
+    bairro: '',
     cidade: '',
     uf: 'SP',
     aberturaEm: new Date().toISOString().slice(0, 10),
@@ -59,6 +71,7 @@ export function Empresas() {
   const [editando, setEditando] = useState<Empresa | null>(null);
   const [detalhe, setDetalhe] = useState<Empresa | null>(null);
   const [form, setForm] = useState(formVazio());
+  const [socios, setSocios] = useState<Socio[]>([]);
   const [erro, setErro] = useState('');
 
   const filtradas = useMemo(() => {
@@ -77,17 +90,31 @@ export function Empresas() {
   function abrirNovo() {
     setEditando(null);
     setForm(formVazio());
+    setSocios([]);
     setErro('');
     setModalAberto(true);
   }
 
   function abrirEdicao(e: Empresa) {
     setEditando(e);
-    const { id: _id, socios: _socios, ...resto } = e;
+    const { id: _id, socios: socs, ...resto } = e;
     setForm(resto);
+    setSocios(socs.map((s) => ({ ...s })));
     setErro('');
     setModalAberto(true);
   }
+
+  // -- Sócios (no formulário) -------------------------------------------------
+  const totalParticipacao = socios.reduce(
+    (acc, s) => acc + (Number(s.participacao) || 0),
+    0,
+  );
+  const addSocio = () =>
+    setSocios([...socios, { nome: '', cpf: '', participacao: 0 }]);
+  const updateSocio = (i: number, patch: Partial<Socio>) =>
+    setSocios(socios.map((s, idx) => (idx === i ? { ...s, ...patch } : s)));
+  const removeSocio = (i: number) =>
+    setSocios(socios.filter((_, idx) => idx !== i));
 
   async function salvar() {
     if (!form.razaoSocial.trim() || !form.nomeFantasia.trim()) {
@@ -99,12 +126,31 @@ export function Empresas() {
       setErro('O CNPJ deve ter 14 dígitos.');
       return;
     }
+    // Sócios válidos (com nome) e CPF só dígitos.
+    const sociosLimpos: Socio[] = socios
+      .filter((s) => s.nome.trim())
+      .map((s) => ({
+        nome: s.nome.trim(),
+        cpf: s.cpf.replace(/\D/g, ''),
+        participacao: Number(s.participacao) || 0,
+      }));
+    if (sociosLimpos.length && Math.round(totalParticipacao) !== 100) {
+      setErro(
+        `A soma da participação dos sócios é ${totalParticipacao}% — deve fechar 100%.`,
+      );
+      return;
+    }
 
     const empresa: Empresa = editando
-      ? { ...editando, ...form, cnpj: digitosCnpj }
-      : { ...form, cnpj: digitosCnpj, id: `e-${Date.now()}`, socios: [] };
+      ? { ...editando, ...form, cnpj: digitosCnpj, socios: sociosLimpos }
+      : {
+          ...form,
+          cnpj: digitosCnpj,
+          id: `e-${Date.now()}`,
+          socios: sociosLimpos,
+        };
 
-    // Persiste no banco; se o banco estiver indisponível, segue em modo local.
+    // Persiste no banco; se indisponível, segue em modo local.
     try {
       if (editando) await atualizarEmpresaApi(empresa);
       else await inserirEmpresa(empresa);
@@ -267,6 +313,7 @@ export function Empresas() {
         titulo={editando ? 'Editar empresa' : 'Nova empresa'}
         largura="max-w-2xl"
       >
+        {/* Dados cadastrais */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input
             className="sm:col-span-2"
@@ -313,22 +360,72 @@ export function Empresas() {
             value={form.segmento}
             onChange={(e) => setForm({ ...form, segmento: e.target.value })}
           />
-          <div className="grid grid-cols-3 gap-3">
-            <Input
-              className="col-span-2"
-              label="Cidade"
-              value={form.cidade}
-              onChange={(e) => setForm({ ...form, cidade: e.target.value })}
-            />
-            <Input
-              label="UF"
-              maxLength={2}
-              value={form.uf}
-              onChange={(e) =>
-                setForm({ ...form, uf: e.target.value.toUpperCase() })
-              }
-            />
-          </div>
+          <Input
+            label="Data de abertura"
+            type="date"
+            value={form.aberturaEm}
+            onChange={(e) => setForm({ ...form, aberturaEm: e.target.value })}
+          />
+        </div>
+
+        {/* Endereço */}
+        <p className="mt-6 mb-3 text-xs font-semibold uppercase tracking-wide text-graphite-500">
+          Endereço
+        </p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-6">
+          <Input
+            className="sm:col-span-2"
+            label="CEP"
+            value={form.cep}
+            maxLength={9}
+            placeholder="00000-000"
+            onChange={(e) => setForm({ ...form, cep: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-4"
+            label="Logradouro"
+            value={form.logradouro}
+            placeholder="Rua, avenida, rodovia…"
+            onChange={(e) => setForm({ ...form, logradouro: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-2"
+            label="Número"
+            value={form.numero}
+            onChange={(e) => setForm({ ...form, numero: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-4"
+            label="Complemento"
+            value={form.complemento}
+            placeholder="Sala, conjunto, galpão, bloco…"
+            onChange={(e) => setForm({ ...form, complemento: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-2"
+            label="Bairro"
+            value={form.bairro}
+            onChange={(e) => setForm({ ...form, bairro: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-3"
+            label="Cidade"
+            value={form.cidade}
+            onChange={(e) => setForm({ ...form, cidade: e.target.value })}
+          />
+          <Input
+            className="sm:col-span-1"
+            label="UF"
+            maxLength={2}
+            value={form.uf}
+            onChange={(e) =>
+              setForm({ ...form, uf: e.target.value.toUpperCase() })
+            }
+          />
+        </div>
+
+        {/* Contato e responsável */}
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input
             label="E-mail"
             type="email"
@@ -341,6 +438,7 @@ export function Empresas() {
             onChange={(e) => setForm({ ...form, telefone: e.target.value })}
           />
           <Select
+            className="sm:col-span-2"
             label="Responsável"
             value={form.responsavelId}
             onChange={(e) => setForm({ ...form, responsavelId: e.target.value })}
@@ -351,6 +449,62 @@ export function Empresas() {
               </option>
             ))}
           </Select>
+        </div>
+
+        {/* Sócios */}
+        <div className="mt-6 mb-3 flex items-center justify-between">
+          <p className="text-xs font-semibold uppercase tracking-wide text-graphite-500">
+            Sócios
+          </p>
+          <span
+            className={
+              socios.length && Math.round(totalParticipacao) !== 100
+                ? 'text-xs font-medium text-red-600'
+                : 'text-xs text-graphite-500'
+            }
+          >
+            Total: {totalParticipacao}%
+          </span>
+        </div>
+        <div className="space-y-2">
+          {socios.map((s, i) => (
+            <div key={i} className="flex items-end gap-2">
+              <Input
+                className="flex-1"
+                label={i === 0 ? 'Nome' : undefined}
+                value={s.nome}
+                onChange={(e) => updateSocio(i, { nome: e.target.value })}
+              />
+              <Input
+                className="w-40"
+                label={i === 0 ? 'CPF' : undefined}
+                value={s.cpf}
+                maxLength={14}
+                placeholder="000.000.000-00"
+                onChange={(e) => updateSocio(i, { cpf: e.target.value })}
+              />
+              <Input
+                className="w-24"
+                label={i === 0 ? 'Part. %' : undefined}
+                type="number"
+                value={String(s.participacao)}
+                onChange={(e) =>
+                  updateSocio(i, { participacao: Number(e.target.value) })
+                }
+              />
+              <button
+                type="button"
+                onClick={() => removeSocio(i)}
+                className="mb-1 rounded-lg p-2 text-graphite-400 hover:bg-red-50 hover:text-red-600"
+                aria-label="Remover sócio"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          ))}
+          <Button variant="secondary" icon={<Plus size={16} />} onClick={addSocio}>
+            Adicionar sócio
+          </Button>
         </div>
 
         {erro && (
@@ -384,17 +538,18 @@ export function Empresas() {
               <Info rotulo="Regime" valor={detalhe.regime} />
               <Info rotulo="Situação" valor={detalhe.situacao} />
               <Info rotulo="Segmento" valor={detalhe.segmento} />
-              <Info
-                rotulo="Cidade/UF"
-                valor={`${detalhe.cidade}/${detalhe.uf}`}
-              />
               <Info rotulo="Abertura" valor={formatDate(detalhe.aberturaEm)} />
               <Info
                 rotulo="Responsável"
                 valor={responsavel(detalhe.responsavelId)}
               />
+              <Info rotulo="CEP" valor={detalhe.cep ? formatCEP(detalhe.cep) : '—'} />
               <Info rotulo="E-mail" valor={detalhe.email} />
               <Info rotulo="Telefone" valor={detalhe.telefone} />
+            </div>
+            <div>
+              <p className="label">Endereço</p>
+              <p className="text-graphite-800">{formatEndereco(detalhe)}</p>
             </div>
             <div>
               <p className="label">Sócios</p>

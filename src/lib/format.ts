@@ -29,6 +29,34 @@ export function formatCNPJ(cnpj: string): string {
   return d.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
 }
 
+/** Aplica máscara de CEP: 00000-000 */
+export function formatCEP(cep: string): string {
+  const d = cep.replace(/\D/g, '').slice(0, 8);
+  if (d.length !== 8) return cep;
+  return d.replace(/^(\d{5})(\d{3})$/, '$1-$2');
+}
+
+/** Monta o endereço completo numa linha legível. */
+export function formatEndereco(e: {
+  logradouro?: string;
+  numero?: string;
+  complemento?: string;
+  bairro?: string;
+  cidade?: string;
+  uf?: string;
+  cep?: string;
+}): string {
+  const linha1 = [e.logradouro, e.numero].filter(Boolean).join(', ');
+  const partes = [
+    linha1,
+    e.complemento,
+    e.bairro,
+    [e.cidade, e.uf].filter(Boolean).join('/'),
+    e.cep ? `CEP ${formatCEP(e.cep)}` : '',
+  ].filter(Boolean);
+  return partes.join(' · ') || '—';
+}
+
 /** Aplica máscara de CPF: 000.000.000-00 */
 export function formatCPF(cpf: string): string {
   const d = cpf.replace(/\D/g, '').padStart(11, '0').slice(0, 11);
