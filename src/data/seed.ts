@@ -19,6 +19,7 @@ import type {
   StatusCobranca,
   Usuario,
 } from './types';
+import type { Funcionario } from '@/lib/folha/tipos';
 
 // PRNG determinístico (mulberry32) para dados estáveis entre execuções.
 function rng(seed: number): () => number {
@@ -397,3 +398,55 @@ export const documentos: Documento[] = gerarDocumentos();
 
 // Próxima competência (rótulo auxiliar)
 export const PROXIMA_COMPETENCIA = comp(addMonths(HOJE, 1));
+
+// Funcionários / prestadores de exemplo (cadastro do módulo Folha).
+export const funcionarios: Funcionario[] = [
+  {
+    id: 'fu1',
+    empresaId: 'e1',
+    nome: 'Camila Souza',
+    cpf: '12345678901',
+    modalidade: 'CLT',
+    cargo: 'Analista Administrativo',
+    dataAdmissao: '2022-03-01',
+    salario: 3800,
+    dependentes: 1,
+    insalubridadeGrau: '',
+    periculosidade: false,
+    valeTransporte: true,
+    ativo: true,
+    observacoes: '',
+  },
+  {
+    id: 'fu2',
+    empresaId: 'e2',
+    nome: 'Rafael Lima',
+    cpf: '23456789012',
+    modalidade: 'CLT',
+    cargo: 'Vendedor',
+    dataAdmissao: '2021-08-15',
+    salario: 2400,
+    dependentes: 0,
+    insalubridadeGrau: '',
+    periculosidade: false,
+    valeTransporte: true,
+    ativo: true,
+    observacoes: '',
+  },
+  {
+    id: 'fu3',
+    empresaId: 'e1',
+    nome: 'João Aprendiz',
+    cpf: '34567890123',
+    modalidade: 'Aprendiz',
+    cargo: 'Jovem Aprendiz',
+    dataAdmissao: '2025-02-01',
+    salario: 1621,
+    dependentes: 0,
+    insalubridadeGrau: '',
+    periculosidade: false,
+    valeTransporte: true,
+    ativo: true,
+    observacoes: '',
+  },
+];

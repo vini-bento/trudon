@@ -14,16 +14,18 @@ import type {
   Obrigacao,
   StatusObrigacao,
 } from '@/data/types';
+import type { Funcionario } from '@/lib/folha/tipos';
 import {
   cobrancas as seedCobrancas,
   contratos as seedContratos,
   documentos as seedDocumentos,
   empresas as seedEmpresas,
+  funcionarios as seedFuncionarios,
   lancamentos as seedLancamentos,
   obrigacoes as seedObrigacoes,
 } from '@/data/seed';
 
-const SEED_VERSION = 3;
+const SEED_VERSION = 4;
 
 interface State {
   seedVersion: number;
@@ -33,6 +35,7 @@ interface State {
   cobrancas: Cobranca[];
   obrigacoes: Obrigacao[];
   documentos: Documento[];
+  funcionarios: Funcionario[];
 
   // Empresas
   definirEmpresas: (lista: Empresa[]) => void;
@@ -57,6 +60,12 @@ interface State {
   // Documentos
   marcarDocumentoVisualizado: (id: string) => void;
 
+  // Funcionários
+  definirFuncionarios: (lista: Funcionario[]) => void;
+  adicionarFuncionario: (f: Funcionario) => void;
+  atualizarFuncionario: (id: string, dados: Partial<Funcionario>) => void;
+  removerFuncionario: (id: string) => void;
+
   restaurarExemplo: () => void;
 }
 
@@ -69,6 +78,7 @@ function dadosIniciais() {
     cobrancas: seedCobrancas,
     obrigacoes: seedObrigacoes,
     documentos: seedDocumentos,
+    funcionarios: seedFuncionarios,
   };
 }
 
@@ -95,6 +105,7 @@ export const useStore = create<State>()(
           cobrancas: s.cobrancas.filter((c) => c.empresaId !== id),
           obrigacoes: s.obrigacoes.filter((o) => o.empresaId !== id),
           documentos: s.documentos.filter((d) => d.empresaId !== id),
+          funcionarios: s.funcionarios.filter((f) => f.empresaId !== id),
         })),
 
       definirLancamentos: (lista) => set({ lancamentos: lista }),
@@ -144,6 +155,23 @@ export const useStore = create<State>()(
           documentos: s.documentos.map((d) =>
             d.id === id ? { ...d, visualizado: true } : d,
           ),
+        })),
+
+      definirFuncionarios: (lista) => set({ funcionarios: lista }),
+
+      adicionarFuncionario: (f) =>
+        set((s) => ({ funcionarios: [f, ...s.funcionarios] })),
+
+      atualizarFuncionario: (id, dados) =>
+        set((s) => ({
+          funcionarios: s.funcionarios.map((f) =>
+            f.id === id ? { ...f, ...dados } : f,
+          ),
+        })),
+
+      removerFuncionario: (id) =>
+        set((s) => ({
+          funcionarios: s.funcionarios.filter((f) => f.id !== id),
         })),
 
       restaurarExemplo: () => set({ ...dadosIniciais() }),

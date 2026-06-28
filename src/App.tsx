@@ -5,6 +5,7 @@ import { Dashboard } from '@/pages/Dashboard';
 import { Empresas } from '@/pages/Empresas';
 import { Contabilidade } from '@/pages/Contabilidade';
 import { Fiscal } from '@/pages/Fiscal';
+import { Folha } from '@/pages/Folha';
 import { Honorarios } from '@/pages/Honorarios';
 import { Obrigacoes } from '@/pages/Obrigacoes';
 import { Portal } from '@/pages/Portal';
@@ -36,6 +37,7 @@ const router = createHashRouter([
       { path: 'empresas', element: <Empresas /> },
       { path: 'contabilidade', element: <Contabilidade /> },
       { path: 'fiscal', element: <Fiscal /> },
+      { path: 'folha', element: <Folha /> },
       { path: 'honorarios', element: <Honorarios /> },
       { path: 'obrigacoes', element: <Obrigacoes /> },
       { path: 'portal', element: <Portal /> },
