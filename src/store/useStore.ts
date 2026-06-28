@@ -44,7 +44,9 @@ interface State {
   adicionarLancamento: (l: Lancamento) => void;
   removerLancamento: (id: string) => void;
 
-  // Cobranças
+  // Honorários
+  definirContratos: (lista: Contrato[]) => void;
+  definirCobrancas: (lista: Cobranca[]) => void;
   alternarPagamento: (id: string) => void;
 
   // Obrigações
@@ -98,6 +100,9 @@ export const useStore = create<State>()(
 
       removerLancamento: (id) =>
         set((s) => ({ lancamentos: s.lancamentos.filter((l) => l.id !== id) })),
+
+      definirContratos: (lista) => set({ contratos: lista }),
+      definirCobrancas: (lista) => set({ cobrancas: lista }),
 
       alternarPagamento: (id) =>
         set((s) => ({

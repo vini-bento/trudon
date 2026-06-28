@@ -3,6 +3,7 @@ import { Loader2 } from 'lucide-react';
 import { useAuth } from '@/features/ia/useAuth';
 import { useStore } from '@/store/useStore';
 import { listarEmpresas } from '@/lib/empresasApi';
+import { listarContratos, listarCobrancas } from '@/lib/honorariosApi';
 
 // Porta de entrada do app: exige login para todos. Enquanto não houver sessão,
 // mostra a tela de login da Trudon. Com sessão, hidrata as empresas do banco
@@ -10,22 +11,31 @@ import { listarEmpresas } from '@/lib/empresasApi';
 export function AuthGate({ children }: { children: ReactNode }) {
   const { session, carregando, entrar } = useAuth();
   const definirEmpresas = useStore((s) => s.definirEmpresas);
+  const definirContratos = useStore((s) => s.definirContratos);
+  const definirCobrancas = useStore((s) => s.definirCobrancas);
 
   useEffect(() => {
     if (!session) return;
     let ativo = true;
-    listarEmpresas()
-      .then((lista) => {
-        // Só substitui se o banco respondeu com dados (modo compartilhado).
-        if (ativo && lista.length) definirEmpresas(lista);
-      })
-      .catch(() => {
-        // Banco ainda não configurado ou indisponível → mantém dados locais.
-      });
+    // Hidrata cada conjunto a partir do banco; se algum falhar (banco ainda não
+    // configurado / indisponível), mantém os dados locais daquele conjunto.
+    const hidratar = <T,>(
+      buscar: () => Promise<T[]>,
+      definir: (l: T[]) => void,
+    ) => {
+      buscar()
+        .then((lista) => {
+          if (ativo && lista.length) definir(lista);
+        })
+        .catch(() => {});
+    };
+    hidratar(listarEmpresas, definirEmpresas);
+    hidratar(listarContratos, definirContratos);
+    hidratar(listarCobrancas, definirCobrancas);
     return () => {
       ativo = false;
     };
-  }, [session, definirEmpresas]);
+  }, [session, definirEmpresas, definirContratos, definirCobrancas]);
 
   if (carregando) {
     return (

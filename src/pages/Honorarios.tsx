@@ -21,11 +21,29 @@ import {
   formatPercent,
 } from '@/lib/format';
 import { tomCobranca } from '@/lib/labels';
+import { atualizarCobrancaApi } from '@/lib/honorariosApi';
+import type { Cobranca } from '@/data/types';
 
 export function Honorarios() {
   const { empresas, cobrancas, alternarPagamento } = useStore();
   const [filtroComp, setFiltroComp] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('');
+
+  // Dá baixa / estorna: persiste no banco e atualiza o estado local (fallback).
+  async function alternar(c: Cobranca) {
+    const pago = c.status === 'Pago';
+    const atualizada: Cobranca = {
+      ...c,
+      status: pago ? 'Pendente' : 'Pago',
+      pagoEm: pago ? undefined : new Date().toISOString().slice(0, 10),
+    };
+    try {
+      await atualizarCobrancaApi(atualizada);
+    } catch (e) {
+      console.warn('Baixa aplicada apenas localmente (banco indisponível).', e);
+    }
+    alternarPagamento(c.id);
+  }
 
   const competencias = useMemo(
     () =>
@@ -188,7 +206,7 @@ export function Honorarios() {
                     <Button
                       variant={c.status === 'Pago' ? 'ghost' : 'secondary'}
                       className="!px-3 !py-1 text-xs"
-                      onClick={() => alternarPagamento(c.id)}
+                      onClick={() => alternar(c)}
                     >
                       {c.status === 'Pago' ? 'Estornar' : 'Dar baixa'}
                     </Button>
