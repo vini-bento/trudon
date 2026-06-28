@@ -26,8 +26,9 @@ returns boolean
 language sql immutable
 as $$
   select lower(e) = any (array[
-    'kelly.picossi@trudon.com.br'
-    -- , 'seu-email-de-login@exemplo.com'   -- ← adicione o seu aqui
+    'vinicius.bento@protonmail.com',     -- Vinícius (login atual)
+    'vinicius.bento@trudon.com.br',      -- Vinícius (futuro e-mail corporativo)
+    'kelly.picossi@trudon.com.br'        -- Kelly
   ]);
 $$;
 
