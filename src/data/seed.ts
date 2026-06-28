@@ -55,9 +55,14 @@ export const USUARIO_LOGADO = usuarios[0];
 // ---------------------------------------------------------------------------
 // Empresas-cliente
 // ---------------------------------------------------------------------------
-const empresasBase: Array<
-  Omit<Empresa, 'socios'> & { socios: Empresa['socios'] }
-> = [
+type EmpresaSeed = Pick<
+  Empresa,
+  | 'id' | 'razaoSocial' | 'nomeFantasia' | 'cnpj' | 'regime' | 'situacao'
+  | 'segmento' | 'cep' | 'logradouro' | 'numero' | 'complemento' | 'bairro'
+  | 'cidade' | 'uf' | 'aberturaEm' | 'email' | 'telefone' | 'responsavelId'
+> & { socios: Array<{ nome: string; cpf: string; participacao: number }> };
+
+const empresasBase: EmpresaSeed[] = [
   {
     id: 'e1', razaoSocial: 'Aurora Tecnologia e Sistemas Ltda', nomeFantasia: 'Aurora Tech',
     cnpj: '12345678000190', regime: 'Lucro Presumido', situacao: 'Ativa', segmento: 'Tecnologia',
@@ -144,7 +149,44 @@ const empresasBase: Array<
   },
 ];
 
-export const empresas: Empresa[] = empresasBase;
+// Normaliza cada empresa-semente para o cliente completo (todos PJ por enquanto),
+// preenchendo os campos novos com padrões e derivando um contato principal.
+export const empresas: Empresa[] = empresasBase.map((e) => ({
+  tipoPessoa: 'PJ' as const,
+  inscricaoEstadual: '',
+  isentoIE: false,
+  inscricaoMunicipal: '',
+  cnae: '',
+  naturezaJuridica: '',
+  cpf: '',
+  rg: '',
+  orgaoEmissor: '',
+  dataNascimento: '',
+  profissao: '',
+  certificadoTipo: '' as const,
+  certificadoValidade: '',
+  ecacValidade: '',
+  bancoCodigo: '',
+  agencia: '',
+  conta: '',
+  tipoConta: '' as const,
+  pix: '',
+  observacoes: '',
+  contatos: [
+    {
+      nome: 'Contato principal',
+      cargo: 'Financeiro',
+      email: e.email,
+      telefone: e.telefone,
+      principal: true,
+    },
+  ],
+  ...e,
+  socios: e.socios.map((s) => ({
+    ...s,
+    qualificacao: s.participacao >= 50 ? 'Sócio-administrador' : 'Sócio',
+  })),
+}));
 
 // ---------------------------------------------------------------------------
 // Lançamentos contábeis (por empresa, competência atual)

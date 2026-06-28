@@ -9,20 +9,53 @@ export type RegimeTributario =
 
 export type SituacaoEmpresa = 'Ativa' | 'Suspensa' | 'Baixada';
 
+export type TipoPessoa = 'PJ' | 'PF';
+
 export interface Socio {
   nome: string;
   cpf: string;
   participacao: number; // percentual 0-100
+  qualificacao: string; // ex.: Sócio-administrador, Sócio, Administrador
 }
 
+// Pessoa de contato dentro do cliente (quem o escritório aciona).
+export interface Contato {
+  nome: string;
+  cargo: string; // função/área (ex.: Financeiro, Fiscal, Sócio)
+  email: string;
+  telefone: string;
+  principal: boolean;
+}
+
+// Cliente do escritório — Pessoa Jurídica (PJ) ou Pessoa Física (PF).
+// A entidade chama-se "Empresa" por herança, mas representa o CLIENTE.
 export interface Empresa {
   id: string;
-  razaoSocial: string;
-  nomeFantasia: string;
+  tipoPessoa: TipoPessoa;
+
+  // Identificação PJ
+  razaoSocial: string; // PF: recebe o nome completo
+  nomeFantasia: string; // PF: recebe o nome completo (usado como rótulo)
   cnpj: string;
+  inscricaoEstadual: string;
+  isentoIE: boolean;
+  inscricaoMunicipal: string;
+  cnae: string;
+  naturezaJuridica: string;
+
+  // Identificação PF
+  cpf: string;
+  rg: string;
+  orgaoEmissor: string;
+  dataNascimento: string; // ISO date
+  profissao: string;
+
+  // Comum
   regime: RegimeTributario;
   situacao: SituacaoEmpresa;
-  segmento: string;
+  segmento: string; // atividade
+  aberturaEm: string; // ISO date (PJ)
+
   // Endereço completo (padrão brasileiro)
   cep: string;
   logradouro: string;
@@ -31,10 +64,29 @@ export interface Empresa {
   bairro: string;
   cidade: string;
   uf: string;
-  aberturaEm: string; // ISO date
+
+  // Contatos (quem o escritório aciona)
+  contatos: Contato[];
+
+  // Acessos governamentais (preparados; preenchidos depois)
+  certificadoTipo: '' | 'A1' | 'A3';
+  certificadoValidade: string; // ISO date
+  ecacValidade: string; // validade da procuração e-CAC (ISO date)
+
+  // Dados bancários
+  bancoCodigo: string;
+  agencia: string;
+  conta: string;
+  tipoConta: '' | 'Corrente' | 'Poupança';
+  pix: string;
+
+  // Contato direto legado / principal
   email: string;
   telefone: string;
+
+  // Interno
   responsavelId: string; // usuário do escritório
+  observacoes: string;
   socios: Socio[];
 }
 
