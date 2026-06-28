@@ -4,6 +4,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { Dashboard } from '@/pages/Dashboard';
 import { Empresas } from '@/pages/Empresas';
 import { Contabilidade } from '@/pages/Contabilidade';
+import { Fiscal } from '@/pages/Fiscal';
 import { Honorarios } from '@/pages/Honorarios';
 import { Obrigacoes } from '@/pages/Obrigacoes';
 import { Portal } from '@/pages/Portal';
@@ -34,6 +35,7 @@ const router = createHashRouter([
       { index: true, element: <Dashboard /> },
       { path: 'empresas', element: <Empresas /> },
       { path: 'contabilidade', element: <Contabilidade /> },
+      { path: 'fiscal', element: <Fiscal /> },
       { path: 'honorarios', element: <Honorarios /> },
       { path: 'obrigacoes', element: <Obrigacoes /> },
       { path: 'portal', element: <Portal /> },
