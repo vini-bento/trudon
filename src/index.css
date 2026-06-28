@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-graphite-50 text-graphite-900 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Scrollbar discreta no estilo da marca */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-graphite-300;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-graphite-400;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-graphite-200 bg-white shadow-card;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-graphite-300 bg-white px-3 py-2 text-sm text-graphite-900
+      placeholder:text-graphite-400 focus:border-gold-400 focus:outline-none focus:ring-2
+      focus:ring-gold-400/30 disabled:cursor-not-allowed disabled:bg-graphite-100;
+  }
+
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-graphite-500;
+  }
+
+  /* Gradiente dourado reutilizável para realces da marca */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-700 via-gold-500 to-gold-300 bg-clip-text text-transparent;
+  }
+}
