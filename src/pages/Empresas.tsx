@@ -19,6 +19,11 @@ import type {
 } from '@/data/types';
 import { formatCNPJ, formatCPF, formatDate } from '@/lib/format';
 import { tomRegime, tomSituacao } from '@/lib/labels';
+import {
+  inserirEmpresa,
+  atualizarEmpresaApi,
+  removerEmpresaApi,
+} from '@/lib/empresasApi';
 
 const REGIMES: RegimeTributario[] = [
   'Simples Nacional',
@@ -84,7 +89,7 @@ export function Empresas() {
     setModalAberto(true);
   }
 
-  function salvar() {
+  async function salvar() {
     if (!form.razaoSocial.trim() || !form.nomeFantasia.trim()) {
       setErro('Razão social e nome fantasia são obrigatórios.');
       return;
@@ -94,27 +99,38 @@ export function Empresas() {
       setErro('O CNPJ deve ter 14 dígitos.');
       return;
     }
-    if (editando) {
-      atualizarEmpresa(editando.id, { ...form, cnpj: digitosCnpj });
-    } else {
-      adicionarEmpresa({
-        ...form,
-        cnpj: digitosCnpj,
-        id: `e-${Date.now()}`,
-        socios: [],
-      });
+
+    const empresa: Empresa = editando
+      ? { ...editando, ...form, cnpj: digitosCnpj }
+      : { ...form, cnpj: digitosCnpj, id: `e-${Date.now()}`, socios: [] };
+
+    // Persiste no banco; se o banco estiver indisponível, segue em modo local.
+    try {
+      if (editando) await atualizarEmpresaApi(empresa);
+      else await inserirEmpresa(empresa);
+    } catch (e) {
+      console.warn('Empresa salva apenas localmente (banco indisponível).', e);
     }
+
+    if (editando) atualizarEmpresa(editando.id, empresa);
+    else adicionarEmpresa(empresa);
     setModalAberto(false);
   }
 
-  function confirmarExclusao(e: Empresa) {
+  async function confirmarExclusao(e: Empresa) {
     if (
-      window.confirm(
+      !window.confirm(
         `Excluir "${e.nomeFantasia}"? Todos os dados vinculados (lançamentos, honorários, obrigações e documentos) serão removidos.`,
       )
     ) {
-      removerEmpresa(e.id);
+      return;
     }
+    try {
+      await removerEmpresaApi(e.id);
+    } catch (err) {
+      console.warn('Exclusão aplicada apenas localmente (banco indisponível).', err);
+    }
+    removerEmpresa(e.id);
   }
 
   const responsavel = (id: string) =>

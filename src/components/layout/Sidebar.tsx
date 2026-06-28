@@ -8,9 +8,11 @@ import {
   FolderLock,
   Sparkles,
   Settings,
+  LogOut,
 } from 'lucide-react';
 import { cx } from '../ui';
 import { USUARIO_LOGADO } from '@/data/seed';
+import { useAuth } from '@/features/ia/useAuth';
 
 const itens = [
   { para: '/', rotulo: 'Dashboard', icone: LayoutDashboard, fim: true },
@@ -29,6 +31,7 @@ export function Sidebar({
   aberta: boolean;
   onAbrirIA: () => void;
 }) {
+  const { session, sair } = useAuth();
   return (
     <aside
       className={cx(
@@ -91,14 +94,22 @@ export function Sidebar({
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-graphite-950">
           {USUARIO_LOGADO.iniciais}
         </div>
-        <div className="min-w-0 leading-tight">
+        <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-sm font-medium text-white">
             {USUARIO_LOGADO.nome}
           </p>
           <p className="truncate text-xs text-graphite-400">
-            {USUARIO_LOGADO.cargo}
+            {session?.user.email ?? USUARIO_LOGADO.cargo}
           </p>
         </div>
+        <button
+          onClick={sair}
+          className="rounded-lg p-1.5 text-graphite-400 hover:bg-graphite-800 hover:text-white"
+          aria-label="Sair"
+          title="Sair"
+        >
+          <LogOut size={18} />
+        </button>
       </div>
     </aside>
   );

@@ -35,6 +35,7 @@ interface State {
   documentos: Documento[];
 
   // Empresas
+  definirEmpresas: (lista: Empresa[]) => void;
   adicionarEmpresa: (e: Empresa) => void;
   atualizarEmpresa: (id: string, dados: Partial<Empresa>) => void;
   removerEmpresa: (id: string) => void;
@@ -71,6 +72,8 @@ export const useStore = create<State>()(
   persist(
     (set) => ({
       ...dadosIniciais(),
+
+      definirEmpresas: (lista) => set({ empresas: lista }),
 
       adicionarEmpresa: (e) =>
         set((s) => ({ empresas: [e, ...s.empresas] })),
