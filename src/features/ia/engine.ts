@@ -16,6 +16,7 @@ import { planoDeContas } from '@/data/planoDeContas';
 import { gerarDRE } from '@/lib/accounting';
 import { resumoHonorarios } from '@/lib/finance';
 import { formatBRL, formatPercent } from '@/lib/format';
+import { buscarConhecimento } from './knowledge';
 
 export interface ContextoIA {
   empresas: Empresa[];
@@ -46,6 +47,13 @@ function nomeEmpresa(ctx: ContextoIA, id: string): string {
 export function responder(pergunta: string, ctx: ContextoIA): RespostaIA {
   const q = norm(pergunta);
 
+  // Perguntas claramente conceituais vão direto para a base de conhecimento,
+  // evitando que palavras soltas (ex.: "das" em "dobradas") caiam num ramo de dados.
+  if (/(o que e|o que sao|como funciona|qual a diferenca|diferenca entre|explica|significa|defina|conceito de)/.test(q)) {
+    const c = buscarConhecimento(q);
+    if (c) return { texto: `${c.resposta}${ressalvaFiscal(c.id)}` };
+  }
+
   // Clientes / empresas
   if (/(quant|numero|total).*(client|empresa)|client.*ativ|empresa.*ativ/.test(q)) {
     const ativas = ctx.empresas.filter((e) => e.situacao === 'Ativa').length;
@@ -72,7 +80,7 @@ export function responder(pergunta: string, ctx: ContextoIA): RespostaIA {
   }
 
   // Obrigações / prazos
-  if (/(obrigac|prazo|vencer|vencendo|entrega|das|dctf|esocial|fgts|imposto)/.test(q)) {
+  if (/(obrigac|prazo|vencer|vencendo|entrega|\bdas\b|dctf|esocial|fgts|imposto)/.test(q)) {
     const atrasadas = obrigacoesAtrasadas(ctx);
     const proximas = ctx.obrigacoes
       .filter((o) => o.status !== 'Concluída' && o.status !== 'Atrasada')
@@ -112,15 +120,32 @@ export function responder(pergunta: string, ctx: ContextoIA): RespostaIA {
   if (/(ajuda|pode fazer|consegue|o que voce|quem e voce|ola|oi|bom dia|boa tarde)/.test(q)) {
     return {
       texto:
-        'Sou a **Trudon IA**, sua assistente contábil. Posso responder, com base nos dados do escritório, sobre:\n\n• Carteira de clientes e regimes tributários\n• Honorários a receber e inadimplência\n• Obrigações em atraso e próximos vencimentos\n• Resultado (DRE), receitas e despesas\n\nÉ só perguntar em linguagem natural.',
+        'Sou a **Trudon IA**, sua assistente contábil. Posso ajudar em duas frentes:\n\n**Sobre o seu escritório** (dados reais):\n• Carteira de clientes e regimes\n• Honorários e inadimplência\n• Obrigações e prazos\n• Resultado (DRE)\n\n**Dúvidas de contabilidade e fiscal**:\n• Regimes (Simples, Presumido, Real, MEI)\n• Obrigações (DAS, DCTFWeb, eSocial, FGTS, SPED)\n• Impostos (PIS/COFINS, ICMS, ISS)\n• Conceitos (partidas dobradas, DRE, competência, depreciação, 13º/férias)\n\nÉ só perguntar em linguagem natural.',
     };
+  }
+
+  // Conhecimento contábil/fiscal (base local)
+  const conhecimento = buscarConhecimento(q);
+  if (conhecimento) {
+    return { texto: `${conhecimento.resposta}${ressalvaFiscal(conhecimento.id)}` };
   }
 
   // Fallback
   return {
     texto:
-      'Ainda não sei responder isso com precisão nesta versão. Posso ajudar com **clientes**, **honorários/inadimplência**, **obrigações e prazos** e **resultado (DRE)**. Tente reformular ou escolha uma das sugestões abaixo.',
+      'Ainda não tenho uma resposta precisa para isso nesta versão offline. Posso ajudar com **seus dados** (clientes, honorários, obrigações, resultado) e com **conceitos de contabilidade e fiscal** (regimes, DAS/DCTF/eSocial, impostos, lançamentos). Tente reformular ou escolha uma sugestão abaixo.\n\n_Em breve, com a conexão à Claude, poderei responder perguntas abertas com muito mais profundidade._',
   };
+}
+
+// Acrescenta uma ressalva profissional nos temas com valores/prazos sujeitos a lei.
+function ressalvaFiscal(id: string): string {
+  const sensiveis = new Set([
+    'simples', 'presumido', 'real', 'mei', 'das', 'dctfweb',
+    'esocial', 'fgts', 'sped', 'pis-cofins', 'icms-iss', '13-ferias',
+  ]);
+  return sensiveis.has(id)
+    ? '\n\n_⚠️ Valores e prazos seguem regras gerais e podem mudar — confirme sempre a legislação vigente._'
+    : '';
 }
 
 /** Sugestões de perguntas exibidas no painel. */
@@ -128,7 +153,9 @@ export const sugestoes = [
   'Quantos clientes ativos temos?',
   'Qual a inadimplência atual?',
   'Quais obrigações estão atrasadas?',
-  'Qual o resultado do mês?',
+  'O que é o Simples Nacional?',
+  'Qual a diferença entre ICMS e ISS?',
+  'Como funcionam as partidas dobradas?',
 ];
 
 /** Insights proativos para o dashboard. */

@@ -43,7 +43,7 @@ export function TrudonIA({
     {
       autor: 'ia',
       texto:
-        'Olá! Sou a **Trudon IA**, sua assistente contábil. Pergunte sobre clientes, honorários, obrigações ou resultado do mês.',
+        'Olá! Sou a **Trudon IA**, sua assistente contábil. Posso responder sobre os **dados do escritório** (clientes, honorários, obrigações, resultado) e também tirar **dúvidas de contabilidade e fiscal** (regimes, impostos, obrigações, conceitos). Como posso ajudar?',
     },
   ]);
   const [entrada, setEntrada] = useState('');
