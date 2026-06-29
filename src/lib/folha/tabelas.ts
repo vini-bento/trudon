@@ -52,16 +52,20 @@ export const faixasIRRF: FaixaIRRF[] = [
 export const DEDUCAO_DEPENDENTE = 189.59; // por dependente/mês
 export const DESCONTO_SIMPLIFICADO = 607.2; // desconto simplificado mensal (2026)
 
-// ATENÇÃO — REDUTOR DA LEI 15.270/2025 (NOVO EM 2026, A VALIDAR):
-// A Receita Federal instituiu um redutor mensal do IRRF que torna isentos os
-// rendimentos até R$ 5.000 e reduz de forma decrescente até R$ 7.350.
-// A página oficial não pôde ser lida automaticamente; os valores abaixo seguem
-// a orientação amplamente divulgada da Receita (dez/2025) e DEVEM ser validados
-// pelo responsável técnico contra a tabela oficial antes do uso em folha real.
-export const IRRF_REDUTOR_PENDENTE_VALIDACAO = true;
-export const IRRF_ISENCAO_TOTAL_ATE = 5_000.0; // até aqui: IRRF zero
-export const IRRF_REDUCAO_PARCIAL_ATE = 7_350.0; // acima disso: sem redutor
-export const IRRF_REDUTOR_FORMULA_A = 978.62; // redutor = A − B × rendimento
+// REDUTOR DA LEI 15.270/2025 — Art. 3º-A da Lei 9.250/95, vigente desde 01/2026.
+// Texto legal (Tabela de redução do imposto mensal):
+//   • base ("rendimentos tributáveis sujeitos à incidência mensal") até R$ 5.000:
+//     redução de até R$ 312,89 (de modo que o imposto devido seja zero);
+//   • base de R$ 5.000,01 a R$ 7.350,00:
+//     redução = R$ 978,62 − (0,133145 × base);
+//   • base acima de R$ 7.350,00: sem redução (§2).
+//   • §1: a redução é limitada ao imposto apurado pela tabela progressiva.
+//   • §3: a mesma redução se aplica ao IRRF do 13º salário.
+// IMPORTANTE: a base é a de cálculo (após INSS e dependentes), NÃO o salário bruto.
+export const IRRF_REDUTOR_MAX = 312.89; // faixa até R$ 5.000
+export const IRRF_ISENCAO_TOTAL_ATE = 5_000.0;
+export const IRRF_REDUCAO_PARCIAL_ATE = 7_350.0;
+export const IRRF_REDUTOR_FORMULA_A = 978.62; // redução = A − B × base
 export const IRRF_REDUTOR_FORMULA_B = 0.133145;
 
 // ----------------------------------------------------------------------------

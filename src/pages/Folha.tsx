@@ -561,8 +561,9 @@ function FolhaMensal({ equipe, regime }: { equipe: Funcionario[]; regime: string
 
             <p className="flex items-center gap-2 rounded-lg bg-graphite-50 px-4 py-3 text-xs text-graphite-500">
               <ShieldCheck size={14} className="shrink-0 text-emerald-600" />
-              Valores apurados pelas tabelas oficiais. O IRRF de 2026 usa o novo redutor (Lei
-              15.270/2025) — confira contra a tabela oficial antes do fechamento.
+              Valores apurados pelas tabelas oficiais (INSS — Portaria MPS/MF 13/2026; IRRF —
+              Lei 15.270/2025, Art. 3º-A). Sempre confira a memória de cálculo antes do
+              fechamento e da transmissão.
             </p>
           </>
         ) : (

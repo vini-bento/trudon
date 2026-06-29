@@ -6,6 +6,7 @@ import {
   faixasIRRF,
   TETO_INSS,
   DEDUCAO_DEPENDENTE,
+  IRRF_REDUTOR_MAX,
   IRRF_ISENCAO_TOTAL_ATE,
   IRRF_REDUCAO_PARCIAL_ATE,
   IRRF_REDUTOR_FORMULA_A,
@@ -65,14 +66,19 @@ export function calcularINSS(base: number): ResultadoTributo {
 // ---------------------------------------------------------------- IRRF
 export interface ResultadoIRRF extends ResultadoTributo {
   redutorAplicado: number;
-  pendenteValidacao: boolean;
 }
 
 /**
- * IRRF mensal. base = salário bruto − INSS − (dependentes × dedução) − outras
- * deduções legais (pensão etc., aqui simplificado para INSS + dependentes).
- * Aplica o redutor da Lei 15.270/2025 sobre o RENDIMENTO BRUTO TRIBUTÁVEL.
- * O redutor de 2026 está marcado para validação contra a tabela oficial.
+ * IRRF mensal (Lei 9.250/95 com a redução do Art. 3º-A, Lei 15.270/2025).
+ *   1) base de cálculo = rendimento bruto − INSS − (dependentes × dedução)
+ *   2) imposto pela tabela progressiva sobre a base
+ *   3) redução da Lei 15.270/2025, indexada pela BASE DE CÁLCULO
+ *      ("rendimentos tributáveis sujeitos à incidência mensal"), limitada ao
+ *      imposto apurado (§1):
+ *        • base até R$ 5.000        → redução de até R$ 312,89 (zera o imposto)
+ *        • base R$ 5.000,01–7.350   → R$ 978,62 − (0,133145 × base)
+ *        • base acima de R$ 7.350   → sem redução (§2)
+ *   IRRF = imposto − redução.
  */
 export function calcularIRRF(
   rendimentoBruto: number,
@@ -85,23 +91,24 @@ export function calcularIRRF(
     faixasIRRF.find((f) => base <= f.ate) ?? faixasIRRF[faixasIRRF.length - 1];
   const impostoTabela = Math.max(0, round2(base * (faixa.aliquota / 100) - faixa.deduzir));
 
-  // Redutor da Lei 15.270/2025 (sobre o rendimento bruto tributável).
+  // Redução da Lei 15.270/2025 — indexada pela BASE DE CÁLCULO e limitada ao
+  // imposto apurado (§1).
   let redutor = 0;
-  if (rendimentoBruto <= IRRF_ISENCAO_TOTAL_ATE) {
-    redutor = impostoTabela; // zera o imposto (isenção total até R$ 5.000)
-  } else if (rendimentoBruto <= IRRF_REDUCAO_PARCIAL_ATE) {
-    redutor = Math.max(
+  if (base <= IRRF_ISENCAO_TOTAL_ATE) {
+    redutor = Math.min(impostoTabela, IRRF_REDUTOR_MAX);
+  } else if (base <= IRRF_REDUCAO_PARCIAL_ATE) {
+    const formula = Math.max(
       0,
-      round2(IRRF_REDUTOR_FORMULA_A - IRRF_REDUTOR_FORMULA_B * rendimentoBruto),
+      round2(IRRF_REDUTOR_FORMULA_A - IRRF_REDUTOR_FORMULA_B * base),
     );
+    redutor = Math.min(impostoTabela, formula);
   }
   const valor = Math.max(0, round2(impostoTabela - redutor));
 
   return {
     valor,
     aliquota: faixa.aliquota,
-    redutorAplicado: round2(Math.min(redutor, impostoTabela)),
-    pendenteValidacao: true,
+    redutorAplicado: round2(redutor),
     memoria: [
       { rotulo: 'Rendimento bruto tributável', valor: rendimentoBruto, tipo: 'moeda' },
       { rotulo: '(−) INSS', valor: inss, tipo: 'moeda' },
@@ -111,7 +118,7 @@ export function calcularIRRF(
       { rotulo: 'Base de cálculo do IRRF', valor: base, tipo: 'moeda' },
       { rotulo: 'Alíquota da faixa', valor: faixa.aliquota, tipo: 'percentual' },
       { rotulo: 'Imposto pela tabela', valor: impostoTabela, tipo: 'moeda' },
-      { rotulo: 'Redutor Lei 15.270/2025 (a validar)', valor: round2(Math.min(redutor, impostoTabela)), tipo: 'moeda' },
+      { rotulo: 'Redução Lei 15.270/2025 (Art. 3º-A)', valor: round2(redutor), tipo: 'moeda' },
       { rotulo: 'IRRF = imposto − redutor', valor, tipo: 'moeda', destaque: true },
     ],
   };
@@ -244,11 +251,6 @@ export function calcularFolhaCLT(
   // IRRF
   const irrf = calcularIRRF(totalProventos, inss.valor, func.dependentes);
   descontos.push({ rotulo: 'IRRF', valor: irrf.valor, memoria: irrf.memoria });
-  if (irrf.pendenteValidacao && irrf.valor > 0) {
-    avisos.push(
-      'IRRF 2026 usa o novo redutor da Lei 15.270/2025 — confira o valor contra a tabela oficial da Receita antes do fechamento.',
-    );
-  }
 
   // Vale-transporte (até 6% do salário base)
   if (func.valeTransporte) {

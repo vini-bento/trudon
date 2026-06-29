@@ -48,25 +48,26 @@ describe('INSS (Portaria MPS/MF 13/2026)', () => {
   });
 });
 
-describe('IRRF (Lei 15.270/2025 — redutor a validar)', () => {
-  it('rendimento ≤ R$ 5.000 é isento (redutor zera o imposto)', () => {
+describe('IRRF (Lei 15.270/2025 — Art. 3º-A, redução indexada pela base)', () => {
+  it('base ≤ R$ 5.000 é isento (redução limitada ao imposto zera o tributo)', () => {
     const inss = calcularINSS(3000).valor; // 248,60
     const r = calcularIRRF(3000, inss, 0);
+    // base 2.751,40 → imposto 36,92 ; base ≤ 5.000 → redução min(36,92; 312,89) = 36,92
     expect(r.valor).toBeCloseTo(0, 2);
   });
-  it('R$ 6.000 — faixa parcial, redutor 179,75 → IRRF 397,84', () => {
+  it('base na faixa parcial — R$ 6.000 bruto → IRRF 312,43', () => {
     const inss = calcularINSS(6000).valor; // 641,50
     expect(inss).toBeCloseTo(641.5, 2);
     const r = calcularIRRF(6000, inss, 0);
-    // base 5.358,50 → tabela 577,59 ; redutor 978,62 − 0,133145×6000 = 179,75
-    expect(r.valor).toBeCloseTo(397.84, 2);
+    // base 5.358,50 → imposto 577,59 ; redução 978,62 − 0,133145×5.358,50 = 265,16
+    expect(r.valor).toBeCloseTo(312.43, 2);
   });
-  it('R$ 8.000 com 2 dependentes — acima de 7.350, sem redutor', () => {
+  it('base na faixa parcial — R$ 8.000 bruto, 2 dependentes → IRRF 859,67', () => {
     const inss = calcularINSS(8000).valor; // 921,50 (8.000 está abaixo do teto)
     expect(inss).toBeCloseTo(921.5, 2);
     const r = calcularIRRF(8000, inss, 2);
-    // base 8000 − 921,50 − 379,18 = 6699,32 → 27,5% − 896 = 946,31
-    expect(r.valor).toBeCloseTo(946.31, 2);
+    // base 6.699,32 → imposto 946,31 ; redução 978,62 − 0,133145×6.699,32 = 86,64
+    expect(r.valor).toBeCloseTo(859.67, 2);
   });
 });
 
