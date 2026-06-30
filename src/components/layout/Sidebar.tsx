@@ -13,7 +13,6 @@ import {
   LogOut,
 } from 'lucide-react';
 import { cx } from '../ui';
-import { USUARIO_LOGADO } from '@/data/seed';
 import { useAuth } from '@/features/ia/useAuth';
 
 const itens = [
@@ -35,7 +34,7 @@ export function Sidebar({
   aberta: boolean;
   onAbrirIA: () => void;
 }) {
-  const { session, sair } = useAuth();
+  const { usuario, sair } = useAuth();
   return (
     <aside
       className={cx(
@@ -96,14 +95,14 @@ export function Sidebar({
       {/* Usuário */}
       <div className="flex items-center gap-3 border-t border-graphite-800 px-5 py-4">
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-500 text-sm font-bold text-graphite-950">
-          {USUARIO_LOGADO.iniciais}
+          {usuario?.iniciais ?? '—'}
         </div>
         <div className="min-w-0 flex-1 leading-tight">
           <p className="truncate text-sm font-medium text-white">
-            {USUARIO_LOGADO.nome}
+            {usuario?.nome ?? 'Usuário'}
           </p>
           <p className="truncate text-xs text-graphite-400">
-            {session?.user.email ?? USUARIO_LOGADO.cargo}
+            {usuario?.email ?? ''}
           </p>
         </div>
         <button

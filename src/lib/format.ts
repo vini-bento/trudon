@@ -145,6 +145,16 @@ export function formatTamanho(kb: number): string {
   return `${formatNumber(kb / 1024, 1)} MB`;
 }
 
+/** Nome amigável derivado do e-mail (ex.: kelly.picossi@x → "Kelly Picossi"). */
+export function nomeDoEmail(email: string): string {
+  const local = (email.split('@')[0] || '').replace(/[._-]+/g, ' ').trim();
+  if (!local) return email;
+  return local
+    .split(/\s+/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 /** Iniciais a partir de um nome completo. */
 export function iniciais(nome: string): string {
   const partes = nome.trim().split(/\s+/);
