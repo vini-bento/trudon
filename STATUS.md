@@ -68,10 +68,15 @@ Branch: `claude/accounting-app-review-qffa5p`.
    encargos); Doméstico (DAE: FGTS 8% + 3,2% + patronal + seguro).
 3. **Integrações**: Folha→Fiscal (Fator R automático a partir da folha 12m);
    Folha→Contabilidade (lançamentos automáticos da folha).
-4. **Blindagem (segurança na UI)**: aplicar `papel`/`dono`/`permissoes` (já no
-   banco, migrations 0001/0003) à interface; cliente vê só a própria empresa,
-   sem edição; equipe conforme cargo/permissão; remover seed fictício para
-   usuário logado. Dashboard/menus sensíveis por permissão.
+4. **Blindagem (segurança na UI)** — PARCIAL.
+   - ✅ FEITO: `src/features/auth/permissoes.ts` (`podeAcessar`) + testes;
+     Sidebar e rotas (`ExigeAcesso` em App.tsx) filtram por papel/permissão;
+     AuthGate não usa mais seed como fallback para quem está logado (sem
+     vazamento de dados fictícios). `useAuth` carrega o perfil real.
+   - ⏳ FALTA: tela de gestão de permissões (item 6); persistência de
+     funcionarios/lançamentos/documentos (hoje ainda em seed local) — ver item 7.
+   - 🔬 VERIFICAR ao vivo: logar como cliente real e confirmar que só vê o Portal
+     da própria empresa e não consegue editar nada.
 5. **Portal do cliente real**: read-only da própria empresa + **upload de
    documentos** (Supabase Storage), com RLS.
 6. **Tela de gestão de equipe** (só-donos) para cargos e permissões.

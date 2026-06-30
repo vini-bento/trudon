@@ -36,12 +36,13 @@ export interface EstadoAuth {
 export function useAuth(): EstadoAuth {
   const [session, setSession] = useState<Session | null>(null);
   const [perfil, setPerfil] = useState<Perfil | null>(null);
-  const [carregando, setCarregando] = useState(true);
+  const [authCarregando, setAuthCarregando] = useState(true);
+  const [perfilCarregado, setPerfilCarregado] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
-      setCarregando(false);
+      setAuthCarregando(false);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_evt, s) => {
       setSession(s);
@@ -54,28 +55,37 @@ export function useAuth(): EstadoAuth {
     const uid = session?.user?.id;
     if (!uid) {
       setPerfil(null);
+      setPerfilCarregado(true);
       return;
     }
     let ativo = true;
+    setPerfilCarregado(false);
     supabase
       .from('perfis')
       .select('nome, dono, papel, permissoes, empresa_id')
       .eq('id', uid)
       .single()
       .then(({ data }) => {
-        if (!ativo || !data) return;
-        setPerfil({
-          nome: data.nome ?? null,
-          dono: data.dono ?? false,
-          papel: (data.papel as Perfil['papel']) ?? 'equipe',
-          permissoes: data.permissoes ?? [],
-          empresaId: data.empresa_id ?? null,
-        });
+        if (!ativo) return;
+        if (data) {
+          setPerfil({
+            nome: data.nome ?? null,
+            dono: data.dono ?? false,
+            papel: (data.papel as Perfil['papel']) ?? 'equipe',
+            permissoes: data.permissoes ?? [],
+            empresaId: data.empresa_id ?? null,
+          });
+        }
+        setPerfilCarregado(true);
       });
     return () => {
       ativo = false;
     };
   }, [session?.user?.id]);
+
+  // Só está "pronto" quando a sessão E (havendo sessão) o perfil resolveram —
+  // evita tratar um dono como sem-permissão durante o carregamento.
+  const carregando = authCarregando || (!!session && !perfilCarregado);
 
   async function entrar(email: string, senha: string): Promise<string | null> {
     const { error } = await supabase.auth.signInWithPassword({

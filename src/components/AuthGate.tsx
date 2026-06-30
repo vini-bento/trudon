@@ -19,15 +19,17 @@ export function AuthGate({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!session) return;
     let ativo = true;
-    // Hidrata cada conjunto a partir do banco; se algum falhar (banco ainda não
-    // configurado / indisponível), mantém os dados locais daquele conjunto.
+    // Hidrata cada conjunto a partir do banco (fonte da verdade). Com sessão,
+    // o resultado do banco SUBSTITUI os dados de exemplo — inclusive quando vem
+    // vazio — para que ninguém logado veja dados fictícios de outras empresas
+    // (blindagem / LGPD). Só em caso de ERRO de rede mantemos o estado atual.
     const hidratar = <T,>(
       buscar: () => Promise<T[]>,
       definir: (l: T[]) => void,
     ) => {
       buscar()
         .then((lista) => {
-          if (ativo && lista.length) definir(lista);
+          if (ativo) definir(lista);
         })
         .catch(() => {});
     };

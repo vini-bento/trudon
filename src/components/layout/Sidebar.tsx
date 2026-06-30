@@ -14,17 +14,24 @@ import {
 } from 'lucide-react';
 import { cx } from '../ui';
 import { useAuth } from '@/features/ia/useAuth';
+import { podeAcessar, type Area } from '@/features/auth/permissoes';
 
-const itens = [
-  { para: '/', rotulo: 'Dashboard', icone: LayoutDashboard, fim: true },
-  { para: '/empresas', rotulo: 'Empresas', icone: Building2 },
-  { para: '/contabilidade', rotulo: 'Contabilidade', icone: BookOpenCheck },
-  { para: '/fiscal', rotulo: 'Fiscal', icone: Calculator },
-  { para: '/folha', rotulo: 'Folha / DP', icone: Users },
-  { para: '/honorarios', rotulo: 'Honorários', icone: Receipt },
-  { para: '/obrigacoes', rotulo: 'Obrigações', icone: CalendarClock },
-  { para: '/portal', rotulo: 'Portal do Cliente', icone: FolderLock },
-  { para: '/config', rotulo: 'Configurações', icone: Settings },
+const itens: {
+  para: string;
+  rotulo: string;
+  icone: typeof LayoutDashboard;
+  area: Area;
+  fim?: boolean;
+}[] = [
+  { para: '/', rotulo: 'Dashboard', icone: LayoutDashboard, area: 'dashboard', fim: true },
+  { para: '/empresas', rotulo: 'Empresas', icone: Building2, area: 'empresas' },
+  { para: '/contabilidade', rotulo: 'Contabilidade', icone: BookOpenCheck, area: 'contabilidade' },
+  { para: '/fiscal', rotulo: 'Fiscal', icone: Calculator, area: 'fiscal' },
+  { para: '/folha', rotulo: 'Folha / DP', icone: Users, area: 'folha' },
+  { para: '/honorarios', rotulo: 'Honorários', icone: Receipt, area: 'honorarios' },
+  { para: '/obrigacoes', rotulo: 'Obrigações', icone: CalendarClock, area: 'obrigacoes' },
+  { para: '/portal', rotulo: 'Portal do Cliente', icone: FolderLock, area: 'portal' },
+  { para: '/config', rotulo: 'Configurações', icone: Settings, area: 'config' },
 ];
 
 export function Sidebar({
@@ -35,6 +42,7 @@ export function Sidebar({
   onAbrirIA: () => void;
 }) {
   const { usuario, sair } = useAuth();
+  const visiveis = itens.filter((i) => podeAcessar(i.area, usuario));
   return (
     <aside
       className={cx(
@@ -61,7 +69,7 @@ export function Sidebar({
 
       {/* Navegação */}
       <nav className="flex-1 space-y-1 px-3 py-2">
-        {itens.map(({ para, rotulo, icone: Icone, fim }) => (
+        {visiveis.map(({ para, rotulo, icone: Icone, fim }) => (
           <NavLink
             key={para}
             to={para}
