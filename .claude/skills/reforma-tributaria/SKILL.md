@@ -11,7 +11,12 @@ description: >
 # Reforma Tributária — Regras Vigentes
 
 ## CBS/IBS
-- Alíquota teste: 1% desde janeiro/2026
+- Alíquota teste desde janeiro/2026: CBS 0,9% +
+  IBS 0,1% (total 1%), conforme LC 214/2025.
+  São tributos DISTINTOS — guias de recolhimento
+  e destinação separadas (CBS federal; IBS
+  estados/municípios) — e o app deve tratá-los
+  como dois tributos, nunca como "1%" único.
 - CBS plena: implementação a partir de 2027
 
 ### O que o app implementa hoje (jul/2026)
