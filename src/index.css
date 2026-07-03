@@ -35,8 +35,11 @@
 }
 
 @layer components {
+  /* Superfície-base plana (borda hairline, sem sombra). A única elevação
+     reservada é a dos cartões de métrica (StatCard) e a de elementos
+     flutuantes (Modal) — ver skill design-trudon-erp. */
   .card {
-    @apply rounded-xl border border-graphite-200 bg-white shadow-card;
+    @apply rounded-xl border border-graphite-200 bg-white;
   }
 
   .input {
@@ -47,10 +50,5 @@
 
   .label {
     @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-graphite-500;
-  }
-
-  /* Gradiente dourado reutilizável para realces da marca */
-  .text-gradient-gold {
-    @apply bg-gradient-to-r from-gold-700 via-gold-500 to-gold-300 bg-clip-text text-transparent;
   }
 }

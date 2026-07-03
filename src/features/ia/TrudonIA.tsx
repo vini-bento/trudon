@@ -93,7 +93,7 @@ export function TrudonIA({
         {/* Cabeçalho */}
         <div className="flex items-center justify-between bg-graphite-950 px-5 py-4 text-white">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 text-graphite-950">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gold-500 text-graphite-950">
               <Sparkles size={18} />
             </div>
             <div className="leading-tight">
@@ -179,7 +179,7 @@ export function TrudonIA({
           />
           <button
             type="submit"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 text-graphite-950 transition-opacity hover:opacity-90 disabled:opacity-40"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold-600 text-graphite-950 transition-colors hover:bg-gold-500 disabled:opacity-40"
             disabled={!entrada.trim() || pensando}
             aria-label="Enviar"
           >

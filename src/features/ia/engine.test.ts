@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { responder, type ContextoIA } from './engine';
+import { responder, gerarInsights, type ContextoIA } from './engine';
 import { buscarConhecimento } from './knowledge';
+import type { Empresa, Obrigacao } from '@/data/types';
 
 const ctxVazio: ContextoIA = {
   empresas: [],
@@ -49,5 +50,31 @@ describe('responder — conhecimento contábil', () => {
   it('cai no fallback para perguntas fora de escopo', () => {
     const r = responder('qual a previsão do tempo?', ctxVazio);
     expect(r.texto.toLowerCase()).toContain('não tenho uma resposta');
+  });
+});
+
+describe('gerarInsights — severidade', () => {
+  it('obrigação em atraso é insight crítico', () => {
+    const ctx: ContextoIA = {
+      ...ctxVazio,
+      obrigacoes: [{ status: 'Atrasada' } as Obrigacao],
+    };
+    const [primeiro] = gerarInsights(ctx);
+    expect(primeiro.severidade).toBe('critico');
+    expect(primeiro.texto).toContain('atraso');
+  });
+
+  it('empresa suspensa é insight de atenção', () => {
+    const ctx: ContextoIA = {
+      ...ctxVazio,
+      empresas: [{ situacao: 'Suspensa' } as Empresa],
+    };
+    const atencao = gerarInsights(ctx).find((i) => i.texto.includes('suspensa'));
+    expect(atencao?.severidade).toBe('atencao');
+  });
+
+  it('carteira sem problemas gera insight neutro', () => {
+    const [unico] = gerarInsights(ctxVazio);
+    expect(unico.severidade).toBe('neutro');
   });
 });

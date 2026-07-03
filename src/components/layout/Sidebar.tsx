@@ -93,7 +93,7 @@ export function Sidebar({
       <div className="px-3 pb-2">
         <button
           onClick={onAbrirIA}
-          className="flex w-full items-center gap-3 rounded-lg bg-gradient-to-r from-gold-600 to-gold-400 px-3 py-2.5 text-sm font-semibold text-graphite-950 transition-opacity hover:opacity-90"
+          className="flex w-full items-center gap-3 rounded-lg bg-gold-600 px-3 py-2.5 text-sm font-semibold text-graphite-950 transition-colors hover:bg-gold-500"
         >
           <Sparkles size={18} />
           Trudon IA

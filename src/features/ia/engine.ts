@@ -158,31 +158,47 @@ export const sugestoes = [
   'Como funcionam as partidas dobradas?',
 ];
 
-/** Insights proativos para o dashboard. */
-export function gerarInsights(ctx: ContextoIA): string[] {
-  const insights: string[] = [];
+// Severidade do insight — governa a hierarquia visual no dashboard:
+// crítico = ação imediata (cor funcional), atenção = revisar (ênfase de peso),
+// neutro = informativo.
+export type SeveridadeInsight = 'critico' | 'atencao' | 'neutro';
+
+export interface Insight {
+  texto: string;
+  severidade: SeveridadeInsight;
+}
+
+/** Insights proativos para o dashboard, ordenados do mais grave ao neutro. */
+export function gerarInsights(ctx: ContextoIA): Insight[] {
+  const insights: Insight[] = [];
   const atrasadas = obrigacoesAtrasadas(ctx);
   if (atrasadas.length) {
-    insights.push(
-      `${atrasadas.length} obrigação(ões) em atraso exigem atenção imediata.`,
-    );
+    insights.push({
+      texto: `${atrasadas.length} obrigação(ões) em atraso exigem atenção imediata.`,
+      severidade: 'critico',
+    });
   }
   const resumo = resumoHonorarios(ctx.cobrancas);
   if (resumo.taxaInadimplencia > 5) {
-    insights.push(
-      `Inadimplência em ${formatPercent(resumo.taxaInadimplencia)} — acima do ideal (5%). ${formatBRL(
+    insights.push({
+      texto: `Inadimplência em ${formatPercent(resumo.taxaInadimplencia)} — acima do ideal (5%). ${formatBRL(
         resumo.atrasado,
       )} em atraso.`,
-    );
+      severidade: 'atencao',
+    });
   }
   const suspensas = ctx.empresas.filter((e) => e.situacao === 'Suspensa');
   if (suspensas.length) {
-    insights.push(
-      `${suspensas.length} empresa(s) com situação suspensa — vale revisar o cadastro.`,
-    );
+    insights.push({
+      texto: `${suspensas.length} empresa(s) com situação suspensa — vale revisar o cadastro.`,
+      severidade: 'atencao',
+    });
   }
   if (!insights.length) {
-    insights.push('Carteira saudável: sem atrasos críticos e inadimplência sob controle.');
+    insights.push({
+      texto: 'Carteira saudável: sem atrasos críticos e inadimplência sob controle.',
+      severidade: 'neutro',
+    });
   }
   return insights;
 }

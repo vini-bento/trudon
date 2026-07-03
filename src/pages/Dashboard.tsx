@@ -6,7 +6,6 @@ import {
   CalendarClock,
   TrendingUp,
   Sparkles,
-  AlertTriangle,
   ArrowRight,
 } from 'lucide-react';
 import {
@@ -22,13 +21,13 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { Card, PageHeader, Badge } from '@/components/ui';
+import { Card, PageHeader, Badge, cx } from '@/components/ui';
 import { StatCard } from '@/components/StatCard';
 import { useStore } from '@/store/useStore';
 import { resumoHonorarios, fluxoCaixa } from '@/lib/finance';
 import { gerarDRE } from '@/lib/accounting';
 import { planoDeContas } from '@/data/planoDeContas';
-import { gerarInsights } from '@/features/ia/engine';
+import { gerarInsights, type SeveridadeInsight } from '@/features/ia/engine';
 import { formatBRL, formatCompetencia, formatPercent } from '@/lib/format';
 import { tomObrigacao } from '@/lib/labels';
 import { differenceInCalendarDays, parseISO } from 'date-fns';
@@ -38,6 +37,14 @@ const CORES_REGIME: Record<string, string> = {
   'Lucro Presumido': '#c8902f',
   'Lucro Real': '#647082',
   MEI: '#10b981',
+};
+
+// Hierarquia visual dos insights por severidade: crítico usa cor funcional
+// (vermelho); atenção se distingue pelo peso, não por cor; neutro é discreto.
+const ESTILO_SEVERIDADE: Record<SeveridadeInsight, string> = {
+  critico: 'font-medium text-red-700',
+  atencao: 'font-medium text-graphite-900',
+  neutro: 'text-graphite-600',
 };
 
 export function Dashboard() {
@@ -146,22 +153,21 @@ export function Dashboard() {
         />
       </div>
 
-      {/* Insights da Trudon IA */}
-      <Card className="mt-6 overflow-hidden">
-        <div className="flex items-center gap-2 border-b border-graphite-100 bg-gradient-to-r from-gold-50 to-transparent px-5 py-3">
-          <Sparkles size={18} className="text-gold-600" />
-          <h2 className="font-semibold text-graphite-900">
+      {/* Insights da Trudon IA — superfície recuada (papel consultivo) */}
+      <Card className="mt-6 border-graphite-200 bg-graphite-50 p-5 shadow-none">
+        <div className="mb-2 flex items-center gap-2">
+          <Sparkles size={16} className="text-gold-600" />
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-graphite-500">
             Insights da Trudon IA
           </h2>
         </div>
-        <ul className="divide-y divide-graphite-100">
-          {insights.map((texto, i) => (
-            <li key={i} className="flex items-start gap-3 px-5 py-3 text-sm">
-              <AlertTriangle
-                size={16}
-                className="mt-0.5 shrink-0 text-gold-500"
-              />
-              <span className="text-graphite-700">{texto}</span>
+        <ul className="space-y-2">
+          {insights.map(({ texto, severidade }, i) => (
+            <li
+              key={i}
+              className={cx('text-sm leading-relaxed', ESTILO_SEVERIDADE[severidade])}
+            >
+              {texto}
             </li>
           ))}
         </ul>
@@ -169,7 +175,7 @@ export function Dashboard() {
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Fluxo de caixa */}
-        <Card className="p-5 lg:col-span-2">
+        <Card className="p-5 shadow-none lg:col-span-2">
           <h2 className="mb-4 font-semibold text-graphite-900">
             Honorários — orçado × realizado
           </h2>
@@ -195,7 +201,7 @@ export function Dashboard() {
         </Card>
 
         {/* Distribuição por regime */}
-        <Card className="p-5">
+        <Card className="p-5 shadow-none">
           <h2 className="mb-4 font-semibold text-graphite-900">
             Clientes por regime
           </h2>
@@ -226,7 +232,7 @@ export function Dashboard() {
       </div>
 
       {/* Próximas obrigações */}
-      <Card className="mt-6 overflow-hidden">
+      <Card className="mt-6 overflow-hidden shadow-none">
         <div className="flex items-center justify-between border-b border-graphite-100 px-5 py-3">
           <h2 className="font-semibold text-graphite-900">Próximas obrigações</h2>
           <Link
@@ -254,10 +260,10 @@ export function Dashboard() {
                 <span
                   className={
                     dias < 0
-                      ? 'text-xs font-semibold text-red-600'
+                      ? 'text-xs font-semibold tabular-nums text-red-600'
                       : dias <= 3
-                        ? 'text-xs font-semibold text-amber-600'
-                        : 'text-xs text-graphite-500'
+                        ? 'text-xs font-semibold tabular-nums text-amber-600'
+                        : 'text-xs tabular-nums text-graphite-500'
                   }
                 >
                   {dias < 0

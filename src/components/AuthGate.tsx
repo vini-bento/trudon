@@ -81,7 +81,7 @@ function TelaLogin({
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-graphite-950 to-graphite-800 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-graphite-950 px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex flex-col items-center text-center">
           <img
@@ -145,7 +145,7 @@ function TelaLogin({
             <button
               type="submit"
               disabled={enviando}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-gold-600 to-gold-400 px-4 py-2.5 text-sm font-semibold text-graphite-950 transition-opacity hover:opacity-90 disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold-600 px-4 py-2.5 text-sm font-semibold text-graphite-950 transition-colors hover:bg-gold-500 disabled:opacity-60"
             >
               {enviando && <Loader2 size={16} className="animate-spin" />}
               Entrar

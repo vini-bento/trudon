@@ -16,16 +16,6 @@ import {
   formatTamanho,
 } from '@/lib/format';
 
-const ICONE_TIPO: Record<string, string> = {
-  Guia: 'text-amber-600 bg-amber-50',
-  Balancete: 'text-sky-600 bg-sky-50',
-  Folha: 'text-violet-600 bg-violet-50',
-  'Nota Fiscal': 'text-emerald-600 bg-emerald-50',
-  Relatório: 'text-gold-700 bg-gold-50',
-  Contrato: 'text-graphite-600 bg-graphite-100',
-  Outro: 'text-graphite-600 bg-graphite-100',
-};
-
 export function Portal() {
   const { empresas, documentos, marcarDocumentoVisualizado } = useStore();
   const elegiveis = empresas.filter((e) => e.situacao !== 'Baixada');
@@ -78,7 +68,7 @@ export function Portal() {
 
       {empresa && (
         <Card className="mb-6 overflow-hidden">
-          <div className="flex flex-wrap items-center justify-between gap-4 bg-gradient-to-r from-graphite-950 to-graphite-800 px-6 py-5 text-white">
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-graphite-900 px-6 py-5 text-white">
             <div>
               <p className="text-lg font-semibold">{empresa.nomeFantasia}</p>
               <p className="text-sm text-graphite-300">
@@ -95,8 +85,8 @@ export function Portal() {
             </div>
           </div>
           <div className="flex items-center gap-2 px-6 py-3 text-sm text-graphite-600">
-            <ShieldCheck size={16} className="text-emerald-600" />
-            {docs.length} documento(s) publicado(s)
+            <ShieldCheck size={16} className="text-graphite-400" />
+            <span className="tabular-nums">{docs.length}</span> documento(s) publicado(s)
             {naoVistos > 0 && (
               <Badge tone="gold" className="ml-1">
                 {naoVistos} não visualizado(s)
@@ -115,18 +105,9 @@ export function Portal() {
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {docs.map((d) => (
-            <Card
-              key={d.id}
-              className="flex flex-col p-4 transition-shadow hover:shadow-card-hover"
-            >
+            <Card key={d.id} className="flex flex-col p-4">
               <div className="flex items-start gap-3">
-                <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
-                    ICONE_TIPO[d.tipo] ?? ICONE_TIPO.Outro
-                  }`}
-                >
-                  <FileText size={20} />
-                </div>
+                <FileText size={20} className="mt-0.5 shrink-0 text-graphite-400" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-medium text-graphite-900">
                     {d.nome}
@@ -141,7 +122,7 @@ export function Portal() {
                 )}
               </div>
 
-              <dl className="mt-3 space-y-1 text-xs text-graphite-500">
+              <dl className="mt-3 space-y-1 text-xs tabular-nums text-graphite-500">
                 <div className="flex justify-between">
                   <dt>Protocolo</dt>
                   <dd className="font-mono text-graphite-700">{d.protocolo}</dd>
