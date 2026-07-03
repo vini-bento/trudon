@@ -5,8 +5,12 @@ Baseado na auditoria fiscal de julho/2026
 
 ## 🔴 Prioridade 1 — Correção urgente
 - [ ] Validação de teto MEI (R$ 81.000/ano) em
-  apurarMEI(): alerta a partir de 80% e
-  sinalização de risco de desenquadramento
+  apurarMEI(): alertas de desenquadramento em
+  3 níveis (aproximação >80%, excesso até 20%,
+  excesso acima de 20% com efeito retroativo)
+  - Ver skill: seção "MEI — Regras de teto e
+    desenquadramento" em
+    .claude/skills/reforma-tributaria/SKILL.md
   - Nota: teto em discussão legislativa
     (PLP 186/2026) — implementar como parâmetro
     configurável, não como constante fixa no

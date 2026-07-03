@@ -47,6 +47,35 @@ testes em `fiscal.test.ts`, seguindo o CLAUDE.md.
   contribuintes individuais de IBS/CBS,
   obrigatório a partir de janeiro/2027
 
+## MEI — Regras de teto e desenquadramento
+(verificado em jul/2026)
+
+- Teto vigente: R$ 81.000/ano (sem reajuste
+  desde 2018). NÃO foi alterado pela LC
+  214/2025. Projetos em tramitação (PLP
+  186/2026: R$ 110 mil em 2027, R$ 140 mil em
+  2028) ainda sem aprovação — implementar o
+  teto SEMPRE como parâmetro configurável em
+  tabelas.ts, nunca como constante fixa.
+
+- Faixas de excesso (implementar alertas em
+  3 níveis, não 2):
+  1. Aproximação: acima de 80% do teto → aviso
+  2. Excesso até 20% (até R$ 97.200): DAS
+     complementar + desenquadramento para ME
+     em janeiro do ano seguinte, sem multa
+  3. Excesso acima de 20%: desenquadramento
+     RETROATIVO a janeiro do próprio ano, com
+     juros e multas — cenário crítico, alerta
+     máximo
+
+- Resolução CGSN 183/2025: rendimentos da
+  mesma atividade econômica recebidos no CPF
+  do titular somam ao faturamento do CNPJ
+  para fins de limite. O cadastro/lançamentos
+  do ERP precisam permitir capturar receita
+  em CPF vinculada ao MEI.
+
 ## Contexto do escritório (TRUDON)
 Serviços em quatro categorias:
 1. Constituição e alterações societárias
