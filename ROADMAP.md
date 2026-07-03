@@ -24,6 +24,12 @@ Baseado na auditoria fiscal de julho/2026
   por evento (societário), sazonal PF e
   consultoria avulsa — hoje só existe contrato
   mensal fixo (Contrato/Cobranca)
+- [ ] Módulo de folha de pagamento (Nível 2):
+  cadastro individual de funcionários (CPF,
+  admissão, cargo, salário, categoria), cálculo
+  de encargos e eventos eSocial. Pré-requisito:
+  quadro de pessoal por categoria (implementado).
+  Decisão pendente com Kelly: escopo e prioridade.
 
 ## 🟡 Prioridade 3 — Conformidade com a reforma
 (LC 214/2025, por ordem de prazo)

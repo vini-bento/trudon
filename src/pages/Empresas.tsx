@@ -44,6 +44,17 @@ import {
   atualizarEmpresaApi,
   removerEmpresaApi,
 } from '@/lib/empresasApi';
+import {
+  CATEGORIAS_VINCULO,
+  possuiFolhaDePagamento,
+  totalVinculos,
+  type CategoriaVinculo,
+  type VinculoQuantidade,
+} from '@/lib/pessoal';
+import {
+  listarQuadroPessoal,
+  salvarQuadroPessoal,
+} from '@/lib/quadroPessoalApi';
 
 const REGIMES: RegimeTributario[] = [
   'Simples Nacional',
@@ -112,6 +123,13 @@ const contatoVazio = (): Contato => ({
   principal: false,
 });
 
+type QuantidadesQuadro = Record<CategoriaVinculo, number>;
+
+const quadroVazio = (): QuantidadesQuadro =>
+  Object.fromEntries(
+    CATEGORIAS_VINCULO.map((c) => [c.categoria, 0]),
+  ) as QuantidadesQuadro;
+
 export function Empresas() {
   const { empresas, adicionarEmpresa, atualizarEmpresa, removerEmpresa } =
     useStore();
@@ -123,10 +141,21 @@ export function Empresas() {
   const [form, setForm] = useState<FormEmpresa>(formVazio());
   const [socios, setSocios] = useState<Socio[]>([]);
   const [contatos, setContatos] = useState<Contato[]>([]);
+  const [quadro, setQuadro] = useState<QuantidadesQuadro>(quadroVazio());
   const [buscandoCep, setBuscandoCep] = useState(false);
   const [erro, setErro] = useState('');
 
   const isPF = form.tipoPessoa === 'PF';
+
+  // -- Quadro de pessoal ------------------------------------------------------
+  const quadroVinculos: VinculoQuantidade[] = CATEGORIAS_VINCULO.map((c) => ({
+    categoria: c.categoria,
+    quantidade: quadro[c.categoria] || 0,
+  }));
+  const totalQuadro = totalVinculos(quadroVinculos);
+  const temFolha = possuiFolhaDePagamento(quadroVinculos);
+  const updateQuadro = (categoria: CategoriaVinculo, valor: number) =>
+    setQuadro((q) => ({ ...q, [categoria]: Math.max(0, Math.floor(valor) || 0) }));
 
   const filtradas = useMemo(() => {
     const q = busca.toLowerCase();
@@ -147,6 +176,7 @@ export function Empresas() {
     setForm(formVazio());
     setSocios([]);
     setContatos([{ ...contatoVazio(), principal: true }]);
+    setQuadro(quadroVazio());
     setErro('');
     setModalAberto(true);
   }
@@ -159,6 +189,21 @@ export function Empresas() {
     setContatos(
       cons.length ? cons.map((c) => ({ ...c })) : [{ ...contatoVazio(), principal: true }],
     );
+    // Quadro de pessoal vive em tabela própria: carrega sob demanda. Começa
+    // zerado e é preenchido quando o banco responde (offline → permanece zero).
+    setQuadro(quadroVazio());
+    listarQuadroPessoal(e.id)
+      .then((itens) => {
+        if (!itens.length) return;
+        setQuadro((q) => {
+          const novo = { ...q };
+          itens.forEach((it) => (novo[it.categoria] = it.quantidade));
+          return novo;
+        });
+      })
+      .catch((err) =>
+        console.warn('Quadro de pessoal indisponível (banco offline).', err),
+      );
     setErro('');
     setModalAberto(true);
   }
@@ -269,6 +314,8 @@ export function Empresas() {
     try {
       if (editando) await atualizarEmpresaApi(empresa);
       else await inserirEmpresa(empresa);
+      // Quadro de pessoal é entidade própria; só se aplica a PJ.
+      if (!isPF) await salvarQuadroPessoal(empresa.id, quadro);
     } catch (e) {
       console.warn('Cliente salvo apenas localmente (banco indisponível).', e);
     }
@@ -779,6 +826,41 @@ export function Empresas() {
                 Adicionar sócio
               </Button>
             </div>
+          </>
+        )}
+
+        {/* Quadro de pessoal (apenas PJ) */}
+        {!isPF && (
+          <>
+            <div className="mt-6 mb-3 flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-wide text-graphite-500">
+                Quadro de pessoal
+              </p>
+              <div className="flex items-center gap-2">
+                <Badge tone={temFolha ? 'gold' : 'gray'}>
+                  {temFolha ? 'Possui folha de pagamento' : 'Sem folha de pagamento'}
+                </Badge>
+                <span className="text-xs text-graphite-500">
+                  Total: {totalQuadro}
+                </span>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3">
+              {CATEGORIAS_VINCULO.map((c) => (
+                <Input
+                  key={c.categoria}
+                  label={c.rotulo}
+                  type="number"
+                  min={0}
+                  value={String(quadro[c.categoria])}
+                  onChange={(e) => updateQuadro(c.categoria, Number(e.target.value))}
+                />
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-graphite-400">
+              Contagem de vínculos por categoria. Autônomos/RPA (contribuintes
+              individuais) não caracterizam folha de pagamento.
+            </p>
           </>
         )}
 
